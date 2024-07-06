@@ -4,5 +4,3 @@ y = 23
 z = x - y / 1 + x * y
 
 print(z)
-
-

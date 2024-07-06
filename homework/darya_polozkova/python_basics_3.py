@@ -6,4 +6,3 @@ multi = e * d / 2
 
 print(sum)
 print(multi)
-
