@@ -7,4 +7,3 @@ average_geometric = (a * b) ** 0.5
 
 print(average_arithmetic)
 print(average_geometric)
-
