@@ -11,6 +11,3 @@ print(f"Subtraction: {result_subs}")
 
 result_product = a * b
 print(f"Product: {result_product}")
-
-
-
