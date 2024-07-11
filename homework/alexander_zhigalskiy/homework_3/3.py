@@ -7,5 +7,5 @@ b = 20
 arif = (a + b) / 2
 geo = math.sqrt(a + b)
 
-print (arif)
-print (geo)
+print(arif)
+print(geo)
