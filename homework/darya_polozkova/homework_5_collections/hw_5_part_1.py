@@ -15,7 +15,7 @@ my_dict['list'].pop(1)
 # Для того, что хранится под ключом ‘dict’:
 # добавьте элемент с ключом ('i am a tuple',) и любым значением
 # удалите какой-нибудь элемент
-my_dict['dict']['key'] = 'i am a tuple'
+my_dict['dict']['i am a tuple'] = 'this is a value'
 my_dict['set'].append(100.43)
 my_dict['set'].remove('monday')
 print(my_dict)
