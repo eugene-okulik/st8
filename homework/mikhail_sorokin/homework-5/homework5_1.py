@@ -11,7 +11,7 @@ print(my_dict['tuple'][-1])
 my_dict['list'].append("white_cat")
 my_dict['list'].pop(1)
 
-my_dict['dict'].update({"i am a tuple'": 333})
+my_dict['dict'].update({tuple('i am a tuple',): 7})
 my_dict['dict'].pop("chetyre")
 
 my_dict['set'].add(777)
