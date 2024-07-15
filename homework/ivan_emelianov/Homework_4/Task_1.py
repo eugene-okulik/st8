@@ -11,4 +11,3 @@ left = lack / save_money_input
 print(f'Привет {name_input}. На покупку {item_input} тебе не хватает {round(lack)}')
 print(f'Возможность совершить покупку {purchase}')
 print(f'До покупки осталось {round(left)} месяцев')
-
