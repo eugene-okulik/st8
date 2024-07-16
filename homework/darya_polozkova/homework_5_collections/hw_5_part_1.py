@@ -6,7 +6,7 @@ my_dict['set'] = [1, None, 'monday', 12.18, True]
 
 # Для того, что хранится под ключом ‘tuple’:
 # выведите на экран последний элемент
-print(my_dict['tuple'][4])
+print(my_dict['tuple'][-1])
 # Для того, что хранится под ключом ‘list’:
 # добавьте в конец списка еще один элемент
 # удалите второй элемент списка
@@ -15,7 +15,7 @@ my_dict['list'].pop(1)
 # Для того, что хранится под ключом ‘dict’:
 # добавьте элемент с ключом ('i am a tuple',) и любым значением
 # удалите какой-нибудь элемент
-my_dict['dict']['i am a tuple'] = 'this is a value'
+my_dict['dict'][('i am a tuple',)] = (0.42)
 my_dict['set'].append(100.43)
 my_dict['set'].remove('monday')
 print(my_dict)
