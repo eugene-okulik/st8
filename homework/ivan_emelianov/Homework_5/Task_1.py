@@ -26,6 +26,4 @@ my_dict['set'].remove("add")
 my_dict['dist']['i am a tuple'] = 'Im not a tuple, Im a dictionary'
 del my_dict['dist']['two']
 
-print(my_dict['list'])
-print(my_dict['dist'])
-print(my_dict['set'])
+print(my_dict)
