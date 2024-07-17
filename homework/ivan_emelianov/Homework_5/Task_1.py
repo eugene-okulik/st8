@@ -23,7 +23,7 @@ my_dict['set'].add(15)
 my_dict['set'].remove("add")
 
 # Взаимодействие с тем, что хранится под ключом ‘dict’
-my_dict['dist'][('i am a tuple')] = "qwe"
+my_dict['dist'][('i am a tuple',)] = "qwe"
 del my_dict['dist']['two']
 
 print(my_dict)
