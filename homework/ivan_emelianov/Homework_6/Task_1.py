@@ -14,7 +14,7 @@ result_operation_2 = result_operation_2.lstrip(' :')
 result_app = result_app.lstrip(' :')
 
 print(
-    f'результат операции: {result_operation_1 } \n'
-    f'результат операции: {result_operation_2 } \n'
-    f'результат работы программы: {result_app }'
+    f'результат операции: {int(result_operation_1) + 10} \n'
+    f'результат операции: {int(result_operation_2) +10} \n'
+    f'результат работы программы: {int(result_app) + 10}'
 )
