@@ -14,4 +14,3 @@ result_3 = int(operation_3[start_3:].strip(': ')) + 10
 print(result_1)
 print(result_2)
 print(result_3)
-
