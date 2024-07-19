@@ -18,7 +18,7 @@ deb = float(input("Сколько можете отложить в месяц? \
 
 purchase = (
     f'Привет {name}. На покупку Ferrari тебе не хватает {cost - money} \n'
-    f'Возможность совершения покупки: {cost == money} \n'
+    f'Возможность совершения покупки: {cost <= money} \n'
     f'До покупки осталось {(cost - money)/deb} месяцев \n'
 )
 print(purchase)
