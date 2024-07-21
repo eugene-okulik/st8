@@ -19,5 +19,5 @@ accumulate_cash = int(calculation / available_cash_for_deposit)
 buy = available_cash >= cost_target
 
 print(f"Привет, {name}. На покупку {target} тебе не хватает", calculation)
-print(f"Возможность совершения покупки:", buy)
-print(f"До покупки осталось", accumulate_cash, "месяцев")
+print("Возможность совершения покупки:", buy)
+print("До покупки осталось", accumulate_cash, "месяцев")
