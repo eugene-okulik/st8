@@ -26,9 +26,9 @@ random_text = random.choice([text1, text2])
 
 result = random_text + str(rand_int)
 
-find_int = result.split(":")
-number = find_int[-1].strip()
+number = result.find(":")
+number_str = result[number + 1:].strip()
 
-result_sum = int(number) + 10
+number_int = int(number_str) + 10
 
-print(result_sum)
+print(number_int)
