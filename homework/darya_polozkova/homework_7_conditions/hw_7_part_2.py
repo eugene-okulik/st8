@@ -1,4 +1,4 @@
-my_range = range(1,101)
+my_range = range(1, 101)
 for x in my_range:
     if x % 3 == 0 and x % 5 == 0:
         print('FuzzBuzz')

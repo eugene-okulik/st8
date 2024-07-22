@@ -5,7 +5,7 @@ print(words)
 new_words = []
 
 for word in words:
-    if word.endswith((",",   ".")):
+    if word.endswith((",", ".")):
         word = word[:-1] + "ing" + word[-1]
     else:
         word = word + "ing"
