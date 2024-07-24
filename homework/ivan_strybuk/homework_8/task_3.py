@@ -21,7 +21,9 @@ parsers(texts)
 
 
 #  version_2 короткая
-def parser(text: str) -> int: return int(text.split()[-1]) + summand_value
+# def parser(text: str) -> int: return int(text.split()[-1]) + summand_value
+def parser(text: str) -> int:
+    return int(text.split()[-1]) + summand_value
 
 
 # These "asserts" are used for self-checking
