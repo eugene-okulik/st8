@@ -15,7 +15,7 @@ print('After')
 print('Last tuple element: ', my_dict['tuple'][-1])
 my_dict['list'].append(16)
 del my_dict['list'][1]
-my_dict['dict'][('i am a tuple')] = 1000
+my_dict['dict'][('i am a tuple',)] = 1000
 del my_dict['dict']['a']
 my_dict['set'].add(6)
 my_dict['set'].remove(3)
