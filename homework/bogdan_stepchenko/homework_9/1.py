@@ -1,0 +1,25 @@
+# Напишите функцию-генератор, которая генерирует список чисел фибоначчи
+# Распечатайте из этого списка пятое число, двухсотое число, тысячное число, стотысячное число
+
+
+import sys
+sys.set_int_max_str_digits(0)
+
+
+def fibonacci_generator():
+    previous, current = 0, 1
+    while True:
+        yield previous
+        previous, current = current, current + previous
+
+
+for num, val in enumerate(fibonacci_generator()):
+    number = num + 1    # +1 cause enumerate starts from 0
+    if number == 5:
+        print(f"The number №5 in Fibonacci' list is: {val}")
+    elif number == 200:
+        print(f"The number №200 in Fibonacci' list is: {val}")
+    elif number == 1000:
+        print(f"The number №1000 in Fibonacci' list is: {val}")
+    elif number == 100000:
+        print(f"The number №100.000 in Fibonacci' list is: {val}")
