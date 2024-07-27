@@ -23,3 +23,12 @@ for num, val in enumerate(fibonacci_generator()):
         print(f"The number №1000 in Fibonacci' list is: {val}")
     elif number == 100000:
         print(f"The number №100.000 in Fibonacci' list is: {val}")
+
+
+#   It's possible to do it that way, but speed of progressing is unacceptable
+
+list_fib = list(enumerate(fibonacci_generator()))
+print(f"The number №5 in Fibonacci' list is: {list_fib[4][1]}")
+print(f"The number №5 in Fibonacci' list is: {list_fib[199][1]}")
+print(f"The number №5 in Fibonacci' list is: {list_fib[999][1]}")
+print(f"The number №5 in Fibonacci' list is: {list_fib[99999][1]}")
