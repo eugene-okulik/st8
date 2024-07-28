@@ -15,14 +15,10 @@ def fibonacci_generator():
 
 for num, val in enumerate(fibonacci_generator()):
     number = num + 1    # +1 cause enumerate starts from 0
-    if number == 5:
-        print(f"The number №5 in Fibonacci' list is: {val}")
-    elif number == 200:
-        print(f"The number №200 in Fibonacci' list is: {val}")
-    elif number == 1000:
-        print(f"The number №1000 in Fibonacci' list is: {val}")
-    elif number == 100000:
-        print(f"The number №100.000 in Fibonacci' list is: {val}")
+    nums = [5, 200, 1000, 100000]
+    for i in nums:
+        if number == i:
+            print(f"The number №{i} in Fibonacci' list is: {val}")
 
 
 #   It's possible to do it that way, but speed of progressing is unacceptable
