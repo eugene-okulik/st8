@@ -12,8 +12,3 @@ while numb <= 3:
     mult = list_key[numb] * list_val[numb]
     numb += 1
     print(mult)
-
-
-
-
-
