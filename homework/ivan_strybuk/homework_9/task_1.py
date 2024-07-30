@@ -14,8 +14,10 @@ def f():
 
 target_number = [5, 200, 1000, 100_000]
 
+count = 0
 for count, num in enumerate(f()):
-    for i in range(1, len(target_number)):
-        if count in target_number:
-            print(num)
-            break
+    if count in target_number:
+        print(num)
+    count += 1
+    if count > 100000:
+        break
