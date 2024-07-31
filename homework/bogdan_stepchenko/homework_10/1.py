@@ -8,6 +8,6 @@ temperatures = [20, 15, 32, 34, 21, 19, 25, 27, 30, 32, 34, 30, 29, 25,
 
 hot_days = list(filter(lambda day: day >= 28, temperatures))
 
-print(f'The highest tempertaure: {max(hot_days)}')
-print(f'The lowest tempertaure: {min(hot_days)}')
-print(f'Average tempertaure: {ceil(sum(hot_days) / len(hot_days))}')
+print(f'The highest temperature: {max(hot_days)}')
+print(f'The lowest temperature: {min(hot_days)}')
+print(f'Average temperature: {ceil(sum(hot_days) / len(hot_days))}')
