@@ -13,10 +13,7 @@ temperatures = [20, 15, 32, 34, 21, 19, 25, 27, 30, 32, 34, 30, 29, 25, 27, 22, 
 
 
 def hot_days_list(temp: list):
-    hot_days = []
-    for i in temp:
-        if i > 28:
-            hot_days.append(i)
+    hot_days = list(filter(lambda x: x > 28, temperatures))
 
     return hot_days
 
@@ -25,16 +22,10 @@ def temp_grade():
     temps = hot_days_list(temperatures)
     lowest = min(temps)
     maximum = max(temps)
-    sorted_temps = sorted(temps)
-    parity = len(sorted_temps)
-
-    if parity % 2 == 1:
-        median_temperature = sorted_temps[parity // 2]
-    else:
-        median_temperature = (sorted_temps[parity // 2 - 1])
+    median = sum(temps) / len(temps)
 
     print(lowest)
-    print(median_temperature)
+    print(int(median))
     print(maximum)
 
 
