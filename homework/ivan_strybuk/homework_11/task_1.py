@@ -16,4 +16,4 @@ print("Полное название месяца: ", "0" + str(python_date.date
 print("Полное название месяца: ", python_date.strftime("%m"))
 print("Полное название месяца: ", python_date.strftime("%b"))
 print("Полное название месяца: ", python_date.strftime("%B"))
-print('Дата в таком формате "15.01.2023, 12:05": ',  python_date.strftime("%d.%m.%Y, %H:%M"))
+print('Дата в таком формате "15.01.2023, 12:05": ', python_date.strftime("%d.%m.%Y, %H:%M"))
