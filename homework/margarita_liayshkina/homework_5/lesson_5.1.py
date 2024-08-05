@@ -33,4 +33,3 @@ print(my_dict["set"])
 # 7 delete set_element
 my_dict["set"].remove("melon")
 print(my_dict["set"])
-
