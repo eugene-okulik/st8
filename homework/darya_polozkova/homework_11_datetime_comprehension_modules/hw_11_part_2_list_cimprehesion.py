@@ -7,15 +7,15 @@ PRICE_LIST = '''тетрадь 50р
 рюкзак 500р'''
 
 list = PRICE_LIST.split()
-#Check with for cycle
-#keys = []
-#values = []
-#for key, value in enumerate(list):
-#    if key % 2 == 0:
-#        keys.append(value)
-#    else:
-#        values.append(int(value.strip('р')))
-#print(keys, values)
+# Check with for cycle
+# keys = []
+# values = []
+# for key, value in enumerate(list):
+#     if key % 2 == 0:
+#         keys.append(value)
+#     else:
+#         values.append(int(value.strip('р')))
+# print(keys, values)
 
 key = [value for key, value in enumerate(list) if key % 2 == 0]
 value = [int(str(value).strip("р")) for key, value in enumerate(list) if key % 2 != 0]
