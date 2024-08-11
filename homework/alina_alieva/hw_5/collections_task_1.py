@@ -8,7 +8,8 @@ my_list.append('add to the end')
 print(my_list)
 deleted_element = my_list.pop(1)
 print(my_list)
-my_dict['dict']['i am a tuple'] = 'any value'
+my_dict['dict'][('i am a tuple',)] = 'any value'
+print(type(['dict']))
 print(my_dict['dict'])
 my_dict['dict'].pop('morning')
 print(my_dict['dict'])
