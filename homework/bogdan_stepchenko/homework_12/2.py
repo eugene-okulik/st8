@@ -37,8 +37,8 @@ some_func('Hello world')
 
 def deco(func):
     def wrapper(text, needed_calls):
-        for i in range(needed_calls):
-            func(text)
+        list(map(lambda x: func(text), range(needed_calls)))
+
     return wrapper
 
 
