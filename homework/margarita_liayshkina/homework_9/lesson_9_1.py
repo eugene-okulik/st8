@@ -15,5 +15,6 @@ def fibonachi(max_n):
         if fib_number in wanted_numbers:
             yield fib
 
+
 list_fib = fibonachi(100001)
 print(list(list_fib))
