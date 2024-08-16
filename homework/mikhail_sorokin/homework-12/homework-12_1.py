@@ -18,11 +18,18 @@ finished
 
 
 def finish_text(func):
-    func()
-    print('finished')
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        print('finished')
+        return result
+
+    return wrapper
 
 
 @finish_text
 def example():
     c = 3 * 3
     print(f"result = {c}")
+
+
+print(example())
