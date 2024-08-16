@@ -17,10 +17,8 @@
 
 
 def choose_operation(func):
-    first = int(input('Please, enter 1st number: '))
-    second = int(input('Please, enter 2nd number: '))
 
-    def wrapper():
+    def wrapper(first, second):
         if first == second:
             operation = "+"
         elif second < 0 or first < 0:
@@ -51,4 +49,7 @@ def some_func(first, second, operation=None):
         print('Error: operation is unknown')
 
 
-print(some_func())
+print(some_func(10, 10))
+print(some_func(10, 2))
+print(some_func(10, 40))
+print(some_func(10, -10))
