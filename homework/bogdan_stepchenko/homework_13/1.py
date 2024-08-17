@@ -10,12 +10,13 @@ class Book:
         self.reserved = reserved
 
 
-first_book = Book('Идиот', 'Достоевский', 500, 9999, True)
+first_book = Book('Идиот', 'Достоевский', 500, 9999)
 second_book = Book('451 градус по Фаренгейту', 'Брэдбери', 300, 9673)
 third_book = Book('Ветра зимы', 'Мартин', 750, 5693)
 fourth_book = Book('Зов предков', 'Лондон', 420, 4526)
 fifth_book = Book('Зеленая миля', 'Кинг', 680, 7204)
 
+first_book.reserved = True  # пометил первую книгу как зарезервированную
 
 print(f"Название: {first_book.title}, Автор: {first_book.author}, "
       f"страниц: {first_book.quantity_of_pages}, материал: {first_book.material}"
@@ -52,24 +53,26 @@ class SchoolBook(Book):
         self.home_task = home_task
 
 
-first_school_book = SchoolBook('Математика', 'Сидоров', 250, 1000, 'Алгебра', 9, True, True)
+first_school_book = SchoolBook('Математика', 'Сидоров', 250, 1000, 'Алгебра', 9, True)
 second_school_book = SchoolBook('Литература', 'Петров', 320, 2000, 'Русская литература', 7, True)
 third_school_book = SchoolBook('История', 'Никифоренко', 234, 300, 'История Беларуси', 11, False)
+
+first_school_book.reserved = True  # пометил первую книгу как зарезервированную
 
 print(f"Название: {first_school_book.title}, Автор: {first_school_book.author}, "
       f"страниц: {first_school_book.quantity_of_pages}, материал: {first_school_book.material}"
       f", предмет: {first_school_book.subject}, класс: {first_school_book.school_class}"
-      f"{', домашние задания присутствуют' if first_school_book.home_task else ''} "
+      f"{', домашние задания присутствуют' if first_school_book.home_task else ''}"
       f"{', зарезервирована' if first_school_book.reserved else ''}")
 
 print(f"Название: {second_school_book.title}, Автор: {second_school_book.author}, "
       f"страниц: {second_school_book.quantity_of_pages}"
       f", предмет: {second_school_book.subject}, класс: {second_school_book.school_class}"
-      f"{', домашние задания присутствуют' if second_school_book.home_task else ''} "
+      f"{', домашние задания присутствуют' if second_school_book.home_task else ''}"
       f"{', зарезервирована' if second_school_book.reserved else ''}")
 
 print(f"Название: {third_school_book.title}, Автор: {third_school_book.author}, "
       f"страниц: {third_school_book.quantity_of_pages}"
       f", предмет: {third_school_book.subject}, класс: {third_school_book.school_class}"
-      f"{', домашние задания присутствуют' if third_school_book.home_task else ''} "
+      f"{', домашние задания присутствуют' if third_school_book.home_task else ''}"
       f"{', зарезервирована' if third_school_book.reserved else ''}")
