@@ -6,8 +6,11 @@ def final(func):
         return result
 
     return wrapper
+
+
 @final
 def example(text):
     print(text)
+
 
 example('print me')

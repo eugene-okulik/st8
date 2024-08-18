@@ -31,4 +31,5 @@ def calc(first, second, operation):
     else:
         print('Sorry, I do not know such operation')
 
-print(calc(first,second))
+
+print(calc(first, second))
