@@ -8,6 +8,7 @@ class Book:
         self.pages = pages
         self.isbn = isbn
         self.reserved = reserved
+
 # если зарезервирована:
 # Название: Идиот, Автор: Достоевский, страниц: 500, материал: бумага, зарезервирована
 # если не зарезервирована:
@@ -16,11 +17,15 @@ class Book:
     def reservation(self):
         if self.reserved:
             self.reserved = 'зарезервирована'
-            print(f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages}, '
-                   f'материал: {self.material}, {self.reserved}')
+            print(
+                f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages}, '
+                f'материал: {self.material}, {self.reserved}'
+                  )
         else:
-            print(f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages},'
-                  f' материал: {self.material}')
+            print(
+                f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages},'
+                f' материал: {self.material}'
+            )
 
 
 book1 = Book('J. K. Rowling', 'Harry Potter and the Sorcerers Stone', 100, 9780807286004)
@@ -46,26 +51,31 @@ class Second(Book):
 
 
 book_class1 = Second(' Пирютко О. Н.', 'Алгебра для 5х классов', 343,
-                   8606323456, 'maths', 5, None)
+                     8606323456, 'maths', 5, None)
 book_class1.reserved = True
 book_class2 = Second('Юхнель Н. В.', 'Английский дл 9х классовd', 215,
-                   8601223457, 'english', 9, None)
+                     8601223457, 'english', 9, None)
 book_class3 = Second(' Волков А. В,', 'Математика для 2х классов', 111,
-                   8606224457, 'maths', '2', None)
-#Распечатайте детали о каждом учебнике в таком виде: Если учебник зарезервирован:
-#Название: Алгебра, Автор: Иванов, страниц: 200, предмет: Математика, класс: 9, зарезервирована
-#если не зарезервирован:
-#Название: Алгебра, Автор: Иванов, страниц: 200, предмет: Математика, класс: 9
+                     8606224457, 'maths', '2', None)
+
+
+# Распечатайте детали о каждом учебнике в таком виде: Если учебник зарезервирован:
+# Название: Алгебра, Автор: Иванов, страниц: 200, предмет: Математика, класс: 9, зарезервирована
+# если не зарезервирован:
+# Название: Алгебра, Автор: Иванов, страниц: 200, предмет: Математика, класс: 9
 
 
 def reservation_class(self):
     if self.reserved:
         self.reserved = 'зарезервирована'
-        print(f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages}, '
-              f'предмет: {self.subject}, класс: {self.classroom}, {self.reserved}')
+        print(
+            f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages}, '
+            f'предмет: {self.subject}, класс: {self.classroom}, {self.reserved}'
+        )
     else:
-        print(f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages}, '
-              f'предмет: {self.subject}, класс: {self.classroom}')
+        print(
+            f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages}, '
+            f'предмет: {self.subject}, класс: {self.classroom}')
 
 
 book_class1.reservation()
