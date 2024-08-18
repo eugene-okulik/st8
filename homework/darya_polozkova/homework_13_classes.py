@@ -20,7 +20,7 @@ class Book:
             print(
                 f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages}, '
                 f'материал: {self.material}, {self.reserved}'
-                  )
+            )
         else:
             print(
                 f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages},'
@@ -75,7 +75,8 @@ def reservation_class(self):
     else:
         print(
             f'Название:{self.title}, Автор: {self.author}, страниц: {self.pages}, '
-            f'предмет: {self.subject}, класс: {self.classroom}')
+            f'предмет: {self.subject}, класс: {self.classroom}'
+        )
 
 
 book_class1.reservation()
