@@ -22,11 +22,11 @@ ISBN
 
 
 class Book:
-    is_reserved = bool(False)
+    is_reserved = False
     page_material = str('Paper')
     text_is_availability = bool(True)
 
-    def __init__(self, name, author, page_quantity, isbn, is_reserved=False):
+    def __init__(self, name, author, page_quantity, isbn, is_reserved):
         self.name = name
         self.author = author
         self.page_quantity = page_quantity
@@ -46,11 +46,11 @@ class Book:
             )
 
 
-idiot = Book('idiot', 'dostoevky', 300, 'isbsfaifdso')
-necronomicon = Book('Necronomicon', 'unknown', 666, 'sssssssss', True)
-the_holy_booble = Book('The Holy Booble', 'Cat Pettus', 202, 'smaasksadkdsak')
-wild_sheep = Book('A Wild Sheep Chase', 'Haruki Murakami', 353, 'sdfsdfdsf')
-martin_Eden = Book('Martin Eden', 'Jack London', 480, 'aaaaaaaaaa', True)
+idiot = Book('idiot', 'dostoevky', 300, 'isbsfaifdso', is_reserved=False)
+necronomicon = Book('Necronomicon', 'unknown', 666, 'sssssssss', is_reserved=True)
+the_holy_booble = Book('The Holy Booble', 'Cat Pettus', 202, 'smaasksadkdsak', is_reserved=False)
+wild_sheep = Book('A Wild Sheep Chase', 'Haruki Murakami', 353, 'sdfsdfdsf', is_reserved=False)
+martin_Eden = Book('Martin Eden', 'Jack London', 480, 'aaaaaaaaaa', is_reserved=True)
 
 necronomicon.book_details()
 idiot.book_details()
@@ -78,7 +78,7 @@ class SchoolBooks(Book):
     grade = int
     homework = bool()
 
-    def __init__(self, name, author, page_quantity, isbn, school_subject, grade, homework, is_reserved=False):
+    def __init__(self, name, author, page_quantity, isbn, school_subject, grade, homework, is_reserved):
         super().__init__(name, author, page_quantity, isbn, is_reserved)
         self.school_subject = school_subject
         self.grade = grade
@@ -98,8 +98,8 @@ class SchoolBooks(Book):
             )
 
 
-history_book = SchoolBooks('History of ancient Rome', 'biba.buba', 333, 'isbnqsas', 'history', 2, True, False)
-math_book = SchoolBooks('Algebra for primary school', 'galya ivanovna', 250, 'yiiiii', 'math', 1, True, True)
+history = SchoolBooks('History of ancient Rome', 'biba.buba', 333, 'isbnqsas', 'history', 2, True, is_reserved=False)
+math = SchoolBooks('Algebra for primary school', 'galya ivanovna', 250, 'yiiiii', 'math', 1, True, is_reserved=True)
 
-history_book.school_books_details()
-math_book.school_books_details()
+history.school_books_details()
+math.school_books_details()
