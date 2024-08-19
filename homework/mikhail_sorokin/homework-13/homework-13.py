@@ -50,13 +50,13 @@ idiot = Book('idiot', 'dostoevky', 300, 'isbsfaifdso', is_reserved=False)
 necronomicon = Book('Necronomicon', 'unknown', 666, 'sssssssss', is_reserved=True)
 the_holy_booble = Book('The Holy Booble', 'Cat Pettus', 202, 'smaasksadkdsak', is_reserved=False)
 wild_sheep = Book('A Wild Sheep Chase', 'Haruki Murakami', 353, 'sdfsdfdsf', is_reserved=False)
-martin_Eden = Book('Martin Eden', 'Jack London', 480, 'aaaaaaaaaa', is_reserved=True)
+martin_eden = Book('Martin Eden', 'Jack London', 480, 'aaaaaaaaaa', is_reserved=True)
 
 necronomicon.book_details()
 idiot.book_details()
 the_holy_booble.book_details()
 wild_sheep.book_details()
-martin_Eden.book_details()
+martin_eden.book_details()
 
 """Создайте дочерний класс для первого. Это будет класс для школьных учебников. В нем будут дополнительные атрибуты:
 
