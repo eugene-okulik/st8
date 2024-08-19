@@ -1,7 +1,7 @@
 def repeat_me(func):
     def times(*args, **kwargs):
         times = kwargs.pop('count')
-        for i in range(times):
+        for _ in range(times):
             func(*args, **kwargs)
 
     return times
