@@ -27,19 +27,25 @@ example('print me')
 
 
 def func_repeat_controller(count=2):
+
     def decorator(func):
-        def wrapper():
+        def wrapper(*args, **kwargs):
             for _ in range(count):
-                func()
-
+                func(*args, **kwargs)
         return wrapper
-
     return decorator
 
 
-@func_repeat_controller(count=3)
+@func_repeat_controller()
 def example():
     print("some text")
 
 
+@func_repeat_controller(count=3)
+def example2(ex):
+    print(ex)
+    return f'ex was {ex}'
+
+
+example2('sdfsdfsdf')
 example()

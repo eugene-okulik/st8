@@ -20,7 +20,7 @@ finished
 def finish_text(func):
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
-        print('finished')
+        print("finished")
         return result
 
     return wrapper
@@ -32,4 +32,11 @@ def example():
     print(f"result = {c}")
 
 
+@finish_text
+def example2(ex):
+    print(ex)
+    return f'ex was {ex}'
+
+
 print(example())
+print(example2("test"))
