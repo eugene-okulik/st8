@@ -1,0 +1,1 @@
+{"Country": "Turkey", "avg_temp": 30}
