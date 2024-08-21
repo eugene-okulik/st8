@@ -75,7 +75,7 @@ class Bouquet:
         params = ['cost', 'name', 'lifetime', 'color', 'height', 'country']
 
         if not kwargs:
-            return ValueError(f'Parameter and its value should be provided!')
+            return ValueError('Parameter and its value should be provided!')
 
         for key, value in kwargs.items():
             if key in params:
