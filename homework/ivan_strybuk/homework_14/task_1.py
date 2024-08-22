@@ -33,32 +33,21 @@ class FlowersBelarus(Flowers):
 
 
 class Bouquet:
+    def __init__(self):
+        self.l_flower = []
 
-    def __init__(self, name, color, freshness, stem_length_cm: int, cost: int, life_time_in_days):
-        self.name = name
-        self.color = color
-        self.freshness = freshness
-        self.stem_length_cm = stem_length_cm
-        self.cost = cost
-        self.life_time_in_days = life_time_in_days
-        self.list_flowers = []
+    def add_flower(self, element):
+        self.l_flower.append(element)
 
-    def add_flower(self, flower):
-        self.list_flowers.append(flower)
-        return self.list_flowers
+    def avg_life_time(self):
+        total_time = sum([flower.life_time_in_days for flower in self.l_flower])
+        return total_time / len(self.l_flower)
 
-    # def fading_time(self):
-    #     # Метод, который определяет время увядания по среднему времени жизни всех цветов в букете.
-    #     full_life_time = [value for value in self.life_time_in_days]
-    #     return round(sum(full_life_time) / len(full_life_time), 2)
+    def sort(self, key):
+        self.l_flower.sort(key=lambda x: getattr(x, key))
 
-    # сортировка
-    # def sorting(self):
-    #     pass
-
-    # поиск_цветков
-    # def search_flowers(self):  # (например, по среднему времени жизни)
-    #     pass
+    def search(self, key, value):
+        return [flower for flower in self.l_flower if getattr(flower, key) == value]
 
 
 # Создание экземпляров цветов
@@ -67,16 +56,23 @@ second_flower = FlowersHolland("orchid", "blue", "average", 20, 20, 10)
 third_flower = FlowersHolland("red rose", "red", "fresh", 30, 15, 5)
 fourth_flower = FlowersHolland("white rose", "white", "fresh", 10, 5, 5)
 
-first_flower_BY = FlowersBelarus("red rose", "red", 20, 10, 3, "fresh")
+first_flower_BY = FlowersBelarus("red rose", "red", 20, 10, 3)
 second_flower_BY = FlowersBelarus("white rose", "white", 20, 10, 3)
-third_flower_BY = FlowersBelarus("tulip", "orange/white", 10, 2, 3)
-fourth_flower_BY = FlowersBelarus("aster", "blue/red", 30, 15, 5, "super fresh")
+third_flower_BY = FlowersBelarus("tulip", "orange/white", 10, 22, 3)
+fourth_flower_BY = FlowersBelarus("aster", "blue/red", 30, 15, 5)
 
 # Создание букета
-bouquet = Bouquet("", "", "", 0, 0, 0)
+list_flowers = [first_flower, second_flower]  # пока не понял как это работает =)
+
+bouquet = Bouquet()
 bouquet.add_flower(first_flower)
 bouquet.add_flower(second_flower)
-bouquet.add_flower(third_flower)
+bouquet.add_flower(third_flower_BY)
+bouquet.add_flower(fourth_flower_BY)
 
-list_flow = bouquet.list_flowers
-print(list_flow)
+avg_life = int(bouquet.avg_life_time())
+print(f"Среднее время увядания букета: {avg_life} дней.")
+bouquet.sort("cost")
+print("Цветы в букете отсортированы по цене:", [flower.name for flower in bouquet.l_flower])
+yellow_color = bouquet.search("life_time_in_days", avg_life)
+print(f"Цветы в букете со средними временем увядания {avg_life} дней:", [flower.name for flower in yellow_color])
