@@ -7,10 +7,10 @@ def operation_decor(function):
             operation = "-"
         elif second > first:
             operation = "/"
-        elif  first < 0 or second < 0:
+        elif first < 0 or second < 0:
             operation = "*"
-        return function(first,second,operation)
-        
+        return function(first, second, operation)
+
     return wrapper
 
 
@@ -23,7 +23,7 @@ def calc(first, second, operation):
     elif operation == "/":
         return first / second
     elif operation == "*":
-        return  first * second
+        return first * second
     else:
         return "Unknown operation"
 
@@ -32,5 +32,5 @@ first = float(input("Enter you number:"))
 second = float(input("Enter you number:"))
 
 
-result = calc(first, second )
+result = calc(first, second)
 print(f"Result operation: {result}")
