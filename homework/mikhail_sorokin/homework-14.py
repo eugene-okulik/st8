@@ -11,6 +11,7 @@
 Реализовать поиск цветов в букете по каким-нибудь параметрам (например, по среднему времени жизни) (и это тоже метод).
 """
 
+
 # хотел сделать чтобы общее кол-во цветов считалось, общая стоимость была, и прочее было в общем классе,
 # но устал уже и туплю не понимаю как.
 # Еще хотел чтобы если цветок паразит то время жизни букета уменьшалось, наверное позже допилю
@@ -121,6 +122,12 @@ class Bouquet:
         self.list_of_flowers.sort(key=lambda flower: flower[f'{sort_param}'], reverse=reverse)
         return self.list_of_flowers
 
+    def search(self, search_element):
+        return [
+            item for item in self.list_of_flowers
+            if search_element in item.keys() or search_element in item.values()
+        ]
+
 
 rafflesia = Rafflesia(3, 11000 * 3)
 tulip = Tulip(10, 200 * 10)
@@ -134,3 +141,5 @@ print(bouquet.bouquet_live_time(), bouquet.list_of_flowers)
 print(bouquet.sort_by_price())
 print(bouquet.sort_by_name(reverse=False))
 print(bouquet.multi_sort('count', reverse=True))
+
+print(bouquet.search(7))
