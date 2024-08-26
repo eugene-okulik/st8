@@ -1,13 +1,15 @@
-def repeat_me(func):
-    def wrapper(*args):
-        i = 1
-        while i <= 2:
-            func(*args)
-            i += 1
-    return wrapper
+def repeat_me(country):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            i = 1
+            while i <= country:
+                func(*args, **kwargs)
+                i += 1
+        return wrapper
+    return decorator
 
 
-@repeat_me
+@repeat_me(country=3)
 def example(text):
     print(text)
 
