@@ -41,7 +41,7 @@ book_5 = Book("Казус Кукоцкого", "Бумага", "Людмила �
 
 book_4.reservation = True
 
-book_list = [book_1, book_2, book_3,book_4, book_5, textbook_1, textbook_2]
+book_list = [book_1, book_2, book_3, book_4, book_5, textbook_1, textbook_2]
 
 for one_book in book_list:
     reserved_book = ""
