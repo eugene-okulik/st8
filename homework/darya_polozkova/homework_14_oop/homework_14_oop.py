@@ -10,6 +10,9 @@ class Flowers:
     def __str__(self):
         return f"This is a class: cost: {self. price}$, size: {self.size}, lifetime: {self.lifetime} days"
 
+    def __repr__(self):
+        return f"flower {self.color}"
+
 
 class Roses(Flowers):
     def __init__(self, color, size, amount, lifetime, price, name):
@@ -62,13 +65,9 @@ class Bouquet:
             print('Try one more time! Non-existing param is detected')
         return self.bouquet
 
-    def find_by_max_price(self):
-        max_price = max(self.bouquet, key=lambda x: x.price)
-        return f'The most expensive flower costs: {max_price}'
-
-    def find_by_max_lifetime(self):
-        lifetime = max(self.bouquet, key=lambda x: x.lifetime)
-        return f'The longest lifetime has: {lifetime}'
+    def find_by(self, key):
+        result = max(self.bouquet, key=lambda x: getattr(x, key))
+        return result
 
     def __repr__(self):
         return f"Here is your bouquet of {self.bouquet}"
@@ -91,7 +90,6 @@ print(f'You will have this beauty for {bouquet.avg_lifetime()} days')
 # Self-check цена букета
 print(f'Please pay {bouquet.price()}$ for your bouquet')
 print(bouquet.sorting('color'))
-print(bouquet.sorting('price'))
-print(bouquet.find_by_max_price())
-print(bouquet.find_by_max_lifetime())
+print(bouquet.find_by('price'))
+print(bouquet.find_by('lifetime'))
 print(bouquet)
