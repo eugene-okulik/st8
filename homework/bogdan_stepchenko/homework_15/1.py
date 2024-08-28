@@ -3,9 +3,7 @@ from pathlib import Path
 
 repository_root = Path(os.path.dirname(__file__)).parent.parent.parent
 
-target_path = os.path.join(repository_root, 'homework', 'eugene_okulik', 'hw_13')
-
-target_file = os.path.join(target_path, 'data.txt')
+target_file = os.path.join(repository_root, 'homework', 'eugene_okulik', 'hw_13', 'data.txt')
 
 with open(target_file, 'r', encoding='utf-8') as opened_file:
     res = ''
