@@ -19,8 +19,7 @@ class Flowers:
     live_time = int
     price = float
 
-    def __init__(self, count, price, **kwargs):
-        self.count = count
+    def __init__(self, price, **kwargs):
         self.price = price
         self.name = kwargs.get('name')
         self.name = kwargs.get('order')
@@ -39,10 +38,11 @@ class Rafflesia(Flowers):
     live_time = 90
 
     def __init__(self, count, price):
-        super().__init__(count, price,
+        super().__init__(price,
                          name=self.name, order=self.order, family=self.family,
                          genus=self.genus, live_time=self.live_time
                          )
+        self.count = count
         Rafflesia.raff_count_total += count
 
     def __str__(self):
@@ -58,10 +58,11 @@ class Tulip(Flowers):
     live_time = 7
 
     def __init__(self, count, price):
-        super().__init__(count, price,
+        super().__init__(price,
                          name=self.name, order=self.order, family=self.family,
                          genus=self.genus, live_time=self.live_time
                          )
+        self.count = count
         Tulip.tulip_count_total += count
 
     def __str__(self):
@@ -77,9 +78,10 @@ class Rose(Flowers):
     live_time = 20
 
     def __init__(self, count, price):
-        super().__init__(count, price,
+        super().__init__(price,
                          name=self.name, order=self.order, family=self.family,
                          genus=self.genus, live_time=self.live_time)
+        self.count = count
         Rose.rose_count_total += count
 
     def __str__(self):
