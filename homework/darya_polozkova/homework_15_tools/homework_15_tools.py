@@ -11,8 +11,8 @@ print(path)
 data = os.path.join(path, 'data.txt')
 print(data)
 separator = '\\' if sys.platform == 'windows' else '/'
-#homework/eugene_okulik/hw_13/data.txt
+# homework/eugene_okulik/hw_13/data.txt
 with open(data, encoding='utf-8') as opened_file:
-     data = opened_file.read()
-     uppercase_letters = list(filter(lambda char: char.isupper(), ''.join(data)))
-     print(uppercase_letters)
+    data = opened_file.read()
+    uppercase_letters = list(filter(lambda char: char.isupper(), ''.join(data)))
+    print(uppercase_letters)
