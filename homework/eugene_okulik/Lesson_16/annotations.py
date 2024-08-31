@@ -11,6 +11,7 @@ result = calc(4, 2)
 def make_dict(key: str | int | tuple | bool | float, value: Any) -> dict:
     return {key: value}
 
+
 my_dict = make_dict((1, 4, 6), 'werwer')
 
 
