@@ -11,4 +11,3 @@ with open(data, encoding='utf-8') as opened_file:
     data = opened_file.read()
     uppercase_letters = list(filter(lambda char: char.isupper(), ''.join(data)))
     print(uppercase_letters)
-
