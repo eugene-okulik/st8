@@ -8,6 +8,11 @@ def parse_of_date(line: str) -> datetime:
     return datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S.%f")
 
 
+def getting_line_from_text(number: int, text: [str]):
+    for line in filter(lambda x: x.startswith(f'{number}'), text):
+        return line
+
+
 def using_dates_from_file(file: str):
 
     repository_root = Path(os.path.dirname(__file__)).parent.parent.parent
@@ -17,19 +22,21 @@ def using_dates_from_file(file: str):
             data = opened_file.read()
             lines = data.splitlines()
 
-            for line in lines:
-                formatted_date = parse_of_date(line)
-                if line[0] == '1':
-                    added_one_week = formatted_date + timedelta(weeks=1)
-                    print(f'If we want to add one week to date {formatted_date} so it will be {added_one_week}')
-                elif line[0] == '2':
-                    current_day = datetime.strftime(formatted_date, '%A')
-                    print(f'Name of day from date {formatted_date} is: {current_day}')
-                elif line[0] == '3':
-                    res = datetime.now() - formatted_date
-                    print(f'Date {formatted_date} was {res.days} days ago from current date')
-                else:
-                    raise NotImplementedError('Code is not supported yet')
+            line_1 = getting_line_from_text(1, lines)
+            added_one_week = parse_of_date(line_1) + timedelta(weeks=1)
+            print(f'If we want to add one week to date {parse_of_date(line_1)} so it will be {added_one_week}')
+
+            line_2 = getting_line_from_text(2, lines)
+            current_day = datetime.strftime(parse_of_date(line_2), '%A')
+            print(f'Name of day from date {parse_of_date(line_2)} is: {current_day}')
+
+            line_3 = getting_line_from_text(3, lines)
+            res = datetime.now() - parse_of_date(line_3)
+            print(f'Date {parse_of_date(line_3)} was {res.days} days ago from current date')
+
+            for line in filter(lambda x: not x.startswith(('1', '2', '3')), lines):
+                print(f'Operation for line #{line} is not supported yet')
+
     except FileNotFoundError as e:
         print(f"{e}: File was not found!")
 
