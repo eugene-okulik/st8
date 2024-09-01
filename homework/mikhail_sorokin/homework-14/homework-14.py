@@ -34,7 +34,6 @@ class Rafflesia(Flowers):
     family = "Rafflesiaceae"
     genus = "Rafflesia"
     name = "Rfflesia Arnoldii"
-    raff_count_total = 0
     live_time = 90
 
     def __init__(self, count, price):
@@ -43,7 +42,6 @@ class Rafflesia(Flowers):
                          genus=self.genus, live_time=self.live_time
                          )
         self.count = count
-        Rafflesia.raff_count_total += count
 
     def __str__(self):
         return f"{self.name} (Count: {self.count}, Live Time: {self.live_time} days, Price: {self.price})"
@@ -54,7 +52,6 @@ class Tulip(Flowers):
     family = "Liliaceae"
     genus = "Tulipa"
     name = "Tulip"
-    tulip_count_total = 0
     live_time = 7
 
     def __init__(self, count, price):
@@ -63,7 +60,6 @@ class Tulip(Flowers):
                          genus=self.genus, live_time=self.live_time
                          )
         self.count = count
-        Tulip.tulip_count_total += count
 
     def __str__(self):
         return f"{self.name} (Count: {self.count}, Live Time: {self.live_time} days, Price: {self.price})"
@@ -74,7 +70,6 @@ class Rose(Flowers):
     family = "Rosaceae"
     genus = "Rosa"
     name = "Rose"
-    rose_count_total = 0
     live_time = 20
 
     def __init__(self, count, price):
@@ -82,7 +77,6 @@ class Rose(Flowers):
                          name=self.name, order=self.order, family=self.family,
                          genus=self.genus, live_time=self.live_time)
         self.count = count
-        Rose.rose_count_total += count
 
     def __str__(self):
         return f"{self.name} (Count: {self.count}, Live Time: {self.live_time} days, Price: {self.price})"
