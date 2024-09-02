@@ -8,7 +8,7 @@ eugene_file = os.path.join(eugene_okulik, 'data.txt')
 
 with open(eugene_file, 'r', encoding='utf-8') as opened_file:
     for symbol in opened_file:
-        if symbol == '':
-            continue
-        else:
+        if symbol[0].isupper():
             print(symbol[0])
+        else:
+            continue
