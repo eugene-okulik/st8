@@ -1,5 +1,5 @@
 def choose_operation(func):
-   def wrapper(first, second):
+    def wrapper(first, second):
         if first == second:
             operation = '+'
         elif second < 0 or first < 0:
@@ -7,25 +7,26 @@ def choose_operation(func):
         elif first > second:
             operation = '-'
         else:
-           operation = '/'
+            operation = '/'
         result = func(first, second, operation)
         return result
-   return wrapper
+    return wrapper
 
 
 @choose_operation
-def calc(first, second,operation=None):
-   if operation == '+':
+def calc(first, second, operation=None):
+    if operation == '+':
         return first + second
 
-   elif operation == '*':
-       return first * second
-   elif operation == '-':
-       return first - second
-   elif operation == '/':
-       return first / second
-   else:
-       print('sorry,mistake') 
+    elif operation == '*':
+        return first * second
+    elif operation == '-':
+        return first - second
+    elif operation == '/':
+        return first / second
+    else:
+        print('sorry,mistake')
 
-print(calc(10,10))
-print(calc(2,15))
+
+print(calc(10, 10))
+print(calc(2, 15))
