@@ -14,19 +14,14 @@
 
 class Flowers:
     kingdom = 'Plantae'
-    name = str
-    raff_count_total = int
-    live_time = int
-    price = float
 
     def __init__(self, price, **kwargs):
         self.price = price
         self.name = kwargs.get('name')
-        self.name = kwargs.get('order')
-        self.name = kwargs.get('family')
-        self.name = kwargs.get('genus')
-        self.name = kwargs.get('name')
-        self.name = kwargs.get('live_time')
+        self.order = kwargs.get('order')
+        self.family = kwargs.get('family')
+        self.genus = kwargs.get('genus')
+        self.live_time = kwargs.get('live_time')
 
 
 class Rafflesia(Flowers):
@@ -36,15 +31,13 @@ class Rafflesia(Flowers):
     name = "Rfflesia Arnoldii"
     live_time = 90
 
-    def __init__(self, count, price):
+    def __init__(self, price):
         super().__init__(price,
                          name=self.name, order=self.order, family=self.family,
-                         genus=self.genus, live_time=self.live_time
-                         )
-        self.count = count
+                         genus=self.genus, live_time=self.live_time)
 
     def __str__(self):
-        return f"{self.name} (Count: {self.count}, Live Time: {self.live_time} days, Price: {self.price})"
+        return f"{self.name}, Live Time: {self.live_time} days, Price: {self.price}"
 
 
 class Tulip(Flowers):
@@ -54,15 +47,13 @@ class Tulip(Flowers):
     name = "Tulip"
     live_time = 7
 
-    def __init__(self, count, price):
+    def __init__(self, price):
         super().__init__(price,
                          name=self.name, order=self.order, family=self.family,
-                         genus=self.genus, live_time=self.live_time
-                         )
-        self.count = count
+                         genus=self.genus, live_time=self.live_time)
 
     def __str__(self):
-        return f"{self.name} (Count: {self.count}, Live Time: {self.live_time} days, Price: {self.price})"
+        return f"{self.name}, Live Time: {self.live_time} days, Price: {self.price}"
 
 
 class Rose(Flowers):
@@ -72,14 +63,13 @@ class Rose(Flowers):
     name = "Rose"
     live_time = 20
 
-    def __init__(self, count, price):
+    def __init__(self, price):
         super().__init__(price,
                          name=self.name, order=self.order, family=self.family,
                          genus=self.genus, live_time=self.live_time)
-        self.count = count
 
     def __str__(self):
-        return f"{self.name} (Count: {self.count}, Live Time: {self.live_time} days, Price: {self.price})"
+        return f"{self.name}, Live Time: {self.live_time} days, Price: {self.price}"
 
 
 class Bouquet:
@@ -92,13 +82,14 @@ class Bouquet:
     def bouquet_live_time(self):
         if not self.list_of_flowers:
             return 0
-        total_live_time = sum(flower.live_time * flower.count for flower in self.list_of_flowers)
-        total_flowers = sum(flower.count for flower in self.list_of_flowers)
+        # Считаем среднее время жизни цветов в букете
+        total_live_time = sum(flower.live_time for flower in self.list_of_flowers)
+        total_flowers = len(self.list_of_flowers)  # Количество разных видов цветов
         time = total_live_time / total_flowers
         return f"Bouquet live time is: {round(time)} days"
 
     def bouquet_price(self):
-        total_price = sum(flower.price * flower.count for flower in self.list_of_flowers)
+        total_price = sum(flower.price for flower in self.list_of_flowers)
         return f"Total price of bouquet is: {total_price}"
 
     def sort_by_price(self, reverse=False):
@@ -121,13 +112,14 @@ class Bouquet:
 
     def __str__(self):
         flowers_str = ", ".join(str(flower) for flower in self.list_of_flowers)
-
         return f"{flowers_str}"
 
 
-rafflesia = Rafflesia(3, 11000)
-tulip = Tulip(10, 200)
-rose = Rose(33, 400)
+# Создаем цветы без указания количества
+
+rafflesia = Rafflesia(11000)
+tulip = Tulip(200)
+rose = Rose(400)
 bouquet = Bouquet()
 bouquet.add_flowers(rafflesia)
 bouquet.add_flowers(tulip)
@@ -140,6 +132,6 @@ print(bouquet.bouquet_price())
 
 print(", ".join(str(flower) for flower in bouquet.sort_by_price()))
 print(", ".join(str(flower) for flower in bouquet.sort_by_name(reverse=False)))
-print(", ".join(str(flower) for flower in bouquet.multi_sort('count', reverse=True)))
+print(", ".join(str(flower) for flower in bouquet.multi_sort('live_time', reverse=True)))
 
 print(", ".join(str(flower) for flower in bouquet.search(7)))
