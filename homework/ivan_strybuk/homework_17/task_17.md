@@ -9,7 +9,7 @@ INSERT INTO students (name, second_name, group_id) VALUES ('Ivan', 'Strybuk', NU
 - зачисление в группу
 
 ```
-UPDATE students SET group_id ='' WHERE id = 10
+UPDATE students SET group_id = 3 WHERE id = 10
 ```
 
 ### 2. Создайте несколько книг (books) и укажите, что ваш созданный студент взял их
