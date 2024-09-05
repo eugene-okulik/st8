@@ -25,7 +25,7 @@ print(f'This is final list of dates: {dates}')
 # 1. 2023-11-27 20:34:13.212967 - распечатать эту дату, но на неделю позже.
 # Должно получиться 2023-12-04 20:34:13.212967
 date_1 = dates[0]
-date_1_to_python = datetime.strptime(date_1,'%Y-%m-%d %H:%M:%S.%f')
+date_1_to_python = datetime.strptime(date_1, '%Y-%m-%d %H:%M:%S.%f')
 week = timedelta(days=7)
 in_a_week = date_1_to_python + week
 print(in_a_week)

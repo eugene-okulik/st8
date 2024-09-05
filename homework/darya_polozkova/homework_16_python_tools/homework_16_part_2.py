@@ -6,5 +6,5 @@ while True:
         date = datetime.strptime(birthday, "%d %m %Y")
         print(f'Your age is {(datetime.now() - date).days} days')
         break
-    except (ValueError, SyntaxError) as err:
+    except (ValueError, SyntaxError):
         print('Please enter birthday in format %d %m %Y')
