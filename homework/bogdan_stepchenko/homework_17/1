@@ -1,0 +1,53 @@
+# Создайте студента (student)
+"""INSERT INTO students (name, second_name) VALUES ('Bogdan', 'Stepchenko')"""
+
+# Создайте несколько книг (books) и укажите, что ваш созданный студент взял их
+"""INSERT INTO books (title, taken_by_student_id) VALUES ('Song ice and fire', 13)"""
+"""INSERT INTO books (title, taken_by_student_id) VALUES ('The call if of the wild', 13)"""
+
+# Создайте группу (group) и определите своего студента туда
+"""INSERT INTO `groups` (title, start_date, end_date) VALUES ('Astro Militarum', 'Jan 25', 'Jan 40')"""
+"""UPDATE students SET group_id = 6 WHERE name = 'Bogdan' AND second_name = 'Stepchenko'"""
+
+# Создайте несколько учебных предметов (subjects)
+"""INSERT INTO subjeсts (title) VALUES ('Codex Adeptus Astartes')"""
+"""INSERT INTO subjeсts (title) VALUES ('Codex Astro Militarum')"""
+
+# Создайте по два занятия для каждого предмета (lessons)
+"""INSERT INTO lessons (title, subject_id) VALUES ('Chapter One', 9)"""
+"""INSERT INTO lessons (title, subject_id) VALUES ('Chapter One. Space', 10)"""
+
+# Поставьте своему студенту оценки (marks) для всех созданных вами занятий
+"""INSERT INTO marks (value, lesson_id, student_id) VALUES (10, 16, 13)"""
+"""INSERT INTO marks (value, lesson_id, student_id) VALUES (8, 17, 13)"""
+
+
+# Получите информацию из базы данных:
+# Все оценки студента
+
+"""
+SELECT s.name, s.second_name, l.title, m.value, sub.title
+from students s
+JOIN marks m ON s.id = m.id
+JOIN lessons l ON m.lesson_id = l.id
+JOIN subjects sub ON l.subject_id = s.id
+WHERE s.name = 'Bogdan' AND s.second_name = 'Stepchenko'
+"""
+
+# Все книги, которые находятся у студента
+"""
+SELECT s.name, s.second_name, b.title from students s JOIN books b ON s.id = b.taken_by_student_id
+WHERE s.name = 'Bogdan' AND s.second_name = 'Stepchenko'
+"""
+
+# Для вашего студента выведите всё, что о нем есть в базе: группа, книги, оценки с названиями занятий и предметов (всё одним запросом с использованием Join)
+
+"""SELECT s.name, s.second_name, g.title, g.start_date, g.end_date, b.title , su.title, l.title, m.value
+FROM students s
+JOIN books b ON b.taken_by_student_id = s.id
+JOIN `groups` g ON g.id = s.group_id
+JOIN marks m ON m.student_id  = s.id
+JOIN lessons l ON l.id = m.lesson_id
+JOIN `subjeсts` su ON su.id = l.subject_id
+WHERE s.name = 'Bogdan' AND s.second_name = 'Stepchenko'
+"""
