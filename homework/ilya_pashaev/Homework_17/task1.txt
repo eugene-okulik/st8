@@ -1,0 +1,51 @@
+INSERT INTO students (name, second_name) values ('Vasya','Vasechkin');
+INSERT INTO books (title, taken_by_student_id) values ('English level A', 11);
+INSERT INTO books (title, taken_by_student_id) values ('English level B', 11);
+INSERT INTO books (title, taken_by_student_id) values ('English level C', 11);
+INSERT INTO `groups` (title, start_date, end_date) values ('Bussines English','24-jan','24-aug');
+UPDATE students SET group_id = 4 WHERE id = 11;
+INSERT INTO subjeсts (title) values ('Speaking');
+INSERT INTO subjeсts (title) values ('Watching');
+INSERT INTO subjeсts (title) values ('Listening');
+INSERT INTO lessons (title, subject_id) values ('Speaking. Lesson 1', 1);
+INSERT INTO lessons (title, subject_id) values ('Speaking. Lesson 2', 1);
+INSERT INTO lessons (title, subject_id) values ('Watching. Lesson 1', 2);
+INSERT INTO lessons (title, subject_id) values ('Watching. Lesson 2', 2);
+INSERT INTO lessons (title, subject_id) values ('Listening. Lesson 1', 3);
+INSERT INTO lessons (title, subject_id) values ('Listening. Lesson 2', 3);
+INSERT INTO marks (value, lesson_id, student_id) values (5, 1, 11);
+INSERT INTO marks (value, lesson_id, student_id) values (5, 2, 11);
+INSERT INTO marks (value, lesson_id, student_id) values (5, 3, 11);
+INSERT INTO marks (value, lesson_id, student_id) values (5, 4, 11);
+INSERT INTO marks (value, lesson_id, student_id) values (5, 5, 11);
+INSERT INTO marks (value, lesson_id, student_id) values (5, 6, 11);
+
+-- запрос 1
+SELECT s.name as 'Name', l.title as 'Lesson', m.value as 'Mark' FROM marks m
+LEFT JOIN lessons l on m.lesson_id = l.id
+LEFT JOIN students s on m.student_id = s.id 
+WHERE student_id = 11;
+
+-- запрос 2
+SELECT title from books b WHERE taken_by_student_id = 11;
+
+-- запрос 3
+SELECT s.name as 'Name',
+s.second_name as "Family",
+g.title as 'Group',
+b.title as 'Name of book',
+m.value as 'Mark',
+l.title as 'Lesson',
+s2.title as 'Subject'  
+FROM students s
+LEFT JOIN `groups` g on s.group_id = g.id
+LEFT JOIN books b on s.id = b.taken_by_student_id
+LEFT JOIN marks m on s.id = m.student_id
+LEFT JOIN lessons l on l.id = m.lesson_id
+LEFT JOIN subjeсts s2 on s2.id = l.subject_id 
+WHERE s.id = 11;
+
+
+
+
+--вопрос, почему то на subjects не работает автозаполнение, хотя команда выполняется правильно
