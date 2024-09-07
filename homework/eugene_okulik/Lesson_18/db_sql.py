@@ -11,7 +11,6 @@ with connector.connect(
 ) as db:
     cursor = db.cursor(dictionary=True)
 
-
     def select():
         cursor.execute('SELECT * FROM students')
         data = cursor.fetchall()
@@ -19,20 +18,17 @@ with connector.connect(
         for line in data:
             print(line['second_name'])
 
-
     def get_one():
         cursor.execute('SELECT * FROM students WHERE id = 1')
         data = cursor.fetchone()
         print(data)
         print(data['second_name'])
 
-
     def db_insert():
         cursor.execute("INSERT INTO students (name, second_name, group_id) VALUES ('From', 'Python', 1)")
         student_id = cursor.lastrowid
         db.commit()
         print(student_id)
-
 
     def incorrect_format():
         name = "From'; -- "
@@ -44,7 +40,6 @@ with connector.connect(
         else:
             print('no data')
         # print(data)
-
 
     def correct_formatting():
         # name = "From'; -- "
@@ -59,14 +54,12 @@ with connector.connect(
         else:
             print('no data')
 
-
     def one_param_formatting():
         second_name = 'Python'
         query = f"SELECT * FROM students WHERE second_name = %s"
         cursor.execute(query, (second_name,))
         data = cursor.fetchall()
         print(data)
-
 
     def multy_insert():
         # query = "insert into books (title) VALUES (%s)"
@@ -83,7 +76,6 @@ with connector.connect(
             books_ids.append(cursor.lastrowid)
         db.commit()
         print(books_ids)
-
 
 big_query = '''
 SELECT s.name, b.title as book_title, g.title as group_title FROM students st
