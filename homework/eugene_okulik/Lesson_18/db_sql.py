@@ -46,7 +46,7 @@ with connector.connect(
         name = "From"
         # second_name = '!!!!!Python!!!!!'
         second_name = 'Python'
-        query = f"SELECT * FROM students WHERE name = %s AND second_name = %s"
+        query = "SELECT * FROM students WHERE name = %s AND second_name = %s"
         cursor.execute(query, (name, second_name))
         data = cursor.fetchall()
         if data:
@@ -56,7 +56,7 @@ with connector.connect(
 
     def one_param_formatting():
         second_name = 'Python'
-        query = f"SELECT * FROM students WHERE second_name = %s"
+        query = "SELECT * FROM students WHERE second_name = %s"
         cursor.execute(query, (second_name,))
         data = cursor.fetchall()
         print(data)
