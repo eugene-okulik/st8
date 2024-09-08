@@ -9,7 +9,6 @@ with mysql.connect(
 ) as db:
     cursor = db.cursor(dictionary=True)
 
-
     def add_new_user(name: str, surname: str):
         query = f"INSERT INTO students (name, second_name) VALUES (%s, %s)"
         cursor.execute(query, (name, surname))
@@ -18,7 +17,6 @@ with mysql.connect(
         print(f'User with name: "{name}" and surname: "{surname}" was created. '
               f'\nHis/her id: {student_id}')
         return student_id
-
 
     def add_books_and_assign_to_user(titles: list, user_id: int):
         query = f"INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
@@ -32,7 +30,6 @@ with mysql.connect(
         db.commit()
         return book_ids
 
-
     def create_group(title: str, start_date: str, end_date: str):
         query = f"INSERT INTO `groups` (title, start_date, end_date) VALUES (%s, %s, %s)"
         cursor.execute(query, (title, start_date, end_date))
@@ -41,13 +38,11 @@ with mysql.connect(
         print(f'Group with name {title} was created. \nIts ID is: {group_id}')
         return group_id
 
-
     def assign_user_to_group(user_id: int, group_id: int):
         query = f"UPDATE students SET group_id = %s WHERE id = %s"
         cursor.execute(query, (group_id, user_id))
         db.commit()
         print(f'User with id: {user_id} was assigned to group with id: {group_id}')
-
 
     def create_subject(title: str):
         query = f"INSERT INTO subjects (title) VALUES (%s)"
@@ -57,7 +52,6 @@ with mysql.connect(
         db.commit()
         return subject_id
 
-
     def create_lesson(title: str, subject_id: int):
         query = f"INSERT INTO lessons (title, subject_id) VALUES (%s, %s)"
         cursor.execute(query, (title, subject_id))
@@ -66,13 +60,11 @@ with mysql.connect(
         print(f'Lesson with title: {title} was created and assigned to subject with id: {subject_id}')
         return lesson_id
 
-
     def set_mark_to_student(mark: int, lesson_id: int, student_id: int):
         query = f"INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
         cursor.execute(query, (mark, lesson_id, student_id))
         db.commit()
         print(f'Mark: {mark} for lesson with id: {lesson_id}, was set to student with id: {student_id}')
-
 
     def get_all_student_marks(user_id: int):
         query = """
@@ -99,7 +91,6 @@ with mysql.connect(
         result = cursor.fetchall()
         for row in result:
             print(row)
-
 
     def get_whole_info_about_student(student_id: int):
         query = """
