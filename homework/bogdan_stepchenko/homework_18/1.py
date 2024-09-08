@@ -94,7 +94,7 @@ with mysql.connect(
 
     def get_whole_info_about_student(student_id: int):
         query = """
-        SELECT s.name, s.second_name, g.title AS group_title, g.start_date, g.end_date, b.title AS book_title, 
+        SELECT s.name, s.second_name, g.title AS group_title, g.start_date, g.end_date, b.title AS book_title,
                su.title AS subject_title, l.title AS lesson_title, m.value AS mark_value
         FROM students s
         LEFT JOIN books b ON b.taken_by_student_id = s.id
