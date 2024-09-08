@@ -10,16 +10,16 @@ with mysql.connect(
     cursor = db.cursor(dictionary=True)
 
     def add_new_user(name: str, surname: str):
-        query = f"INSERT INTO students (name, second_name) VALUES (%s, %s)"
+        query = "INSERT INTO students (name, second_name) VALUES (%s, %s)"
         cursor.execute(query, (name, surname))
         student_id = cursor.lastrowid
         db.commit()
-        print(f'User with name: "{name}" and surname: "{surname}" was created. '
+        print(f'User with name: "{name}" and surname: "{surname}" was created.'
               f'\nHis/her id: {student_id}')
         return student_id
 
     def add_books_and_assign_to_user(titles: list, user_id: int):
-        query = f"INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
+        query = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
         book_ids = []
         for title in titles:
             cursor.execute(query, (title, user_id))
@@ -31,7 +31,7 @@ with mysql.connect(
         return book_ids
 
     def create_group(title: str, start_date: str, end_date: str):
-        query = f"INSERT INTO `groups` (title, start_date, end_date) VALUES (%s, %s, %s)"
+        query = "INSERT INTO `groups` (title, start_date, end_date) VALUES (%s, %s, %s)"
         cursor.execute(query, (title, start_date, end_date))
         group_id = cursor.lastrowid
         db.commit()
@@ -39,13 +39,13 @@ with mysql.connect(
         return group_id
 
     def assign_user_to_group(user_id: int, group_id: int):
-        query = f"UPDATE students SET group_id = %s WHERE id = %s"
+        query = "UPDATE students SET group_id = %s WHERE id = %s"
         cursor.execute(query, (group_id, user_id))
         db.commit()
         print(f'User with id: {user_id} was assigned to group with id: {group_id}')
 
     def create_subject(title: str):
-        query = f"INSERT INTO subjects (title) VALUES (%s)"
+        query = "INSERT INTO subjects (title) VALUES (%s)"
         cursor.execute(query, (title,))
         subject_id = cursor.lastrowid
         print(f'Subject with title: {title} and id: {subject_id} was created')
@@ -53,7 +53,7 @@ with mysql.connect(
         return subject_id
 
     def create_lesson(title: str, subject_id: int):
-        query = f"INSERT INTO lessons (title, subject_id) VALUES (%s, %s)"
+        query = "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)"
         cursor.execute(query, (title, subject_id))
         lesson_id = cursor.lastrowid
         db.commit()
@@ -61,29 +61,29 @@ with mysql.connect(
         return lesson_id
 
     def set_mark_to_student(mark: int, lesson_id: int, student_id: int):
-        query = f"INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
+        query = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
         cursor.execute(query, (mark, lesson_id, student_id))
         db.commit()
         print(f'Mark: {mark} for lesson with id: {lesson_id}, was set to student with id: {student_id}')
 
     def get_all_student_marks(user_id: int):
         query = """
-        SELECT s.name, s.second_name, l.title AS lesson_title, m.value 
-        AS mark_value, sub.title AS subject_title
+        SELECT s.name, s.second_name, l.title AS lesson_title, m.value AS mark_value, sub.title AS subject_title
         FROM students s
         JOIN marks m ON s.id = m.student_id
         JOIN lessons l ON m.lesson_id = l.id
         JOIN subjects sub ON l.subject_id = sub.id
         WHERE s.id = %s
         """
-        cursor.execute(query, (user_id, ))
+        cursor.execute(query, (user_id,))
         result = cursor.fetchall()
         for row in result:
             print(row)
 
     def get_all_book_for_student(student_id: int):
         query = """
-        SELECT s.name, s.second_name, b.title from students s 
+        SELECT s.name, s.second_name, b.title
+        FROM students s
         JOIN books b ON s.id = b.taken_by_student_id
         WHERE s.id = %s
         """
@@ -94,11 +94,8 @@ with mysql.connect(
 
     def get_whole_info_about_student(student_id: int):
         query = """
-        SELECT 
-            s.name, s.second_name, g.title AS group_title, 
-            g.start_date, g.end_date, b.title AS book_title, 
-            su.title AS subject_title, l.title AS lesson_title, 
-            m.value AS mark_value
+        SELECT s.name, s.second_name, g.title AS group_title, g.start_date, g.end_date, b.title AS book_title, 
+               su.title AS subject_title, l.title AS lesson_title, m.value AS mark_value
         FROM students s
         LEFT JOIN books b ON b.taken_by_student_id = s.id
         LEFT JOIN `groups` g ON g.id = s.group_id
@@ -116,9 +113,9 @@ with mysql.connect(
     new_user_id = add_new_user('Catrine', 'McCalister')
 
     # books creation:
-    new_book_id = add_books_and_assign_to_user(['How to learn Spanish', 'Spanish. Grammar'], new_user_id)
+    new_book_ids = add_books_and_assign_to_user(['How to learn Spanish', 'Spanish. Grammar'], new_user_id)
 
-    # group creation an assignment to student:
+    # group creation and assignment to student:
     new_group_id = create_group('Spanish A1', 'September 26', 'November 27')
     assign_user_to_group(new_user_id, new_group_id)
 
