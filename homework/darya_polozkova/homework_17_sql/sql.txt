@@ -1,0 +1,26 @@
+INSERT INTO `groups` (title, start_date, end_date) VALUES ('ST8', 'Oct 21 2023', 'Oct 22 2024')
+INSERT INTO students (name, second_name, group_id) VALUES ('Brad', 'Pitt', '3')
+SELECT * FROM students WHERE name = 'Brad'
+INSERT INTO books (title, taken_by_student_id) VALUES ('Увлекательные выходные с дз', '21')
+INSERT INTO books (title, taken_by_student_id) VALUES ('Покой нам снится', '21')
+INSERT INTO subjects (title) VALUES ('Physics')
+INSERT INTO lessons (title, subject_id) VALUES ('Art_1','11')
+INSERT INTO lessons (title, subject_id) VALUES ('Art_2','11')
+INSERT INTO lessons (title, subject_id) VALUES ('Physics_1','12')
+INSERT INTO lessons (title, subject_id) VALUES ('Physics_2','12')
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('10', '19', '21')
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('9', '20', '21')
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('8', '18', '21')
+INSERT INTO marks (value, lesson_id, student_id) VALUES ('8', '21', '21')
+SELECT value FROM marks WHERE student_id = '21'
+SELECT title FROM books WHERE taken_by_student_id = '21'
+SELECT * FROM students WHERE id = '21' join
+SELECT * FROM students JOIN groups ON students.group_id = groups.id JOIN books ON students.id = books.taken_by_student_id  WHERE student_id = '21'
+SELECT s.name, s.second_name, b.title book_name, gr.title group_name, gr.start_date, gr.end_date, l.title lessons, su.title academic_subjects, m.value estimation
+FROM marks m
+JOIN students s ON m.student_id = s.id
+JOIN lessons l ON m.id = l.id
+JOIN subjects su ON l.subject_id = su.id
+JOIN `groups` gr ON s.group_id = gr.id
+JOIN books b ON s.id = b.taken_by_student_id
+WHERE m.student_id = 21
