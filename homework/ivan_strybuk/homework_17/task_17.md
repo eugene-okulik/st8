@@ -6,11 +6,6 @@
 ```
 INSERT INTO students (name, second_name, group_id) VALUES ('Ivan', 'Strybuk', NULL)
 ```
-- зачисление в группу
-
-```
-UPDATE students SET group_id = 3 WHERE id = 10
-```
 
 ### 2. Создайте несколько книг (books) и укажите, что ваш созданный студент взял их
 
@@ -24,17 +19,23 @@ INSERT INTO books (title, taken_by_student_id) VALUES ('Naruto', 10)
 INSERT INTO `groups` (title , start_date , end_date) VALUES ('TT 34', 'March 24', 'August' )
 ```
 
-- установка оканчяния
+- установка окончания
 
 ```
 UPDATE `groups` SET end_date ='August 24' WHERE id = 3
 ```
 
+- зачисление в группу
+
+```
+UPDATE students SET group_id = 3 WHERE id = 10
+```
+
 ### 4. Создайте несколько учебных предметов (subjects)
 
 ```
-INSERT INTO subjeсts (title) VALUES ('Music')
-INSERT INTO subjeсts (title) VALUES ('Python')
+INSERT INTO subjects (title) VALUES ('Music')
+INSERT INTO subjects (title) VALUES ('Python')
 ```
 
 ### 5. Создайте по два занятия для каждого предмета (lessons)
@@ -60,7 +61,7 @@ SELECT st.name, st.second_name, l.title lessons, su.title academic_subjects, m.v
 FROM marks m 
 JOIN students st ON m.student_id = st.id
 JOIN lessons l ON m.id = l.id 
-JOIN subjeсts su ON l.subject_id = su.id
+JOIN subjects su ON l.subject_id = su.id
 WHERE m.student_id = 10
 ```
 
@@ -79,7 +80,7 @@ SELECT st.name, st.second_name, b.title book_name, gr.title group_name, gr.start
 FROM marks m 
 JOIN students st ON m.student_id = st.id
 JOIN lessons l ON m.id = l.id 
-JOIN subjeсts su ON l.subject_id = su.id
+JOIN subjects su ON l.subject_id = su.id
 JOIN `groups` gr ON st.group_id = gr.id 
 JOIN books b ON st.id = b.taken_by_student_id 
 WHERE m.student_id = 10
