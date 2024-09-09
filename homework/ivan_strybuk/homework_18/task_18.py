@@ -135,10 +135,10 @@ SELECT
     l.title lessons,
     su.title academic_subjects,
     m.value estimation
-FROM 
+FROM
     marks m
     JOIN students st ON m.student_id = st.id
-    JOIN lessons l ON m.id = l.id 
+    JOIN lessons l ON m.id = l.id
     JOIN subjects su ON l.subject_id = su.id
 WHERE
     m.student_id = {id_new_student}
