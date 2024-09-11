@@ -77,13 +77,12 @@ with sql.connect(
         query = "SELECT title FROM books WHERE taken_by_student_id = %s;"
         cursor.execute(query, (st_id,))
         books = cursor.fetchall()
-        print(f'Student has taken ', books)
+        print(f'Student has taken', books)
 
     def get_whole_info_about_student(st_id):
         query = ("""SELECT s.id, s.name, s.second_name, b.title book_name, gr.title group_name,
                  gr.start_date, gr.end_date,
-                 l.title lessons, su.title academic_subjects, m.value estimation 
-                 FROM marks m
+                 l.title lessons, su.title academic_subjects, m.value estimation FROM marks m
                  JOIN students s ON m.student_id = s.id
                  JOIN lessons l ON m.id = l.id
                  JOIN subjects su ON l.subject_id = su.id
