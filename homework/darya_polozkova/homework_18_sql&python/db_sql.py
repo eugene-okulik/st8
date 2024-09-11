@@ -79,9 +79,9 @@ with sql.connect(
         books = cursor.fetchall()
         print(f'Student has taken ', books)
 
-
     def get_whole_info_about_student(st_id):
-        query = ("""SELECT s.id, s.name, s.second_name, b.title book_name, gr.title group_name, gr.start_date, gr.end_date,
+        query = ("""SELECT s.id, s.name, s.second_name, b.title book_name, gr.title group_name,
+                 gr.start_date, gr.end_date,
                  l.title lessons, su.title academic_subjects, m.value estimation 
                  FROM marks m
                  JOIN students s ON m.student_id = s.id
@@ -93,7 +93,6 @@ with sql.connect(
         cursor.execute(query, (st_id,))
         result = cursor.fetchall()
         print(f'Your students info: {result}')
-
 
     st_id = create_student('Monica', 'Beluchi')
     book_id = assign_books(['Beauty', 'Fashion', 'Love'], st_id)
