@@ -5,3 +5,5 @@ venv
 .venv
 __pycache__
 .vscode
+secrets.py
+.env
