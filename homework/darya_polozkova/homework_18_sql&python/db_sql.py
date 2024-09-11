@@ -21,13 +21,14 @@ with sql.connect(
         query = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
         books_ids = []
         for title in titles:
-            cursor.execute(query,(title, taken_by_student_id))
+            cursor.execute(query, (title, taken_by_student_id))
             books_ids.append(cursor.lastrowid)
         db.commit()
         return books_ids
 
     def create_a_group(title, start_date, end_date):
-        cursor.execute("INSERT INTO `groups` (title, start_date, end_date) VALUES (%s, %s, %s)", (title, start_date, end_date))
+        cursor.execute("INSERT INTO `groups` (title, start_date, end_date)"
+                       " VALUES (%s, %s, %s)", (title, start_date, end_date))
         gr_id = cursor.lastrowid
         db.commit()
         print(f'Your group is {title}')
@@ -66,13 +67,11 @@ with sql.connect(
         cursor.execute(query, (mark, lesson_id, st_id))
         db.commit()
 
-
     def get_all_student_marks(st_id):
         query = "SELECT value FROM marks WHERE student_id = %s"
         cursor.execute(query, (st_id,))
         result = cursor.fetchall()
         print(result)
-
 
     def get_all_book_for_student(st_id):
         query = "SELECT title FROM books WHERE taken_by_student_id = %s;"
@@ -97,8 +96,8 @@ with sql.connect(
 
 
     st_id = create_student('Monica', 'Beluchi')
-    book_id = assign_books(['Beauty','Fashion','Love'], st_id)
-    gr_id = create_a_group('star','2 Sep 2010', '2 May 2030')
+    book_id = assign_books(['Beauty', 'Fashion', 'Love'], st_id)
+    gr_id = create_a_group('star', '2 Sep 2010', '2 May 2030')
     assign_group_to_a_student(st_id, gr_id)
     subjects_id = create_subject()
     lessons_id = create_lessons(subjects_id)
