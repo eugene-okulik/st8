@@ -77,7 +77,7 @@ with sql.connect(
         query = "SELECT title FROM books WHERE taken_by_student_id = %s;"
         cursor.execute(query, (st_id,))
         books = cursor.fetchall()
-        print(f'Student has taken', books)
+        print(books)
 
     def get_whole_info_about_student(st_id):
         query = ("""SELECT s.id, s.name, s.second_name, b.title book_name, gr.title group_name,
