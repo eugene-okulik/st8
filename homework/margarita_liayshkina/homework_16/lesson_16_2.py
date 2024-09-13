@@ -10,7 +10,7 @@ def input_date():
 
         print(f"Your age in days: {age}")
 
-    except ValueError :
+    except ValueError:
         print("Error! Please enter your date birthday in the format: dd.mm.yyyy")
 
 
