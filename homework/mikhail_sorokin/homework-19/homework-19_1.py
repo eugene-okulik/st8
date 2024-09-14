@@ -81,7 +81,7 @@ def get_group_titles():
     placeholders = ','.join(['%s'] * len(group_ids_tuple))
 
     query_groups = f"""
-    SELECT title FROM `groups` 
+    SELECT title FROM `groups`
     WHERE id IN ({placeholders})
     """
     group_titles_result = sql_queries.select_query(query_groups, group_ids_tuple)
