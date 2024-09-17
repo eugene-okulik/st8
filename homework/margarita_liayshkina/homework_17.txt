@@ -1,0 +1,122 @@
+1. Создание группы:
+
+INSERT INTO `groups` (title, start_date, end_date) VALUES ('Technical Faculty', 'okt24', 'mar29')
+
+Узнаем id  группы:
+
+SELECT id FROM `groups` WHERE title = 'Technical Faculty'
+
+
+
+2. Добавление студента  и определение его в  созданную группу:
+
+INSERT INTO  students (name, second_name, group_id) VALUES ('Margi', 'Liaushkina', '122')
+
+
+*id студента
+SELECT id FROM students s  WHERE  name = 'Margi'
+
+
+
+
+
+3. Добавление книг и "присвоение"  студента, который их взял:
+
+INSERT INTO  books (title, taken_by_student_id)
+VALUES
+('Literatura', 160),
+('Matematic', 160
+
+
+
+4.Создание нескольких учебных предметов:
+
+INSERT INTO subjects (title) VALUES ('Engineering')('C++')
+
+
+ Узнаем их id:
+
+SELECT id, title FROM subjects WHERE title IN ('Engineering', 'С++')
+
+
+
+
+
+5.Создание занятий для каждого предмета:
+
+INSERT  INTO  lessons  (title, subject_id) VALUES ('Robotics', 202)('Programming', 204)
+
+
+
+6.Проставление оценки для студента по каждому занятию:
+
+Поиск id  студента:
+
+SELECT id FROM students s  WHERE  name = 'Margi'
+Результат: 160
+
+
+Поиск id lesson:
+
+SELECT id FROM lessons  WHERE title = 'Programming' AND subject_id = 204
+UNION
+SELECT id FROM lessons  WHERE title = 'Robotics' AND subject_id = 202
+
+
+Результат: 353
+Результат: 354
+
+Проставление оценки студенту для созданных занятий:
+
+
+INSERT  INTO  marks  (value, lesson_id, student_id) VALUES ('3', 354, 160), ('4', 353, 160)
+
+
+
+Получение информации из БД:
+
+
+1.Все оценки студента:
+
+SELECT * FROM marks m  WHERE student_id  = 160
+
+
+2.Все книги, которые находятся у студента:
+
+SELECT * FROM books b  WHERE taken_by_student_id =160
+
+
+3.Для вашего студента выведите всё, что о нем есть в базе: группа, книги, оценки с названиями занятий и предметов (всё одним запросом с использованием Join):
+
+
+
+SELECT
+    s.id AS student_id,
+    s.name AS student_name,
+    s.second_name AS student_second_name,
+    g.title AS group_title,
+    b.title AS book_title,
+    m.value AS mark_value,
+    l.title AS lesson_title,
+    sub.title AS subject_title
+FROM students s
+JOIN `groups` g ON s.group_id = g.id
+LEFT JOIN books b ON b.taken_by_student_id = s.id
+LEFT JOIN marks m ON s.id = m.student_id
+LEFT JOIN lessons l ON m.lesson_id = l.id
+LEFT JOIN subjects sub ON l.subject_id = sub.id
+WHERE s.id = 160
+
+
+
+
+
+
+
+
+
+
+
+
+
+
