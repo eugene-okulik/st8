@@ -20,6 +20,7 @@ def books_from_file(file):
         print(error)
     return titles
 
+
 def groups_for_students(connection, titles):
     groups = []
     for book in titles:
@@ -36,4 +37,4 @@ def groups_for_students(connection, titles):
     print(groups)
 
 
-groups_for_students(connect_to_db(),books_from_file('books.csv'))
+groups_for_students(connect_to_db(), books_from_file('books.csv'))
