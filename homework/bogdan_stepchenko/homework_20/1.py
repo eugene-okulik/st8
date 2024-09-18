@@ -4,8 +4,6 @@ import argparse
 
 
 class FileAnalyzer:
-    def __init__(self):
-        self.repository_root = Path(os.path.dirname(__file__)).parent.parent.parent
 
     @staticmethod
     def list_of_files(target_folder):
@@ -53,7 +51,7 @@ class FileAnalyzer:
             print(' ' * 50)
 
     def analyze_files(self, dir_path, search_text):
-        target_folder = os.path.join(self.repository_root, dir_path)
+        target_folder = dir_path
         if not os.path.exists(target_folder):
             raise ValueError(f"Directory {target_folder} does not exist.")
         else:
