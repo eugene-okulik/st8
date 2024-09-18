@@ -24,7 +24,7 @@ class APIClient:
             print("Failed to create object: ", response.status_code, response.text)
             return None
 
-    def get_exact_object(self, object_id):
+    def get_exact_object(self, object_id: str):
         response = requests.get(f'{self.url}/{object_id}')
         if response.status_code == 200:
             data = response.json()
@@ -33,7 +33,7 @@ class APIClient:
             print(f'Failed to get info about object with id: {object_id}. '
                   f'{response.status_code}, {response.text}')
 
-    def update_object_with_patch(self, object_id, name):
+    def update_object_with_patch(self, object_id: str, name: str):
         payload = {"name": name}
         response = requests.patch(f'{self.url}/{object_id}',
                                   json=payload, headers=self.headers)
@@ -44,7 +44,7 @@ class APIClient:
             print(f'Failed to update object with id: {object_id}. '
                   f'{response.status_code}, {response.text}')
 
-    def update_object_with_put(self, object_id, name, year, price, cpu_model):
+    def update_object_with_put(self, object_id: str, name: str, year: int, price: int, cpu_model: str):
         payload = {
             "name": name,
             "data": {"year": year, "price": price, "CPU model": cpu_model}
@@ -58,7 +58,7 @@ class APIClient:
             print(f'Failed to update object with id: {object_id}. '
                   f'{response.status_code}, {response.text}')
 
-    def delete_object(self, object_id):
+    def delete_object(self, object_id: str):
         response = requests.delete(f'{self.url}/{object_id}')
         if response.status_code == 200:
             data = response.json()
