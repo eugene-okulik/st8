@@ -1,16 +1,17 @@
 from mysql import connector
-#import mysql.connector as mysql
+# import mysql.connector as mysql
 
 
 with connector.connect(
-    username = "st8",
-    password = "AVNS_7uWi-BfjZbsBVcxYXz5",
-    host = "db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com",
-    port = 25060,
-    database = "st8"
+    username ="st8",
+    password ="AVNS_7uWi-BfjZbsBVcxYXz5",
+    host ="db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com",
+    port =25060,
+    database ="st8"
 ) as db:
     cursor = db.cursor(dictionary=True)
     # создание студента
+
     def insert_student(name, second_name):
         query = "INSERT INTO students (name, second_name) VALUES (%s, %s)"
         cursor.execute(query, (name, second_name))
@@ -20,7 +21,7 @@ with connector.connect(
         return student_id
 
     # создание нескольких книг:
-    def insert_books(books,student_id):
+    def insert_books(books, student_id):
         query = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
         books_ids = []
         for book in books:
@@ -38,7 +39,7 @@ with connector.connect(
         group_id = cursor.lastrowid
         db.commit()
         print(f"Created group with ID: {group_id}")
-        return  group_id
+        return group_id
 
     # добавление студента в группу:
     def assign_student_to_group(student_id, group_id):
@@ -72,7 +73,7 @@ with connector.connect(
         return lessons_ids
 
     # создание оценок:
-    def insert_marks(value, lesson_id,  student_id):
+    def insert_marks(value, lesson_id, student_id):
         query = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
         cursor.execute(query, (value, lesson_id, student_id))
         db.commit()
@@ -85,13 +86,11 @@ with connector.connect(
         data = cursor.fetchall()
         print(data)
 
-
     def get_all_books(student_id):
         query = "SELECT  title  FROM books b  WHERE taken_by_student_id =  %s"
-        cursor.execute(query,(student_id,))
+        cursor.execute(query, (student_id,))
         data_book = cursor.fetchall()
         print(data_book)
-
 
     def all_info_about_current_student(student_id):
         big_query = ('''
@@ -112,7 +111,7 @@ with connector.connect(
         WHERE s.id = %s
         ''')
         cursor.execute(big_query, (student_id,))
-        full_data= cursor.fetchall()
+        full_data = cursor.fetchall()
         print(f'All info about student with ID{student_id}: {full_data}')
 
     #######################################################
@@ -142,4 +141,3 @@ with connector.connect(
     get_all_marks(student_id)
     get_all_books(student_id)
     all_info_about_current_student(student_id)
-
