@@ -3,11 +3,11 @@ from mysql import connector
 
 
 with connector.connect(
-    username ="st8",
-    password ="AVNS_7uWi-BfjZbsBVcxYXz5",
-    host ="db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com",
-    port =25060,
-    database ="st8"
+    username="st8",
+    password="AVNS_7uWi-BfjZbsBVcxYXz5",
+    host="db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com",
+    port=25060,
+    database="st8"
 ) as db:
     cursor = db.cursor(dictionary=True)
     # создание студента
