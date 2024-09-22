@@ -24,7 +24,7 @@ def search(logs):
             data = opened_file.readlines()
             for data in enumerate(data):
                 if TEXT_FOR_SEARCH in data[1]:
-                    print(f"Text: {TEXT_FOR_SEARCH} is found in {data[0]+1} file")
+                    print(f"""Text: {TEXT_FOR_SEARCH} is found in {data[0]+1} file""")
                     found = True
     if not found:
         print(f'Nothing is found')
