@@ -26,37 +26,38 @@ def start_end():
     print('Testing was completed!')
 
 
-# фикстура для создания клиента
+# фикстура для создания клиента и обьекта внутри клиента
 @pytest.fixture(scope='function')
-def api_client():
-    return APIClient('https://api.restful-api.dev/objects')
+def api_client_with_object():
+    api_client = APIClient('https://api.restful-api.dev/objects')
+    created_object = api_client.create_object(get_random_str(), get_random_int(), get_random_int(), get_random_str())
 
+    assert created_object is not None, "Failed to create the object"
 
-# фикстура для создания объекта внутри клиента
-@pytest.fixture(scope='function')
-def created_object(api_client):
-    new_object = api_client.create_object(get_random_str(), get_random_int(), get_random_int(), get_random_str())
-    yield new_object
-    api_client.delete_object(new_object["id"])
+    yield api_client, created_object
+    api_client.delete_object(created_object["id"])
 
 
 @pytest.mark.usefixtures("start_end")
 class TestAPIClient:
 
     @pytest.mark.smoke
-    def test_get_exact_object(self, api_client, created_object):
+    def test_get_exact_object(self, api_client_with_object):
+        api_client, created_object = api_client_with_object
         fetched_object = api_client.get_exact_object(created_object['id'])
         assert fetched_object['id'] == created_object['id']
         assert fetched_object['name'] == created_object['name']
         assert fetched_object['data'] == created_object['data']
 
     @pytest.mark.critical
-    def test_update_object_with_patch(self, api_client, created_object):
+    def test_update_object_with_patch(self, api_client_with_object):
+        api_client, created_object = api_client_with_object
         new_name = get_random_str()
         updated_object = api_client.update_object_with_patch(created_object['id'], new_name)
         assert updated_object['name'] == new_name
 
-    def test_update_object_with_put(self, api_client, created_object):
+    def test_update_object_with_put(self, api_client_with_object):
+        api_client, created_object = api_client_with_object
         new_name = get_random_str()
         new_year = get_random_int()
         new_price = get_random_int()
