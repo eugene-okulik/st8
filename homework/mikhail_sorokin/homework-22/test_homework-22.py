@@ -2,7 +2,10 @@ import pytest
 import requests
 
 API_URL = "https://restful-api.dev/objects"
+
+
 # - аналогично, апишка 405 отвечает но все верно
+
 
 # Фикстура для создания объекта перед каждым тестом и удаления после теста
 @pytest.fixture
