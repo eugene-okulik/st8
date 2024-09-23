@@ -43,7 +43,7 @@ def search(logs):
                     else:
                         print(line[start:end], '\n')
     if not found:
-        print(f'Nothing is found')
+        print('Nothing is found')
 
 
 search(FILES_IN_DIR)
