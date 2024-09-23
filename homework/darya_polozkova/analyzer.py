@@ -21,13 +21,13 @@ FILES_IN_DIR = os.listdir(LOGS)
 
 def search(logs):
     found = False
-    for file in logs:
-        full_path = os.path.join(LOGS, file)
+    for FILE in logs:
+        full_path = os.path.join(LOGS, FILE)
         with open(full_path, "r", encoding='utf-8') as opened_file:
             data = opened_file.readlines()
-            for index, line in enumerate(data, 1):
+            for INDEX, line in enumerate(data, 1):
                 if TEXT_FOR_SEARCH in line:
-                    print(f"Found {TEXT_FOR_SEARCH} in log '{file}' on '{index}' line.")
+                    print(f"Found {TEXT_FOR_SEARCH} in log {FILE} on '{INDEX}' line.")
 
                     first_letter_index = line.index(TEXT_FOR_SEARCH)
                     last_letter_index = first_letter_index + len(TEXT_FOR_SEARCH)
