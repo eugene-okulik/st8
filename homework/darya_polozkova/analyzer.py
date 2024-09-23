@@ -2,6 +2,7 @@ import os.path
 import argparse
 import sys
 
+
 separator = '\\' if sys.platform == 'windows' else '/'
 parser = argparse.ArgumentParser()
 # positional argument
@@ -24,12 +25,24 @@ def search(logs):
         full_path = os.path.join(LOGS, file)
         with open(full_path, "r", encoding='utf-8') as opened_file:
             data = opened_file.readlines()
-            for data in enumerate(data):
-                if TEXT_FOR_SEARCH in data[1]:
-                    print(f'Text: "{TEXT_FOR_SEARCH}" is found in "{data[0] + 1}" line in "{file}"')
-                    found = True
+            for index, line in enumerate(data, 1):
+                if TEXT_FOR_SEARCH in line:
+                    print(f'Found {TEXT_FOR_SEARCH} in file {file} on line {index}.')
+
+                    first_letter_index = line.index(TEXT_FOR_SEARCH)
+                    last_letter_index = first_letter_index + len(TEXT_FOR_SEARCH)
+
+                    start = first_letter_index - 50
+                    end = last_letter_index + 51
+
+                    if start < 0:
+                        print(line[:end], '\n')
+                    elif end > len(line):
+                        print(line[start:], '\n')
+                    else:
+                        print(line[start:end], '\n')
+
     if not found:
         print(f'Nothing is found')
-
 
 search(FILES_IN_DIR)
