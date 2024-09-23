@@ -27,7 +27,7 @@ def search(logs):
             data = opened_file.readlines()
             for index, line in enumerate(data, 1):
                 if TEXT_FOR_SEARCH in line:
-                    print(f'Found {TEXT_FOR_SEARCH} in file {file} on line {index}.')
+                    print(f"Found {TEXT_FOR_SEARCH} in log '{file}' on '{index}' line.")
 
                     first_letter_index = line.index(TEXT_FOR_SEARCH)
                     last_letter_index = first_letter_index + len(TEXT_FOR_SEARCH)
@@ -44,5 +44,6 @@ def search(logs):
 
     if not found:
         print(f'Nothing is found')
+
 
 search(FILES_IN_DIR)
