@@ -41,6 +41,31 @@ def api_client_with_object():
 @pytest.mark.usefixtures("start_end")
 class TestAPIClient:
 
+    def test_creation_object(self):
+        api_client = APIClient('https://api.restful-api.dev/objects')
+        name = get_random_str()
+        year = get_random_int()
+        price = get_random_int()
+        cpu_model = get_random_str()
+        created_object = api_client.create_object(name, year, price, cpu_model)
+
+        assert created_object is not None, "Failed to create the object"
+        assert created_object['name'] == name
+        assert created_object['data']['year'] == year
+        assert created_object['data']['price'] == price
+        assert created_object['data']['CPU model'] == cpu_model
+
+    def test_deletion_object(self):
+        api_client = APIClient('https://api.restful-api.dev/objects')
+        created_object = api_client.create_object(get_random_str(), get_random_int(),
+                                                  get_random_int(), get_random_str())
+        created_object_id = created_object['id']
+        deleted_response = api_client.delete_object(created_object_id)
+        assert deleted_response is True, 'Object was deleted successfully'
+
+        fetch_deleted_object = api_client.get_exact_object(created_object_id)
+        assert fetch_deleted_object is None or fetch_deleted_object == {}
+
     @pytest.mark.smoke
     def test_get_exact_object(self, api_client_with_object):
         api_client, created_object = api_client_with_object
@@ -68,3 +93,4 @@ class TestAPIClient:
         assert updated_object['data']['year'] == new_year
         assert updated_object['data']['price'] == new_price
         assert updated_object['data']['CPU model'] == new_cpu
+
