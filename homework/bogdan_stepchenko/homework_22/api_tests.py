@@ -93,4 +93,3 @@ class TestAPIClient:
         assert updated_object['data']['year'] == new_year
         assert updated_object['data']['price'] == new_price
         assert updated_object['data']['CPU model'] == new_cpu
-
