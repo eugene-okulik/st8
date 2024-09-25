@@ -55,6 +55,7 @@ def test_hw():
     NewObj(**response)
     NewObjWithData(**response)
 
+
 @pytest.mark.real
 @pytest.mark.parametrize(
     'data,result', [
