@@ -20,11 +20,13 @@ def create_object():
     else:
         print(response.status_code)
 
+
 # Получение объекта по его id
 def get_object_by_id():
     response = requests.get(f'http://167.172.172.115:52353/object/{object_id}')
     data = response.json()
     print(data['name'])
+
 
 # Изменение объекта с помощью метода PUT
 def update_with_put():
@@ -45,6 +47,7 @@ def update_with_put():
     )
     print(response.json())
 
+
 # Изменение объекта с помощью метода PATCH
 def update_with_patch():
     payload = {
@@ -57,6 +60,7 @@ def update_with_patch():
         headers=headers
     )
     print(response.json())
+
 
 # Удаление объекта
 def delete_object():
