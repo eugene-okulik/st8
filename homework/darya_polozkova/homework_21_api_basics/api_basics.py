@@ -31,7 +31,7 @@ def get_object_by_id():
 # Изменение объекта с помощью метода PUT
 def update_with_put():
     payload = {
-            "name": "Put Apple MacBook Pro 16",
+        "name": "Put Apple MacBook Pro 16",
         "data": {
             "year": 2024,
             "price": 2000,
