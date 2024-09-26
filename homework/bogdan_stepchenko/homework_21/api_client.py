@@ -18,8 +18,12 @@ class APIClient:
         }
         response = requests.post(self.url, json=payload, headers=self.headers)
         if response.status_code == 200:
-            print(f'Object was successfully created With id == {response.json()["id"]}')
-            return response.json()
+            try:
+                print(f'Object was successfully created With id == {response.json()["id"]}')
+                return response.json()
+            except requests.exceptions.JSONDecodeError:
+                print("Failed to parse JSON response: ", response.text)
+                return None
         else:
             print("Failed to create object: ", response.status_code, response.text)
             return None
@@ -62,22 +66,21 @@ class APIClient:
         else:
             print(f'Failed to update object with id: {object_id}. '
                   f'{response.status_code}, {response.text}')
-            return None
+            return False
 
     def delete_object(self, object_id: str):
         response = requests.delete(f'{self.url}/{object_id}')
         if response.status_code == 200:
-            data = response.json()
-            print(f'Object with id: {object_id} was successfully deleted. Details: {data}')
-            return data
+            print(f'Object with id: {object_id} was successfully deleted.')
+            return True
         else:
             print(f'Failed to delete object with id: {object_id}. '
                   f'{response.status_code}, {response.text}')
-            return None
+            return False
 
 
 if __name__ == '__main__':
-    client = APIClient('https://api.restful-api.dev/objects')
+    client = APIClient('http://167.172.172.115:52353/object')
 
     new_object = client.create_object('iPhone16', 2024, 5000, 'iCore 16')
 
