@@ -14,7 +14,7 @@
 import pytest
 import requests
 from helpers import FakeData
-from pydentic_model import ObjectJson, ObjectDataJson
+from pydentic_model import ObjectJson
 
 
 class TestHomework23:
@@ -54,7 +54,7 @@ class TestHomework23:
             FakeData.RANDOM_INT()
         ], ids=['update price']
     )
-    def test_update_object_by_parametrize(self, name: str, year: int,  price: float or int, expected: int, start_end):
+    def test_update_object_by_parametrize(self, name: str, year: int, price: float or int, expected: int, start_end):
         payload = {
             "name": name,
             "data": {
@@ -79,4 +79,3 @@ class TestHomework23:
         delete_response = requests.delete(f"{self.API_URL}/{object_id}")
         assert delete_response.status_code == 200, f"Ошибка при удалении объекта: {delete_response.status_code}"
         print(f"Объект с id {object_id} успешно удален")
-

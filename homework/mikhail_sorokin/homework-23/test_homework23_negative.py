@@ -7,10 +7,9 @@ from helpers import NegativeCases
 class TestHomework23Negative:
     API_URL = "http://167.172.172.115:52353/object"
 
-
-    @pytest.mark.critical
     # очень удобен для негативных тестов когда статус коды могут быть разные в зависимости от того что передали
     # Но и для обычных сойдет.
+    @pytest.mark.critical
     @parametrization.Parametrization.parameters("year", "expected")
     @parametrization.Parametrization.case("TOO_HEAVY_INTEGER", NegativeCases.TOO_HEAVY_INTEGER, 500)
     @parametrization.Parametrization.case("NEGATIVE_NUMBER", NegativeCases.NEGATIVE_NUMBER, 400)
