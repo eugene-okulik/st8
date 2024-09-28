@@ -7,3 +7,5 @@ __pycache__
 .vscode
 secrets.py
 .env
+allure-results
+allure-report
