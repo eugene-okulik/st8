@@ -13,9 +13,7 @@ def test_get_object_by_id(set_up, start_end):
 
 @pytest.mark.critical
 @pytest.mark.parametrize(
-    'name', [
-        'Param-pam Pro 16', '$&*%!#%@', '    '
-    ]
+    'name', ['Param-pam Pro 16', '$&*%!#%@', '    ']
     , ids=['letters', 'symbols', 'spaces']
 )
 def test_update_object_with_put(set_up, start_end, name):
