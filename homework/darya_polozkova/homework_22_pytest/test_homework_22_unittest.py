@@ -89,6 +89,7 @@ def test_independent_create_an_object():
     print(f"{object_id} is created")
     return object_id
 
+
 def test_independent_delete_an_object():
     object_id = test_independent_create_an_object()
     requests.delete(f'http://167.172.172.115:52353/object/{object_id}')
