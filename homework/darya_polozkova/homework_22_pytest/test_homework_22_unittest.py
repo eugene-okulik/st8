@@ -14,7 +14,7 @@ def set_up():
         }
     }
     response = requests.post(
-        'http://167.172.172.115:52353/object',json=payload
+        'http://167.172.172.115:52353/object', json=payload
     )
     object_id = response.json()['id']
     print(f'Object for set-up is created with ID {object_id}')
@@ -28,6 +28,7 @@ def start_end():
     print('Start testing')
     yield None
     print('Testing completed')
+
 
 @pytest.mark.smoke
 def test_get_object_by_id(set_up, start_end):
@@ -55,6 +56,7 @@ def test_update_object_with_put(set_up, start_end):
         headers=headers
     )
     print(response.json())
+
 
 def test_update_object_with_patch(set_up, start_end):
     payload = {
