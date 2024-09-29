@@ -15,12 +15,16 @@ import pytest
 import requests
 from helpers import FakeData
 from pydentic_model import ObjectJson
+import allure
 
 
+@allure.feature("tests for homework23")
 class TestHomework23:
     API_URL = "http://167.172.172.115:52353/object"
 
     @pytest.mark.smoke
+    @allure.severity("Smoke")
+    @allure.title("tests for create object request")
     def test_create_object(self):
         payload = {
             "name": "Apple MacBook Pro 16",
@@ -38,7 +42,9 @@ class TestHomework23:
         print(f"Объект создан с id: {object_id}")
         return object_id
 
-    @pytest.mark.critical
+    @allure.severity("Smoke")
+    @allure.title("tests for update object request")
+    @pytest.mark.smoke
     @pytest.mark.parametrize(
         'name,expected', [
             (FakeData.RANDOM_WORD(), 200)
@@ -74,6 +80,8 @@ class TestHomework23:
         assert updated_object['data']['price'] == price, "Цена объекта не обновлена корректно"
         assert updated_object['data']['year'] == year, "Цена объекта не обновлена корректно"
 
+    @allure.severity("Smoke")
+    @allure.title("tests for delete object requests")
     def test_delete_object(self):
         object_id = self.test_create_object()
         delete_response = requests.delete(f"{self.API_URL}/{object_id}")

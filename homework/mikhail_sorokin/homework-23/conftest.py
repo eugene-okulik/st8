@@ -1,3 +1,4 @@
+import allure
 import pytest
 import requests
 from helpers import FakeData
@@ -31,6 +32,7 @@ def delete_object(object_id):
 
 
 @pytest.fixture
+@allure.step("setup teardown fixture")
 def start_end():
     print('start test')
     object_id = create_object()
