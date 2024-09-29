@@ -7,7 +7,7 @@ import allure
 
 class DataModel(BaseModel):
     year: int
-    price: str
+    price: int
     CPU_model: str = Field(alias='CPU model')
 
 
