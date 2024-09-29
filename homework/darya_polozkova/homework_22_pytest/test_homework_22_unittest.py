@@ -33,7 +33,8 @@ def start_end():
 def test_get_object_by_id(set_up, start_end):
     response = requests.get(f'http://167.172.172.115:52353/object/{set_up}')
     data = response.json()
-    print(f'Your newly created object is {data['name']}')
+    name = data['name']
+    print(f'Your newly created object is {name}')
 
 
 @pytest.mark.critical
