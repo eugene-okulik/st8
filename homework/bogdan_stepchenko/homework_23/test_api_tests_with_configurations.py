@@ -1,12 +1,13 @@
 from pydantic import Field, BaseModel, ValidationError
 from homework.bogdan_stepchenko.homework_21.api_client import APIClient
-from homework.bogdan_stepchenko.homework_22.api_tests import get_random_str, get_random_int
+from homework.bogdan_stepchenko.homework_22.test_api_tests import get_random_str, get_random_int
 import pytest
+import allure
 
 
 class DataModel(BaseModel):
     year: int
-    price: int
+    price: str
     CPU_model: str = Field(alias='CPU model')
 
 
@@ -19,9 +20,13 @@ class DeletionResponseModel(BaseModel):
     success: bool
 
 
+@allure.feature('Homework #23 tests')
 @pytest.mark.usefixtures("start_end")
 class TestAPIClient:
 
+    @allure.title('Creation object test')
+    @allure.description('That test is about creation object for following tests')
+    @allure.severity('Critical')
     def test_creation_object(self):
         api_client = APIClient('http://167.172.172.115:52353/object')
         name = get_random_str()
@@ -39,6 +44,8 @@ class TestAPIClient:
         except ValidationError as error:
             pytest.fail(f'Validation failed: {error}')
 
+    @allure.title('Deletion object test')
+    @allure.severity('Critical')
     def test_deletion_object(self):
         api_client = APIClient('http://167.172.172.115:52353/object')
         created_object = api_client.create_object(get_random_str(), get_random_int(),
@@ -53,6 +60,8 @@ class TestAPIClient:
         fetch_deleted_object = api_client.get_exact_object(created_object_id)
         assert fetch_deleted_object is None or fetch_deleted_object == {}
 
+    @allure.title('Getting exact object test')
+    @allure.severity('Minor')
     @pytest.mark.smoke
     def test_get_exact_object(self, api_client_with_object):
         api_client, created_object = api_client_with_object
@@ -61,6 +70,7 @@ class TestAPIClient:
         assert fetched_object['name'] == created_object['name']
         assert fetched_object['data'] == created_object['data']
 
+    @allure.title('Updating object with PATCH test')
     @pytest.mark.critical
     def test_update_object_with_patch(self, api_client_with_object):
         api_client, created_object = api_client_with_object
@@ -68,6 +78,7 @@ class TestAPIClient:
         updated_object = api_client.update_object_with_patch(created_object['id'], new_name)
         assert updated_object['name'] == new_name
 
+    @allure.title('Updating object with PUT test')
     @pytest.mark.parametrize('name, expected_status', [('ABCdef', 200), ('   ', 200), ('!@#$%', 200)],
                              ids=['letters', 'spaces', 'symbols']
                              )
