@@ -2,6 +2,7 @@ import string
 from random import randint, choice
 from homework.bogdan_stepchenko.homework_21.api_client import APIClient
 import pytest
+import allure
 
 
 # функция для генерации рандомной строки
@@ -38,9 +39,11 @@ def api_client_with_object():
     api_client.delete_object(created_object["id"])
 
 
+@allure.feature('Homework #22 tests')
 @pytest.mark.usefixtures("start_end")
 class TestAPIClient:
 
+    @allure.title('API creation object test')
     def test_creation_object(self):
         api_client = APIClient('http://167.172.172.115:52353/object')
         name = get_random_str()
@@ -55,6 +58,7 @@ class TestAPIClient:
         assert created_object['data']['price'] == price
         assert created_object['data']['CPU model'] == cpu_model
 
+    @allure.title('API deletion test')
     def test_deletion_object(self):
         api_client = APIClient('http://167.172.172.115:52353/object')
         created_object = api_client.create_object(get_random_str(), get_random_int(),
@@ -66,6 +70,7 @@ class TestAPIClient:
         fetch_deleted_object = api_client.get_exact_object(created_object_id)
         assert fetch_deleted_object is None or fetch_deleted_object == {}
 
+    @allure.title('API getting exact object test')
     @pytest.mark.smoke
     def test_get_exact_object(self, api_client_with_object):
         api_client, created_object = api_client_with_object
@@ -74,6 +79,7 @@ class TestAPIClient:
         assert fetched_object['name'] == created_object['name']
         assert fetched_object['data'] == created_object['data']
 
+    @allure.title('API updating object with PATCH test')
     @pytest.mark.critical
     def test_update_object_with_patch(self, api_client_with_object):
         api_client, created_object = api_client_with_object
@@ -81,6 +87,7 @@ class TestAPIClient:
         updated_object = api_client.update_object_with_patch(created_object['id'], new_name)
         assert updated_object['name'] == new_name
 
+    @allure.title('API updating object with PUT')
     def test_update_object_with_put(self, api_client_with_object):
         api_client, created_object = api_client_with_object
         new_name = get_random_str()

@@ -1,6 +1,6 @@
 import pytest
 from homework.bogdan_stepchenko.homework_21.api_client import APIClient
-from homework.bogdan_stepchenko.homework_22.api_tests import get_random_str, get_random_int
+from homework.bogdan_stepchenko.homework_22.test_api_tests import get_random_str, get_random_int
 
 
 # фикстура для принта текста до и после ВСЕХ автотестов класса
