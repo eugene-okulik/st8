@@ -11,8 +11,7 @@ def create_object():
             "Hard disk size": "1 TB"
         }
     }
-    response = requests.post("https://api.restful-api.dev/objects", json=payload
-    )
+    response = requests.post("https://api.restful-api.dev/objects", json=payload)
     if response.status_code == 200:
         object_id = response.json()["id"]
         print(f"Object created {object_id}!")
