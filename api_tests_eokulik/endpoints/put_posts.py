@@ -20,10 +20,10 @@ class PutPosts(BaseApi):
         except JSONDecodeError:
             pass
 
-    @allure.step(f'Checking title in Publication')
+    @allure.step('Checking title in Publication')
     def check_publication_title(self, title):
         assert self.response_json['title'] == title
 
-    @allure.step(f'Checking body in Publication')
+    @allure.step('Checking body in Publication')
     def check_publication_body(self, body):
         assert self.response_json['body'] == body
