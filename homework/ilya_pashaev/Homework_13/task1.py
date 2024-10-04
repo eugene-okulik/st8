@@ -11,11 +11,9 @@ class Book:
 
     def reservation(self):
         if self.reserved:
-            print(f'Название: {self.nameBook}, Автор: {self.authorBook}, страниц:{
-                  self.pages}, материал: {self.materialBook}, зарезервирована')
+            print(f'Название: {self.nameBook}, Автор: {self.authorBook}, страниц:{self.pages}, материал: {self.materialBook}, зарезервирована')
         else:
-            print(f'Название: {self.nameBook}, Автор: {self.authorBook}, страниц:{
-                  self.pages}, материал: {self.materialBook}')
+            print(f'Название: {self.nameBook}, Автор: {self.authorBook}, страниц:{self.pages}, материал: {self.materialBook}')
 
 
 book1 = Book('Dorothy Graham', 'Software Testing',
