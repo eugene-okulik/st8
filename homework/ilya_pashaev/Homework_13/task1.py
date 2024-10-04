@@ -18,7 +18,7 @@ class Book:
                   f'{self.pages}, материал: {self.materialBook}')
 
 
-book1 = Book('Dorothy Graham', 'Software Testing',
+book1 = Book('Dorothy Grahama', 'Software Testing',
              273, '978-1-4737-6479-8', True)
 book1.reserved = True
 book2 = Book('Robert C. Martin', 'Clean Code', 260, '978-1-4747-6479-8', False)
