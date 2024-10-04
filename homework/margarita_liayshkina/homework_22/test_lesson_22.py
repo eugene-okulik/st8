@@ -39,6 +39,7 @@ def start_end():
     yield None
     print("Testing completed")
 
+
 @pytest.mark.smoke
 def test_create_object(create_publication):
     payload = {
