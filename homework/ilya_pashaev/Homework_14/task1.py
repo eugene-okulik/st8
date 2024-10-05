@@ -6,7 +6,9 @@ class Flowers:
         self.stem_length = stem_length
 
     def __str__(self):
-        return f"Цвет: {self.color}, Цена: {self.price}, Время жизни: {self.lifeperiod} дней, Длина стебля: {self.stem_length} см"
+        return (f'Цвет: {self.color}, Цена: {self.price},'
+                f'Время жизни: {self.lifeperiod} дней,'
+                f'Длина стебля: {self.stem_length} см')
 
 
 class Rose(Flowers):
