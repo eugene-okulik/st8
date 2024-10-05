@@ -4,6 +4,7 @@ from requests.exceptions import JSONDecodeError
 
 from api_tests_eokulik.endpoints.base_api import BaseApi
 from api_tests_eokulik.data import constants
+from api_tests_eokulik.models.publication_object import PublicationObject
 
 
 class PutPosts(BaseApi):
@@ -15,15 +16,15 @@ class PutPosts(BaseApi):
             json=payload,
             headers=headers
         )
-        try:
-            self.response_json = self.response.json()
-        except JSONDecodeError:
-            pass
+
+    @property
+    def data(self):
+        return PublicationObject(**self.response_json)
 
     @allure.step('Checking title in Publication')
     def check_publication_title(self, title):
-        assert self.response_json['title'] == title
+        assert self.data.title == title
 
     @allure.step('Checking body in Publication')
     def check_publication_body(self, body):
-        assert self.response_json['body'] == body
+        assert self.data.body == body

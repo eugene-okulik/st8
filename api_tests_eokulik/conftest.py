@@ -1,37 +1,42 @@
 import pytest
-import requests
+
+from api_tests_eokulik.endpoints.get_posts import GetPosts
+from api_tests_eokulik.endpoints.get_posts_id import GetPostsId
+from api_tests_eokulik.endpoints.put_posts import PutPosts
+from api_tests_eokulik.endpoints.post_post import PostPost
+from api_tests_eokulik.endpoints.delete_post import DeletePost
+from api_tests_eokulik.data import test_data
 
 
 @pytest.fixture()
-def publication_id():
-    payload = {
-        'title': 'foo',
-        "body": "bar",
-        "userId": 1
-    }
-    headers = {"Content-Type": 'application/json'}
-    response = requests.post(
-        'https://jsonplaceholder.typicode.com/posts',
-        json=payload,
-        headers=headers
-    )
-    data = response.json()
-    data['id'] = 42
-    print(f'Created publication with ID {data["id"]}')
-    yield data['id']
-    requests.delete(f'https://jsonplaceholder.typicode.com/posts/{data["id"]}')
-    print(f'Post {data["id"]} deleted')
+def publication_id(post_post_endpoint, delete_post_endpoint):
+    post_post_endpoint.create_publication(test_data.DEFAULT_PAYLOAD)
+    # pub_id = post_post_endpoint.response_json['id']  # = 101
+    pub_id = 42
+    yield pub_id
+    delete_post_endpoint.delete_post(pub_id)
 
 
 @pytest.fixture()
-def start_end():
-    print('start test')
-    yield None
-    print('end test')
+def get_posts_endpoint():
+    return GetPosts()
 
 
-@pytest.fixture(scope='session')
-def greet():
-    print('Hello')
-    yield None
-    print('Bye')
+@pytest.fixture()
+def get_post_by_id_endpoint():
+    return GetPostsId()
+
+
+@pytest.fixture()
+def put_pub_endpoint():
+    return PutPosts()
+
+
+@pytest.fixture()
+def post_post_endpoint():
+    return PostPost()
+
+
+@pytest.fixture()
+def delete_post_endpoint():
+    return DeletePost()
