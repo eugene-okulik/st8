@@ -2,6 +2,7 @@ import pytest
 import requests
 import allure
 
+
 @allure.feature("Set-up")
 @allure.story("Creating set-up object")
 @pytest.fixture()
