@@ -30,4 +30,3 @@ class GetObject(BaseApi):
 
     def check_cpu_model(self, payload):
         assert self.data.data.CPU_model == payload['data']['CPU model']
-
