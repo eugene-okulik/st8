@@ -17,5 +17,3 @@ class GetObjects(BaseApi):
     def check_that_response_is_not_empty(self):
         assert self.response_json != {}
         assert len(self.response_json) > 0
-
-

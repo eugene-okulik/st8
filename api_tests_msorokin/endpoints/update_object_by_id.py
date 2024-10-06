@@ -24,7 +24,3 @@ class UpdateObjectById(BaseApi):
 
     def check_that_all_fields_are_updated(self, payload):
         assert self.response_json != payload
-
-
-
-

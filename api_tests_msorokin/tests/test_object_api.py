@@ -5,7 +5,6 @@ from api_tests_msorokin.data.object_api_json import ObjectApiJson
 """ 
 Хотел использовать параметризацию для частичного апдейста но чет уже сил нет разбираться как он работает.
 Если продолим улучшать эти тесты я на следующих итерациях сделаю, а пока вроде и так сойдет:)
-
 Также думал негативные тесты по каждому меоду написать как в прошлой дз, но так как валидации как таковой нет, то это
 достаточно бесмысленно
 
@@ -36,7 +35,7 @@ class TestHomeworkProject:
     @pytest.mark.smoke
     @allure.severity("Smoke")
     @allure.title("test for get object by id api")
-    def test_get_object_by_id(self, get_api_object_by_id,  create_api_object, delete_api_object_by_id):
+    def test_get_object_by_id(self, get_api_object_by_id, create_api_object, delete_api_object_by_id):
         payload = ObjectApiJson.create_object_request_body_generated_json()
         create_api_object.create_new_object(payload)
         object_id = create_api_object.response_json['id']
