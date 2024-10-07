@@ -10,7 +10,7 @@ class TestAPIClient:
     @allure.title('Creation object test')
     @allure.description('That test is about creation object for following tests')
     @allure.severity('Critical')
-    def test_creation_object(self, payload,  post_object_endpoint):
+    def test_creation_object(self, payload, post_object_endpoint):
         post_object_endpoint.post_new_object(payload)
         post_object_endpoint.check_response_code_is_(200)
         post_object_endpoint.check_updated_name(payload)
