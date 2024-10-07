@@ -58,3 +58,15 @@ def patch_object_endpoint():
 @pytest.fixture(scope='function')
 def delete_object_endpoint():
     return DeleteObject()
+
+
+@pytest.fixture(scope='function')
+def object_id(create_and_delete_object):
+    object_id, payload = create_and_delete_object
+    return object_id
+
+
+@pytest.fixture(scope='function')
+def payload(create_and_delete_object):
+    object_id, payload = create_and_delete_object
+    return payload

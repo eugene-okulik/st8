@@ -10,8 +10,7 @@ class TestAPIClient:
     @allure.title('Creation object test')
     @allure.description('That test is about creation object for following tests')
     @allure.severity('Critical')
-    def test_creation_object(self, post_object_endpoint):
-        payload = constants.PAYLOAD_FOR_OBJECT
+    def test_creation_object(self, payload,  post_object_endpoint):
         post_object_endpoint.post_new_object(payload)
         post_object_endpoint.check_response_code_is_(200)
         post_object_endpoint.check_updated_name(payload)
@@ -21,8 +20,7 @@ class TestAPIClient:
 
     @allure.title('Getting exact object test')
     @allure.severity('Minor')
-    def test_get_exact_object(self, create_and_delete_object, get_object_endpoint):
-        object_id, payload = create_and_delete_object
+    def test_get_exact_object(self, object_id, get_object_endpoint, payload):
         get_object_endpoint.get_object_by_id(object_id)
         get_object_endpoint.check_response_code_is_(200)
         get_object_endpoint.check_name(payload)
@@ -36,8 +34,7 @@ class TestAPIClient:
                              )
     @pytest.mark.parametrize('year', [1993, 2024], ids=['old', 'new'])
     @pytest.mark.parametrize('price', [1, 100000], ids=['small', 'huge'])
-    def test_update_object_with_put(self, create_and_delete_object, put_object_endpoint, name, price, year):
-        object_id, payload = create_and_delete_object
+    def test_update_object_with_put(self, object_id, payload, put_object_endpoint, name, price, year):
         put_object_endpoint.update_obj_with_put(object_id, payload)
         put_object_endpoint.check_response_code_is_(200)
         put_object_endpoint.check_updated_name(payload)
@@ -46,8 +43,7 @@ class TestAPIClient:
         put_object_endpoint.check_updated_cpu_model(payload)
 
     @allure.title('Updating object with PATCH test')
-    def test_update_object_with_patch(self, create_and_delete_object, patch_object_endpoint):
-        object_id, payload = create_and_delete_object
+    def test_update_object_with_patch(self, object_id, payload, patch_object_endpoint):
         patch_object_endpoint.update_obj_with_patch(object_id)
         patch_object_endpoint.check_response_code_is_(200)
         payload = constants.PAYLOAD_FOR_OBJECT
