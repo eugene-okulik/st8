@@ -121,4 +121,5 @@ def test_delete_object(create_publication):
     object_id = create_publication
     response = requests.delete(f"https://api.restful-api.dev/objects/{object_id}")
     assert response.status_code == 200, f"Failed to delete object: {response.status_code}"
+
     
