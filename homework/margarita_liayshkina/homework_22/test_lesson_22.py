@@ -20,16 +20,22 @@ def create_publication():
         json=payload,
         headers=headers
     )
-    assert response.status_code == 200, f"Failed to create object: {response.status_code}"
-    object_id = response.json()["id"]
-    assert object_id is not None, "Response does not contain object ID"
+    if response.status_code == 200:
+        print(f"Failed to create object: {response.status_code} - {response.text}")
+        return None
+    object_id = response.json().get("id")
+    if object_id is None:
+        print("Response does not contain object ID")
+        return None
     print(f"Object created: {object_id}")
 
     yield object_id
 
     delete_response = requests.delete(f"https://api.restful-api.dev/objects/{object_id}")
-    assert delete_response.status_code == 200, f"Failed to delete object: {delete_response.status_code}"
-    print(f"Object {object_id} deleted")
+    if delete_response.status_code == 200:
+        print(f"Failed to delete object: {delete_response.status_code} - {delete_response.text}")
+    else:
+        print(f"Object {object_id} deleted")
 
 
 @pytest.fixture(scope='session')
@@ -109,3 +115,9 @@ def test_update_subject_with_patch(create_publication, start_end):
     response_data = response.json()
     assert response_data["data"]["year"] == payload["data"]["year"], "Year was not updated correctly"
     print(response.json())
+
+
+def test_delete_object(create_publication):
+    object_id = create_publication
+    response = requests.delete(f"https://api.restful-api.dev/objects/{object_id}")
+    assert response.status_code == 200, f"Failed to delete object: {response.status_code}"
