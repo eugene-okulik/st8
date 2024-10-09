@@ -39,7 +39,7 @@ def start_end():
 @pytest.mark.smoke
 def test_create_object(create_publication, start_end):
     print(f"created object id: {create_publication}")
-    assert create_publication is not None, f"Failed to create object"
+    assert create_publication is not None, "Failed to create object"
 
 
 def test_receiving_object_by_id(create_publication, start_end):
