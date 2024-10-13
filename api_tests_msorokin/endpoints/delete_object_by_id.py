@@ -9,9 +9,9 @@ class DeleteObjectById(BaseApi):
     def __init__(self):
         self.payload = None
 
-    def delete_object(self, pub_id):
+    def delete_object(self, object_id):
         self.response = requests.delete(
-            f'{constants.BASE_URL}/{pub_id}'
+            f'{constants.BASE_URL}/{object_id}'
         )
 
     @property
