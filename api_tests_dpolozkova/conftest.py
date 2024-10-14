@@ -18,28 +18,34 @@ def set_up():
     yield created_object['id']
     requests.delete(f'{constants.BASE_URL}/{created_object["id"]}')
 
+
 @pytest.fixture(scope="session", autouse=True)
 def start_end():
     print('Start testing')
     yield None
     print('Testing completed')
 
+
 @pytest.fixture()
 def get_object_by_id():
     return GetObjectById()
+
 
 @pytest.fixture()
 def independent_test_create_an_object():
     # не забывать скобочки
     return CreateObject()
 
+
 @pytest.fixture()
 def independent_test_delete_an_object():
     return DeleteObject()
 
+
 @pytest.fixture()
 def update_object_with_put():
     return UpdateObjectPut()
+
 
 @pytest.fixture()
 def update_object_with_patch():

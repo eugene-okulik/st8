@@ -5,7 +5,7 @@ from requests import Response
 
 
 class BaseApi:
-    response : Response
+    response: Response
 
     @allure.step("Check response status code")
     def check_response_code_is_(self, code):
@@ -19,6 +19,6 @@ class BaseApi:
 
     @property
     @abstractmethod
-    #означает что во всех подклассах должна быть реализванно
+    # означает что во всех подклассах должна быть реализванно
     def data(self):
         pass

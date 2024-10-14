@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field, ValidationError
 
+
 class ObjData(BaseModel):
     year: int
     price: int

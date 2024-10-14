@@ -14,6 +14,5 @@ class UpdateObjectPatch(BaseApi):
             headers=headers
         )
 
-
     def check_updated_name(self, name):
         assert self.response_json['name'] == name
