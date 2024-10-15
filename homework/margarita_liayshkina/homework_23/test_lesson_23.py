@@ -3,6 +3,7 @@ import pytest
 from pydantic import BaseModel
 from typing import Any, Dict
 
+
 class PostResponse(BaseModel):
     id: str
     name: str
@@ -35,12 +36,12 @@ def test_receiving_object_by_id(create_publication, start_end):
 # method put-change data
 @pytest.mark.critical
 @pytest.mark.parametrize(
-'year, price, cpu_model, expected_status', [
+    'year, price, cpu_model, expected_status', [
         (2019, 1849.99, "Intel Core i9", 200),
         ({}, 1800, "*&^%&^%$&^%$", 200),
         (2050, 1700, "     ", 200),
     ],
-    ids=['correct','symbols', 'spaces']
+    ids=['correct', 'symbols', 'spaces']
 )
 def test_update_object_with_put(create_publication, start_end, year, price, cpu_model, expected_status):
     payload = {
@@ -96,5 +97,3 @@ def test_delete_object(create_publication):
     assert response.status_code == 200, f"Failed to delete object: {response.status_code}"
     response_data = DeleteResponse(**response.json())
     assert response_data.message == f"Object with id = {object_id} has been deleted."
-
-
