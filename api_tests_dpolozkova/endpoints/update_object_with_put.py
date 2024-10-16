@@ -1,10 +1,8 @@
 import requests
 import allure
 from api_tests_dpolozkova.data import constants
-from api_tests_dpolozkova.data import test_data
 from api_tests_dpolozkova.endpoints.base_api import BaseApi
-from api_tests_dpolozkova.models import object_model
-from api_tests_dpolozkova.models.object_model import ObjectWithData
+from homework.darya_polozkova.homework_23_test_configuration.test_configuration import ObjectWithData
 
 
 class UpdateObjectPut(BaseApi):
@@ -12,7 +10,7 @@ class UpdateObjectPut(BaseApi):
     def update_object_with_put(self, set_up, payload, headers=None):
         headers = headers if headers else constants.HEADERS
         self.response = requests.put(
-            f'{constants.BASE_URL}{constants.POSTS_POSTFIX}/{set_up}',
+            f'{constants.BASE_URL}{constants.OBJECT_POSTFIX}/{set_up}',
             json=payload,
             headers=headers
         )
@@ -21,14 +19,14 @@ class UpdateObjectPut(BaseApi):
     def data(self):
         return ObjectWithData(**self.response_json)
 
-    @allure.step("Check updated object name with PUT")
-    def check_updated_name(self, name):
-        assert self.data.name == name
+    @allure.step("Check name is updated")
+    def check_name_is_updated(self, payload):
+        assert self.response_json['name'] == payload
 
-    @allure.step("Check updated object year with PUT")
-    def check_updated_object_year(self, year):
-        assert self.data.data['year'] == year
+    @allure.step("Check year is updated")
+    def check_year_is_updated(self, payload):
+        assert self.response_json['data']['year'] == payload
 
-    @allure.step("Check updated object price with PUT")
-    def check_updated_object_price(self, price):
-        assert self.data.data['price'] == price
+    @allure.step("Check price is updated")
+    def check_price_is_updated(self, payload):
+        assert self.response_json['data']['price'] == payload

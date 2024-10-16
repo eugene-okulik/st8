@@ -5,12 +5,11 @@ from api_tests_dpolozkova.endpoints.base_api import BaseApi
 from api_tests_dpolozkova.models.object_model import ObjectWithData
 
 
-class GetObjectById(BaseApi):
-    @allure.step("Get object by id")
-    def get_object_by_id(self, set_up):
-        self.response = requests.get(f'{constants.BASE_URL}/{constants.OBJECT_POSTFIX}/{set_up}')
+class DeleteObject(BaseApi):
+    @allure.step("Object is deleted")
+    def delete_object(self, object_id):
+        self.response = requests.delete(f'{constants.BASE_URL}{constants.OBJECT_POSTFIX}/{object_id}')
 
     @property
     def data(self):
         return ObjectWithData(**self.response_json)
-

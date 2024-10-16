@@ -9,7 +9,7 @@ class UpdateObjectPatch(BaseApi):
     def update_object_with_patch(self, set_up, payload, headers=None):
         headers = headers if headers else constants.HEADERS
         self.response = requests.patch(
-            f'{constants.BASE_URL}{constants.POSTS_POSTFIX}/{set_up}',
+            f'{constants.BASE_URL}{constants.OBJECT_POSTFIX}/{set_up}',
             json=payload,
             headers=headers
         )
