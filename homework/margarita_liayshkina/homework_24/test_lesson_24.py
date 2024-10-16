@@ -32,7 +32,7 @@ def test_receiving_object_by_id(create_publication, start_end):
         ({}, 1800, "*&^%&^%$&^%$", 400),
         (2050, 1700, "     ", 200),
     ],
-    ids=['correct','symbols', 'spaces']
+    ids=['correct', 'symbols', 'spaces']
 )
 def test_update_object_with_put(create_publication, start_end, year, price, cpu_model, expected_status):
     payload = {
