@@ -6,8 +6,6 @@ from api_tests_dpolozkova.endpoints.create_object import CreateObject
 from api_tests_dpolozkova.endpoints.update_object_with_put import UpdateObjectPut
 from api_tests_dpolozkova.endpoints.update_object_with_patch import UpdateObjectPatch
 from api_tests_dpolozkova.data import test_data
-from api_tests_dpolozkova.data import constants
-from homework.darya_polozkova.homework_21_api_basics.api_basics import object_id
 
 
 @pytest.fixture()

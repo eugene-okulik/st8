@@ -13,4 +13,3 @@ class GetObjectById(BaseApi):
     @property
     def data(self):
         return ObjectWithData(**self.response_json)
-
