@@ -14,5 +14,13 @@ class UpdateObjectPatch(BaseApi):
             headers=headers
         )
 
+    @allure.step("Check name is updated")
     def check_updated_name(self, name):
         assert self.response_json['name'] == name
+
+    @allure.step("Check rest of fields are not deleted and not updated")
+    def check_rest_fields_are_not_updated(self, payload):
+        assert self.response_json['data']['year'] == payload['data']['year']
+        assert self.response_json['data']['price'] == payload['data']['price']
+        assert self.response_json['data']['CPU model'] == payload['data']['CPU model']
+        assert self.response_json['data']['Hard disk size'] == payload['data']['Hard disk size']

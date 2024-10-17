@@ -2,7 +2,7 @@ import requests
 import allure
 from api_tests_dpolozkova.data import constants
 from api_tests_dpolozkova.endpoints.base_api import BaseApi
-from api_tests_dpolozkova.models.object_model import ObjectWithData
+from api_tests_dpolozkova.models.object_model import ObjectWithData, ObjData
 
 
 class GetObjectById(BaseApi):
@@ -12,4 +12,8 @@ class GetObjectById(BaseApi):
 
     @property
     def data(self):
-        return ObjectWithData(**self.response_json)
+        return ObjData(**self.response_json)
+
+    @allure.step("Check object with right id is returned")
+    def check_object_id_is_(self, set_up):
+        assert self.response_json['id'] == set_up
