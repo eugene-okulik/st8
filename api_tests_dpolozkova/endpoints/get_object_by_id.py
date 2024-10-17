@@ -2,7 +2,7 @@ import requests
 import allure
 from api_tests_dpolozkova.data import constants
 from api_tests_dpolozkova.endpoints.base_api import BaseApi
-from api_tests_dpolozkova.models.object_model import ObjectWithData, ObjData
+from api_tests_dpolozkova.models.object_model import ObjData
 
 
 class GetObjectById(BaseApi):
