@@ -18,8 +18,11 @@ def test_input_output(driver, search_phrase):
     search_field = driver.find_element(By.NAME, 'text_string')
     search_field.send_keys(search_phrase)
     search_field.submit()
-    time.sleep(1)   # waiting for updating data on web-page
+    time.sleep(1)   # waiting for updating web-page
 
     result_element = driver.find_element(By.ID, 'result-text')
+
+    print(f'Search phrase: {search_phrase}')
+    print(f"Result phrase inside element: {result_element.text}")
 
     assert result_element.text == search_phrase
