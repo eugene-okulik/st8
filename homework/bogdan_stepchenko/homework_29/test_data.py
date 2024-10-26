@@ -1,0 +1,8 @@
+expected_first_name = 'Bogdan'
+expected_last_name = 'Stepchenko'
+expected_email = 'b_stepchenko@test.com'
+expected_subject = 'Maths'
+expected_phone = '1234567890'
+expected_address = 'Minsk / Vilnius'
+expected_state = 'NCR'
+expected_city = 'Gurgaon'
