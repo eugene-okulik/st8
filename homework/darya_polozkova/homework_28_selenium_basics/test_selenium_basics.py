@@ -13,6 +13,7 @@ def driver():
     yield driver
     driver.quit()
 
+
 def test_homework(driver):
     text = "QA"
     driver.get('https://www.qa-practice.com/elements/input/simple')
