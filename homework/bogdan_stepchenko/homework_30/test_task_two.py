@@ -1,4 +1,13 @@
-from functions_for_task_two import driver, find_and_click_start_button, find_finish_text
+import pytest
+from selenium import webdriver
+from functions_for_task_two import find_and_click_start_button, find_finish_text
+
+
+@pytest.fixture()
+def driver():
+    driver = webdriver.Chrome()
+    yield driver
+    driver.quit()
 
 
 def test_waiting_for_result(driver):
