@@ -22,3 +22,4 @@ def test_homework(driver):
     input.submit()
     result = driver.find_element(By.NAME, 'result')
     assert result.text == f'Your input was:\n{text}'
+    print(result.text)
