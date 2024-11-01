@@ -1,5 +1,5 @@
-import  time
-import  selenium
+import time
+import selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pytest
@@ -18,7 +18,6 @@ def test_search_site(driver):
     assert driver.current_url == 'https://www.qa-practice.com/elements/input/simple'
 
 
-
 def test_enter_e_word(driver):
 
     driver.get('https://www.qa-practice.com/elements/input/simple')
@@ -28,5 +27,5 @@ def test_enter_e_word(driver):
     search_field.submit()
     time.sleep(2)
     check_input_word = driver.find_element(By.ID, 'result-text')
-    assert check_input_word.text ==search_phrase, f"word not found {search_phrase}"
+    assert check_input_word.text == search_phrase, f"word not found {search_phrase}"
     print(f"Current phrase found: {search_phrase}")
