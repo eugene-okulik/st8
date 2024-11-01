@@ -18,6 +18,7 @@ def test_search_site(driver):
     assert driver.current_url == 'https://www.qa-practice.com/elements/input/simple'
 
 
+
 def test_enter_e_word(driver):
 
     driver.get('https://www.qa-practice.com/elements/input/simple')
