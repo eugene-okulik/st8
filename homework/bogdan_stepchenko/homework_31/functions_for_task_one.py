@@ -31,8 +31,10 @@ def find_product_card_and_get_name_and_price(driver):
 
 def find_product_and_get_name_and_price(driver):
     product_content = wait_for_element(driver, By.ID, "tbodyid")
-    product_name_element = wait_for_element(driver, By.XPATH, './/h2[@class="name"]', parent=product_content)
-    product_price_element = wait_for_element(driver, By.XPATH, './/h3[@class="price-container"]', parent=product_content)
+    product_name_element = wait_for_element(driver, By.XPATH, './/h2[@class="name"]',
+                                            parent=product_content)
+    product_price_element = wait_for_element(driver, By.XPATH, './/h3[@class="price-container"]',
+                                             parent=product_content)
 
     product_name = product_name_element.text
     product_price = product_price_element.text.split()[0]
