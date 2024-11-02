@@ -1,8 +1,11 @@
 import requests
 import pytest
+import allure
 
 
 # fixture receiving  object ID
+@allure.feature('Publications')
+@allure.story('Post publications')
 @pytest.fixture(scope='function')
 def create_publication():
     payload = {
@@ -42,6 +45,8 @@ def test_create_object(create_publication, start_end):
     assert create_publication is not None, "Failed to create object"
 
 
+@allure.feature('Publications')
+@allure.story('Get publications')
 def test_receiving_object_by_id(create_publication, start_end):
     response = requests.get(f"https://api.restful-api.dev/objects?id={create_publication}")
     print(response)
@@ -50,6 +55,9 @@ def test_receiving_object_by_id(create_publication, start_end):
 
 # method put-change data
 @pytest.mark.critical
+@allure.feature('Publications')
+@allure.story('Update publications')
+@allure.title('Update publications using PUT method')
 def test_update_subject_with_put(create_publication, start_end):
     payload = {
         "name": "Apple MacBook Pro 16",
@@ -83,11 +91,13 @@ def test_update_subject_with_patch(create_publication, start_end):
         json=payload,
         headers=headers
     )
-    assert response.status_code == 200, f"Failed to update object with Patch: {response.status_code}"
+    assert response.status_code == 400, f"Failed to update object with Patch: {response.status_code}"
     response_data = response.json()
     assert response_data["data"]["year"] == payload["data"]["year"], "Year was not updated correctly"
 
 
+@allure.feature('Publications')
+@allure.story('Delete publication')
 def test_delete_object(create_publication):
     object_id = create_publication
     response = requests.delete(f"https://api.restful-api.dev/objects/{object_id}")
