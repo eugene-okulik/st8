@@ -33,5 +33,4 @@ class BasePage:
         if pixels:
             self.driver.execute_script(f'window.scrollBy(0, {pixels})')
         else:
-            self.driver.execute_script(f'window.scrollBy(0, document.body.scrollHeight)')
-
+            self.driver.execute_script('window.scrollBy(0, document.body.scrollHeight)')
