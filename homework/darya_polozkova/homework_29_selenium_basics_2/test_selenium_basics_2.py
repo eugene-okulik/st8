@@ -12,6 +12,7 @@ def driver():
     yield driver
     driver.quit()
 
+
 def test_page(driver):
     driver.get('https://demoqa.com/automation-practice-form')
     name = driver.find_element(By.ID, 'firstName')
