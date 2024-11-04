@@ -13,5 +13,4 @@ COLOR_DROPDOWN = (By.XPATH, '//div[@data-role="title" and text()="Color"]')
 LIST_OF_COLORS_IN_DROPDOWN = (By.CLASS_NAME, "swatch-attribute-options")
 WHITE_COLOR_IN_DROPDOWN = (By.XPATH, '//a[div[@option-id="59"]]')
 
-
 SELECTOR = (By.XPATH, "(//div[@class='control']//select[@id='limiter'])[2]")
