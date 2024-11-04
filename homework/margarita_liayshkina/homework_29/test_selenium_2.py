@@ -109,8 +109,8 @@ def check_subject(driver):
         subject_field.send_keys('Chemistry')
         subject_field.send_keys(Keys.RETURN)
         time.sleep(1)
-        selected_subject = (driver.find_element
-            (By.XPATH, "//div[contains(@class, 'subjects-auto-complete__multi-value__label')]").text)
+        selected_subject = (driver.find_element(
+            By.XPATH, "//div[contains(@class, 'subjects-auto-complete__multi-value__label')]").text)
         assert selected_subject == 'Chemistry', "Subject not entered correctly"
     except NoSuchElementException:
         assert False, "Element 'Subject' not found on the page"
