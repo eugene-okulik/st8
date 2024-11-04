@@ -31,4 +31,3 @@ class TestHomeWorkOne:
         for td in tds:
             assert text_to_check in td.text
             print(f"Найден текст: {text_to_check}")
-
