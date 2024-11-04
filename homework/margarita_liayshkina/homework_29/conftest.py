@@ -1,4 +1,4 @@
-import  selenium
+import selenium
 import pytest
 from selenium import webdriver
 

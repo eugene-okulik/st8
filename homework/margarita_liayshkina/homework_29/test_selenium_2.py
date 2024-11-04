@@ -1,7 +1,7 @@
-import  time
+import time
 from time import sleep
 
-import  selenium
+import selenium
 import pytest
 from selenium import webdriver
 from selenium.common import NoSuchElementException, TimeoutException
@@ -103,13 +103,14 @@ def check_date_bitrthday(driver):
         assert False, f"Date selection element not found: {str(e)}"
 
 
-def  check_subject(driver):
+def check_subject(driver):
     try:
         subject_field = driver.find_element(By.CSS_SELECTOR, '#subjectsInput')
         subject_field.send_keys('Chemistry')
         subject_field.send_keys(Keys.RETURN)
         time.sleep(1)
-        selected_subject = driver.find_element(By.XPATH, "//div[contains(@class, 'subjects-auto-complete__multi-value__label')]").text
+        selected_subject = (driver.find_element
+            (By.XPATH, "//div[contains(@class, 'subjects-auto-complete__multi-value__label')]").text)
         assert selected_subject == 'Chemistry', "Subject not entered correctly"
     except NoSuchElementException:
         assert False, "Element 'Subject' not found on the page"
@@ -124,7 +125,6 @@ def check_hobbies(driver):
         assert hobbies_checkbox.is_selected(), "Hobby checkbox not selected"
     except NoSuchElementException:
         assert False, "Element 'Hobbies' not found on the page"
-
 
 
 def check_address(driver):
@@ -148,7 +148,7 @@ def check_state(driver):
         input_field.send_keys(Keys.ENTER)
         time.sleep(1)
         selected_state = driver.find_element(By.CSS_SELECTOR, '#state .css-1uccc91-singleValue').text
-        assert selected_state== 'NCR', "City not selected correctly"
+        assert selected_state == 'NCR', "City not selected correctly"
     except NoSuchElementException:
         assert False, "Element 'State' not found on the page"
 
