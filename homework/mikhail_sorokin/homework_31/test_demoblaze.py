@@ -16,12 +16,14 @@ class TestHomeWorkOne:
     # в теории работает, корзина не грузится так что не могу убедиться
     def test_demoblaze_homework(self, driver):
         driver.get('https://www.demoblaze.com/index.html')
-        wait = WebDriverWait(driver, 10)
+        wait = WebDriverWait(driver, 20)
         first_product = wait.until(EC.element_to_be_clickable(self.FIRST_PRODUCT))
         driver.execute_script("window.open(arguments[0].href, '_blank');", first_product)
         driver.switch_to.window(driver.window_handles[1])
         ad_to_cart_button = wait.until(EC.element_to_be_clickable(self.ADD_TO_CART))
         ad_to_cart_button.click()
+        alert = wait.until(EC.alert_is_present())
+        alert.accept()
         driver.switch_to.window(driver.window_handles[0])
         cart = wait.until(EC.element_to_be_clickable(self.CART))
         cart.click()
