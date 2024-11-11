@@ -6,7 +6,7 @@ class LoginTest:
     USERNAME_ERROR = 'Your username is invalid!'
     LOGIN_URL = 'https://the-internet.herokuapp.com/login'
 
-    def __init__(self, page: Page, base_url = BASE_URL):
+    def __init__(self, page: Page, base_url=BASE_URL):
         self.page = page
         self.base_url = base_url
 
