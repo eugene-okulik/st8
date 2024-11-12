@@ -26,11 +26,12 @@ class SalePage(BasePage):
         button = self.find_element(sales.MAIN_SALE_BUTTON, parent=main_sale_card)
         return info, title, button
 
-    def check_if_text_inside_main_sale_card_is_correct(self):
+    def check_if_text_inside_main_sale_card_is_correct(self, expected_info_text,
+                                                       expected_title_text, expected_button_text):
         info, title, button = self.find_all_elements_inside_main_sale_card()
-        assert info.text == "Women’s Deals"
-        assert title.text == "Pristine prices on pants, tanks and bras."
-        assert button.text == "Shop Women’s Deals"
+        assert info.text == expected_info_text
+        assert title.text == expected_title_text
+        assert button.text == expected_button_text
 
     def click_on_show_main_deal_button(self):
         info, title, button = self.find_all_elements_inside_main_sale_card()

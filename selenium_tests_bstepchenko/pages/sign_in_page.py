@@ -15,24 +15,28 @@ class SignInPage(BasePage):
         self.driver.get(self.sign_in_url)
         return self.driver.current_url
 
-    def fill_first_name(self):
+    def fill_first_name(self, name=None):
         name_element = self.find_element(sign_in.FIRST_NAME)
-        name = random_name()
+        if not name:
+            name = random_name()
         name_element.send_keys(name)
 
-    def fill_last_name(self):
+    def fill_last_name(self, last_name=None):
         last_name_element = self.find_element(sign_in.LAST_NAME)
-        last_name = random_name()
+        if not last_name:
+            last_name = random_name()
         last_name_element.send_keys(last_name)
 
-    def fill_email(self):
+    def fill_email(self, email=None):
         email_element = self.find_element(sign_in.EMAIL)
-        email = random_email()
+        if not email:
+            email = random_email()
         email_element.send_keys(email)
 
-    def fill_password(self):
+    def fill_password(self, password_value=None):
         password_element = self.find_element(sign_in.PASSWORD)
-        self.password_value = random_password()
+        if not password_value:
+            self.password_value = random_password()
         password_element.send_keys(self.password_value)
 
     def fill_correct_password_confirmation(self):
@@ -42,9 +46,10 @@ class SignInPage(BasePage):
         else:
             raise ValueError("Password has not been set. Please fill the password first.")
 
-    def fill_incorrect_password_confirmation(self):
+    def fill_incorrect_password_confirmation(self, conf_password):
         conf_password_element = self.find_element(sign_in.CONF_PASSWORD)
-        conf_password = random_password()
+        if not conf_password:
+            conf_password = random_password()
         conf_password_element.send_keys(conf_password)
 
     def fill_all_fields_with_correct_data(self):
@@ -57,22 +62,22 @@ class SignInPage(BasePage):
     def click_on_create_account_button(self):
         self.find_and_click(sign_in.CREATE_ACCOUNT_BUTTON)
 
-    def check_error_appeared_for_all_fields(self):
+    def check_error_appeared_for_all_fields(self, expected_error_message):
         first_name_error = self.find_element(sign_in.FIRST_NAME_ERROR)
-        assert first_name_error.text == 'This is a required field.'
+        assert first_name_error.text == expected_error_message
 
         last_name_error = self.find_element(sign_in.LAST_NAME_ERROR)
-        assert last_name_error.text == 'This is a required field.'
+        assert last_name_error.text == expected_error_message
 
         email_error = self.find_element(sign_in.EMAIL_ERROR)
-        assert email_error.text == 'This is a required field.'
+        assert email_error.text == expected_error_message
 
         password_error = self.find_element(sign_in.PASSWORD_ERROR)
-        assert password_error.text == 'This is a required field.'
+        assert password_error.text == expected_error_message
 
         conf_password_error = self.find_element(sign_in.CONF_PASSWORD_ERROR)
-        assert conf_password_error.text == 'This is a required field.'
+        assert conf_password_error.text == expected_error_message
 
-    def check_if_password_confirmation_error_appeared(self):
+    def check_if_password_confirmation_error_appeared(self, expected_error_message):
         password_confirmation_error = self.find_element(sign_in.CONF_PASSWORD_ERROR)
-        assert password_confirmation_error.text == 'Please enter the same value again.'
+        assert password_confirmation_error.text == expected_error_message
