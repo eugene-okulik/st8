@@ -11,7 +11,6 @@ from selenium.common import NoSuchElementException
 import pytest
 
 
-
 @pytest.fixture()
 def driver():
     driver = webdriver.Chrome()
@@ -39,13 +38,7 @@ def softwaretestingboard(driver):
             ec.visibility_of_element_located((By.XPATH, '//a[@title ="Compare Products"]/span'))
         )
         print(f"compare_products.text = {compare_products.text}")
-        assert compare_products.text == "1 item", f"Expected "
+        assert compare_products.text == "1 item", "Expected"
 
-    except NoSuchElementException as e:
+    except NoSuchElementException:
         assert False,"Elements not found"
-
-
-
-
-
-

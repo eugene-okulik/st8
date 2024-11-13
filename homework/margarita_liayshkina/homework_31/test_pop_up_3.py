@@ -7,7 +7,6 @@ from selenium.webdriver.support import expected_conditions as ec
 import pytest
 
 
-
 @pytest.fixture()
 def driver():
     driver = webdriver.Chrome()
@@ -39,7 +38,7 @@ def get_text_pop_up(driver):
 
 
 def fill_and_submit_form(driver, popup_text):
-    button_check = WebDriverWait(driver,10).until(
+    button_check = WebDriverWait(driver, 10).until(
         ec.element_to_be_clickable((By.XPATH, './/button[@type="submit"]'))
     )
     button_check.click()
