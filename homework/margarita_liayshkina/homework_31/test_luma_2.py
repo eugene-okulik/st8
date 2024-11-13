@@ -41,4 +41,4 @@ def softwaretestingboard(driver):
         assert compare_products.text == "1 item", "Expected"
 
     except NoSuchElementException:
-        assert False,"Elements not found"
+        assert False, "Elements not found"
