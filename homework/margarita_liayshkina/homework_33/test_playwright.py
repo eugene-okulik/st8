@@ -8,7 +8,7 @@ def test_authentication(page: Page):
     page.goto('https://the-internet.herokuapp.com/')
     link_form_auth = page.get_by_role('link', name='Form Authentication')
     link_form_auth.click()
-    username = page.get_by_role('textbox', name='username' )
+    username = page.get_by_role('textbox', name='username')
     username.fill('Veniamin')
 
     expect(username).to_have_value('Veniamin')
