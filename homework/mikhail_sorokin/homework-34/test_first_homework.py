@@ -1,9 +1,5 @@
 from playwright.sync_api import sync_playwright
 
-from playwright.sync_api import sync_playwright
-
-from playwright.sync_api import sync_playwright
-
 
 def test_wait_for_color_change():
     with sync_playwright() as p:
@@ -13,7 +9,10 @@ def test_wait_for_color_change():
         button = page.locator("#colorChange")
         button.wait_for(state="attached")
         page.wait_for_function(
-            "document.querySelector('#colorChange').style.color === 'rgb(220, 53, 69)' || window.getComputedStyle(document.querySelector('#colorChange')).color === 'rgb(220, 53, 69)'"
+            """
+            document.querySelector('#colorChange').style.color === 'rgb(220, 53, 69)' ||
+            window.getComputedStyle(document.querySelector('#colorChange')).color === 'rgb(220, 53, 69)'
+            """
         )
         button.click()
         browser.close()
