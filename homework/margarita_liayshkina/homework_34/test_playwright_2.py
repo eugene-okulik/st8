@@ -8,7 +8,7 @@ def page(context: BrowserContext) -> Page:
     return page
 
 
-def test_colorchange_button(page:Page):
+def test_colorchange_button(page: Page):
     page.goto('https://demoqa.com/dynamic-properties')
     visible_after_button = page.locator("#visibleAfter")
     color_change_button = page.locator('#colorChange')
@@ -55,7 +55,6 @@ def test_student_form(page):
     address_field.fill("123 Street-333")
     expect(address_field).to_have_value("123 Street-333")
 
-
     state_dropdown = page.locator('#state')
     state_dropdown.click()
 
@@ -63,7 +62,6 @@ def test_student_form(page):
     input_field_state.fill('NCR')
     input_field_state.press('Enter')
     expect(page.locator("#state .css-1uccc91-singleValue")).to_have_text("NCR")
-
 
     city_dropdown = page.locator('#city')
     city_dropdown.click()
