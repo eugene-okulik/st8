@@ -46,5 +46,6 @@ def test_demoblaze(driver):
 
     WebDriverWait(driver, 20).until(ec.presence_of_element_located((By.XPATH, '//tr[@class="success"]')))
     expected_name_product = "Samsung galaxy s6"
-    product_cart_name = driver.find_element(By.XPATH,  ".//td[text()='Samsung galaxy s6']")
-    assert product_cart_name.text== expected_name_product, f"Expected result '{expected_name_product}', but found {product_cart_name.text}"
+    product_cart_name = driver.find_element(By.XPATH, ".//td[text()='Samsung galaxy s6']")
+    assert product_cart_name.text == expected_name_product, \
+        f"Expected result '{expected_name_product}', but found {product_cart_name.text}"
