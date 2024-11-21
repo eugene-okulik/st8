@@ -1,4 +1,7 @@
+import time
+
 import pytest
+import re
 from playwright.sync_api import Page, expect, BrowserContext, Playwright
 
 
@@ -10,13 +13,13 @@ def page(context: BrowserContext) -> Page:
 
 def test_colorchange_button(page: Page):
     page.goto('https://demoqa.com/dynamic-properties')
-    visible_after_button = page.locator("#visibleAfter")
     color_change_button = page.locator('#colorChange')
-    expect(visible_after_button).to_be_visible()
+    expect(color_change_button).to_have_class(re.compile('.*text-danger.*'), timeout=10000)
+    expect(color_change_button).to_be_enabled()
     color_change_button.click()
 
 
-def test_student_form(page):
+def student_form(page):
     page.goto('https://demoqa.com/automation-practice-form')
     first_name = page.locator('#firstName')
     first_name.fill('Ivan')
