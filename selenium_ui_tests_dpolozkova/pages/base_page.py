@@ -31,7 +31,7 @@ class BasePage:
             self.driver.execute_script(f'window.scrollBy(0,{pixels})')
         else:
             # scroll to bottom of the page
-            self.driver.execute_script(f"window.scrollBy(0,document.body.scrollHeight)")
+            self.driver.execute_script('window.scrollBy(0, document.body.scrollHeight)')
 
     def fill_input(self, locator: tuple, value):
         input = self.find(locator)
