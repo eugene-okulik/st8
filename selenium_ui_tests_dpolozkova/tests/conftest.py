@@ -18,9 +18,11 @@ def driver():
 def account_page(driver):
     return AccountPage(driver)
 
+
 @pytest.fixture()
 def sale_page(driver):
     return SalePage(driver)
+
 
 @pytest.fixture()
 def eco_products_page(driver):

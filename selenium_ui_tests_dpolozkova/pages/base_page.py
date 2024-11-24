@@ -30,12 +30,11 @@ class BasePage:
         if pixels:
             self.driver.execute_script(f'window.scrollBy(0,{pixels})')
         else:
-            #scroll to bottom of the page
-            self.driver.execute_script(f'window.scrollBy(0,document.body.scrollHeight)')
+            # scroll to bottom of the page
+            self.driver.execute_script(f"window.scrollBy(0,document.body.scrollHeight)")
 
     def fill_input(self, locator: tuple, value):
         input = self.find(locator)
         WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable(input))
         input.click()
         input.send_keys(value)
-
