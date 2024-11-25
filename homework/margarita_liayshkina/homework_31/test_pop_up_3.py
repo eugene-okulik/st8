@@ -66,4 +66,3 @@ def test_pop_up(driver):
     result = check_result(driver)
 
     return result
-
