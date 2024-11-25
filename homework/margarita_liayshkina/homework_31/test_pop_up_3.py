@@ -59,10 +59,11 @@ def check_result(driver):
     assert correct.text == "Correct!", f"Expected 'Correct!', but got {correct.text}"
 
 
-def pop_up(driver):
+def test_pop_up(driver):
     open_pop_up(driver)
     popup_text = get_text_pop_up(driver)
     fill_and_submit_form(driver, popup_text)
     result = check_result(driver)
 
     return result
+

@@ -17,7 +17,7 @@ def driver():
     driver.quit()
 
 
-def softwaretestingboard(driver):
+def test_softwaretestingboard(driver):
     driver.get('https://magento.softwaretestingboard.com/gear/bags.html')
     products = WebDriverWait(driver, 10).until(
         ec.visibility_of_all_elements_located((By.XPATH, "//li[contains(@class, 'product-item')]"))
