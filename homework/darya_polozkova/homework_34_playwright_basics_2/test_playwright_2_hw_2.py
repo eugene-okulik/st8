@@ -1,0 +1,32 @@
+import pytest
+from playwright.sync_api import Page, expect, BrowserContext, Playwright
+
+
+def test_form_submit(page: Page):
+    page.goto('https://demoqa.com/automation-practice-form')
+    page.get_by_placeholder('First Name').fill('Testname')
+    page.get_by_placeholder('Last Name').fill('Lastnametest')
+    page.get_by_placeholder('name@example.com').fill('qa@test.com')
+    page.locator('//label[@class="custom-control-label" and text()="Female"]').check()
+    mobile = page.get_by_placeholder('Mobile Number')
+    mobile.press_sequentially('1232133122')
+    expect(mobile).to_have_value('1232133122')
+    birthday = page.locator('#dateOfBirthInput')
+    birthday.click()
+    page.locator('.react-datepicker__month-select').select_option('10')
+    page.locator('.react-datepicker__year-select').select_option('1989')
+    page.locator('.react-datepicker__day.react-datepicker__day--021').click()
+    expect(page.locator("#dateOfBirthInput")).to_have_value("21 Nov 1989")
+    subject = page.locator('#subjectsInput')
+    subject.fill('Economics')
+    subject.press('Enter')
+    page.locator('//label[@class="custom-control-label" and text()="Reading"]').check()
+    page.get_by_placeholder('Current Address').fill('Planet Earth, home')
+    state = page.locator('#react-select-3-input')
+    state.fill('NCR')
+    state.press('Enter')
+    city = page.locator('#react-select-4-input')
+    city.fill('Lucknow')
+    city.press('Enter')
+    success = page.locator(".modal-content")
+    expect(success).to_be_visible()
