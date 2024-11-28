@@ -27,7 +27,7 @@ def test_login(page: Page):
     assert response.json().get("errorMessage") == "User does not exist.", "Invalid error message"
 
 
-def test_iphone(page:Page):
+def test_iphone(page: Page):
 
     iphone_new_name = 'яблокофон 16 про'
 
@@ -54,11 +54,10 @@ def test_iphone(page:Page):
     print(this_iphone_name)
     assert this_iphone_name == iphone_new_name
 
-    element_2 = page.wait_for_selector('.rf-digitalmat-tabnav-button',timeout=5000)
+    element_2 = page.wait_for_selector('.rf-digitalmat-tabnav-button', timeout=5000)
     this_iphone_name_2 = element_2.inner_text()
     assert this_iphone_name_2 == iphone_new_name
 
-
-    element_3 = page.wait_for_selector('.rf-digitalmat-inlinetabnav-button.current',timeout=5000)
+    element_3 = page.wait_for_selector('.rf-digitalmat-inlinetabnav-button.current', timeout=5000)
     this_iphone_name_3 = element_3.inner_text()
     assert this_iphone_name_3 == iphone_new_name
