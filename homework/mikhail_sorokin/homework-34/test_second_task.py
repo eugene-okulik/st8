@@ -1,24 +1,11 @@
 import pytest
-import os
-
-from playwright.sync_api import sync_playwright
-
-
-@pytest.fixture(scope="session")
-def browser():
-    headless_mode = True if "HEADLESS" in os.environ and os.environ["HEADLESS"] == "true" else False
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless_mode)
-        yield browser
-        browser.close()
+from playwright.sync_api import Page, BrowserContext
 
 
 @pytest.fixture(scope="function")
-def page(browser):
-    context = browser.new_context()
-    page = context.new_page()
-    yield page
-    context.close()
+def page(context: BrowserContext) -> Page:
+    page: Page = context.new_page()
+    return page
 
 
 def test_form_selectors(page):
