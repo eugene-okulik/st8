@@ -5,7 +5,7 @@ from pw_test_bstepchenko.pages.base_page import BasePage
 class AccountPage(BasePage):
     account_url = 'https://magento.softwaretestingboard.com/customer/account/'
 
-    def open_by_url(self):
+    def open_by_url(self, url=None):
         return super().open_by_url(self.account_url)
 
     def check_success_message_appeared(self, expected_error_message):

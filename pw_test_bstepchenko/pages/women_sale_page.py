@@ -5,7 +5,7 @@ from pw_test_bstepchenko.pages.locators import women_sale
 class WomenSale(BasePage):
     women_sale_page = 'https://magento.softwaretestingboard.com/promotions/women-sale.html'
 
-    def open_by_url(self):
+    def open_by_url(self, url=None):
         self.page.goto(self.women_sale_page)
         self.click_on_consent_button()
         return self.page.url
