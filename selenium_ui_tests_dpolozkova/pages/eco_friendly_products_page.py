@@ -1,4 +1,3 @@
-from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium_ui_tests_dpolozkova.pages.base_page import BasePage
 from selenium.webdriver.support.select import Select
@@ -11,8 +10,8 @@ class EcoPage(BasePage):
     def open_by_url(self, postfix=None):
         self.driver.get(f'{self.base_url}{postfix}')
 
-    def search_for_product(self, locator: tuple, value):
-        input = self.find(locator)
+    def search_for_product_by_name(self, value):
+        input = self.find(loc.SEARCH)
         WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable(input))
         input.click()
         input.send_keys(value)
@@ -21,8 +20,12 @@ class EcoPage(BasePage):
     def results_are_displayed(self):
         assert self.find(loc.SEARCH_RESULTS).is_displayed()
 
-    def check_found_results(self):
-        assert self.find(loc.FOUND_ITEM).get_attribute('alt') == 'Fiona Fitness Short'
+    def check_found_results(self, text):
+        assert self.find(loc.FOUND_ITEM).get_attribute('alt') == text
+
+    def apply_list_view_option(self):
+        list_view = self.find(loc.LIST_VIEW)
+        list_view.click()
 
     def check_grid_is_switched_to_list(self):
         assert len(self.find_all(loc.PRODUCTS_LIST)) == 10
