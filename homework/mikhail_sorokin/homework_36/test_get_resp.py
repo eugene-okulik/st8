@@ -1,4 +1,12 @@
+from playwright.sync_api import Page, BrowserContext
+import pytest
 import re
+
+
+@pytest.fixture(scope="function")
+def page(context: BrowserContext) -> Page:
+    page: Page = context.new_page()
+    return page
 
 
 def test_first_homework(page):

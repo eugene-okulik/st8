@@ -1,5 +1,13 @@
-from playwright.sync_api import Page, BrowserContext, Route, Request, Response, Playwright
+from playwright.sync_api import Page, BrowserContext, Route
 import re
+import pytest
+from playwright.sync_api import expect
+
+
+@pytest.fixture(scope="function")
+def page(context: BrowserContext) -> Page:
+    page: Page = context.new_page()
+    return page
 
 
 def test_mock_homework(page):
@@ -14,5 +22,4 @@ def test_mock_homework(page):
     page.route(re.compile('/digital-mat'), change_response)
     page.goto('https://www.apple.com/shop/buy-iphone')
     page.locator("(//div[@class='rf-hcard-content tile as-util-relatedlink'])[1]").click()
-    popup_title = page.locator("(//div//h2[@id='rf-digitalmat-overlay-label-0'])[1]").inner_text()
-    assert popup_title == "яблокофон 16 про"
+    expect("//div//h2[@id='rf-digitalmat-overlay-label-0'])[1]").to_have_text("яблокофон 16 про")
