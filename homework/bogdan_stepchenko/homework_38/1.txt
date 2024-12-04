@@ -1,0 +1,47 @@
+"""
+| = OR
+^ = Control
+""""
+
+Task #2
+
+Go to first line in file:
+g | < | Esc+>
+
+Go to last line in file:
+G | > | ESC+>
+
+Forward one window:
+f | ^F | ^V | SPACE
+
+Forward one line:
+e | ^E | j | ^N | Enter
+
+Backward one line:
+y | ^Y | k | ^K | ^P
+
+Search forward for matching line:
+/{text}
+
+Search backward for matching line:
+?{text}
+
+Repeat previous search:
+n
+
+Repeat previous search in reverse direction:
+N
+
+
+
+Task #3
+
+/dev/null - character special file
+/dev/zero - character special file
+/dev/sda - FILE WAS NOT FOUND
+/dev/tty -character special file
+/root - directory
+/etc/passwd - regular file
+/proc/mounts - symbolic link
+/bin/ls - regular file
+/bin/zcat - regular file
