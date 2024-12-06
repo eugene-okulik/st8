@@ -1,0 +1,24 @@
+Задание №2
+
+Go to first line in file: g
+Go to last line in file: G
+Forward one window: ctrl+d
+Forward one line: j
+Backward one line: k
+Search forward for matching line: /text Enter
+Search backward for matching line: ? text Enter
+Repeat previous search: n
+Repeat previous search in reverse direction: N
+
+
+Задание №3
+
+/dev/null - character special file
+/dev/zero - character special file
+/dev/sda- block special file
+/dev/tty - character special file
+/root - directory
+/etc/passwd- regular file
+/proc/mounts- symbolic link
+/bin/ls- symbolic link
+/bin/zcat- symbolic link
