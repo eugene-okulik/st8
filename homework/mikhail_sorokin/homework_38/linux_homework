@@ -1,0 +1,91 @@
+Задание
+Работаем с документацией man
+В Linux/Unix системах есть встроенная система документации.
+ Она подходит для случаев когда нужно вспомнить аргумент команды или что делает команда.
+  Одним из ключевых навыков работы является умение найти нужную информацию. В задании мы отрабатываем этот навык.
+
+Задание №1
+Используем команду man чтобы прочитать краткое описание команд для файлов устройств:
+ urandom, zero, null, full, loop, sd Пример:
+
+man urandom
+Читаем как можно использовать эту программу.
+Никаких результатов этого задания выкладывать не надо. Это просто чтобы разобраться
+
+Задание №2
+При открытии программы помощи "man" нам доступно 2 действия: выход с помощью "q" и помощь с "h".
+Воспользуйтесь этой помощью и узнайте как обращаться с программой man. В результате, напишите команды,
+с помощью которых можно выполнять эти действия:
+Go to first line in file:
+Go to last line in file:
+Forward one window:
+Forward one line:
+Backward one line:
+Search forward for matching line:
+Search backward for matching line:
+Repeat previous search:
+Repeat previous search in reverse direction:
+
+Задание №3
+Для навигации в файловой системе нужно отличать директории от остальных типов файлов
+Определите типы этих файлов:
+/dev/null
+/dev/zero
+/dev/sda
+/dev/tty
+/root
+/etc/passwd
+/proc/mounts
+/bin/ls
+/bin/zcat
+Напомню, для того, чтобы увидеть типы всех файлов в директории, можно использовать команду ls -l. Тип файла будет указан первым символом в строке
+Также, для того, чтобы посмотреть тип (и другую информацию) об одном отдельно взятом файле, можно использовать команду stat.
+Пример:
+
+stat /dev/null
+В полученном результате можно найти информацию о типе файла.
+
+Результаты второго и третьего заданий оформляйте в .txt файлик и заливайте в гитхаб
+
+
+2 задание:
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+    /pattern          *  Search forward for (N-th) matching line.
+  ?pattern          *  Search backward for (N-th) matching line.
+  n                 *  Repeat previous search (for N-th occurrence).
+  N                 *  Repeat previous search in reverse direction.
+  g  <  ESC-<       *  Go to first line in file (or line N).
+  G  >  ESC->       *  Go to last line in file (or line N).
+
+
+3 задание:
+
+/dev/null
+character special file
+
+/dev/zero
+character special file
+
+/dev/sda
+stat: cannot stat '/dev/sda': No such file or directory
+
+/dev/tty
+character special file
+
+/root
+directory
+
+/etc/passwd
+regular file
+
+/proc/mounts
+symbolic link
+
+/bin/ls
+regular file
+
+/bin/zcat
+regular file
