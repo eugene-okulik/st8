@@ -13,6 +13,11 @@ on:
           - regression
           - smoke
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   run-tests:
     runs-on: ubuntu-latest
