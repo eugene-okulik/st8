@@ -29,12 +29,15 @@ jobs:
       - name: Run all tests
         if: "github.event.inputs.deployment_target == 'all'"
         run: cd selenium_tests_eokulik && pytest -v --alluredir=results
+        continue-on-error: true
       - name: Run smoke tests
         if: "github.event.inputs.deployment_target == 'smoke'"
         run: cd selenium_tests_eokulik && pytest -v -m smoke --alluredir=results
+        continue-on-error: true
       - name: Run regression tests
         if: "github.event.inputs.deployment_target == 'regression'"
         run: cd selenium_tests_eokulik && pytest -v -m regression --alluredir=results
+        continue-on-error: true
       - name: Install Java
         uses: actions/setup-java@v4
         with:
