@@ -13,4 +13,4 @@ class HomePage(BasePage):
         tops = self.find(loc.TOPS)
         jackets = self.find(loc.JACKETS)
         ActionChains(self.driver).move_to_element(men).move_to_element(tops).click(jackets).perform()
-        self.wait_until_url_changes()
+        # self.wait_until_url_changes()
