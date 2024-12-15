@@ -17,7 +17,7 @@ class BasePage:
 
     def scroll(self, pixels=None):
         if pixels:
-            self.page.mouse.wheel(0,pixels)
+            self.page.mouse.wheel(0, pixels)
         else:
             # scroll to bottom of the page
             self.page.keyboard.down('End')

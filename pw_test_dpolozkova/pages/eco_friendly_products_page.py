@@ -1,9 +1,9 @@
 from playwright.sync_api import expect
 
-
 from pw_test_dpolozkova.pages.base_page import BasePage
 from pw_test_dpolozkova.pages.locators import eco_friendly_page as loc
 import re
+
 
 class EcoPage(BasePage):
     def open_by_url(self, postfix=None):
