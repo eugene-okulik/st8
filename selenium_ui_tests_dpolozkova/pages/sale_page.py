@@ -2,7 +2,6 @@ from selenium.webdriver.support.expected_conditions import element_to_be_clickab
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium_ui_tests_dpolozkova.pages.base_page import BasePage
 from selenium_ui_tests_dpolozkova.pages.locators import sale_page as loc
-from abc import abstractmethod
 
 
 class SalePage(BasePage):
