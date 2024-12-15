@@ -1,5 +1,6 @@
 from playwright.sync_api import expect
 
+
 from pw_test_dpolozkova.pages.base_page import BasePage
 from pw_test_dpolozkova.pages.locators import eco_friendly_page as loc
 import re
@@ -27,12 +28,12 @@ class EcoPage(BasePage):
     def check_grid_is_switched_to_list(self):
         list_view = self.find(loc.LIST_VIEW).first
         list_len = len(self.find(loc.PRODUCTS_LIST).all())
-        expect(self.page).to_have_url(re.compile(f'product_list_mode=list$'), timeout=20000)
+        expect(self.page).to_have_url(re.compile(f"product_list_mode=list$"), timeout=20000)
         assert list_len == 10
 
     def sort_by_filter(self, filter=None):
         self.find(loc.SELECT_SORTING).first.press_sequentially(f'{filter}')
-        expect(self.page).to_have_url(re.compile(f'product_list_order={filter}'), timeout=5000)
+        expect(self.page).to_have_url(re.compile(f"product_list_order={filter}"), timeout=5000)
 
     def check_products_sorted_by_price(self):
         product_cards = self.find(loc.PRODUCTS_LIST).all()

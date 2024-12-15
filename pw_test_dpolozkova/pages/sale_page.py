@@ -26,7 +26,6 @@ class SalePage(BasePage):
         self.find(loc.WOMEN_SALE).click()
         expect(self.page).to_have_url('https://magento.softwaretestingboard.com/promotions/women-sale.html')
 
-
     def check_home_sale_breadcrumb(self):
         breadcrumb = self.find(loc.BREADCRUMBS)
         expect(breadcrumb).to_have_text("Home Sale")
