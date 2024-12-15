@@ -27,7 +27,7 @@ class EcoPage(BasePage):
 
     def check_grid_is_switched_to_list(self):
         list_len = len(self.find(loc.PRODUCTS_LIST).all())
-        expect(self.page).to_have_url(re.compile(f"product_list_mode=list$"), timeout=20000)
+        expect(self.page).to_have_url(re.compile("product_list_mode=list$"), timeout=20000)
         assert list_len == 10
 
     def sort_by_filter(self, filter=None):
