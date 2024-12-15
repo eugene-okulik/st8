@@ -4,6 +4,7 @@ from selenium_ui_tests_dpolozkova.pages.base_page import BasePage
 from selenium_ui_tests_dpolozkova.pages.locators import sale_page as loc
 from abc import abstractmethod
 
+
 class SalePage(BasePage):
     def open_by_url(self, postfix=None):
         if postfix:

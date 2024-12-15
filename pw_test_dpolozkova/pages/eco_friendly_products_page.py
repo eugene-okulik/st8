@@ -26,13 +26,12 @@ class EcoPage(BasePage):
         list_view.click()
 
     def check_grid_is_switched_to_list(self):
-        list_view = self.find(loc.LIST_VIEW).first
         list_len = len(self.find(loc.PRODUCTS_LIST).all())
         expect(self.page).to_have_url(re.compile(f"product_list_mode=list$"), timeout=20000)
         assert list_len == 10
 
     def sort_by_filter(self, filter=None):
-        self.find(loc.SELECT_SORTING).first.press_sequentially(f'{filter}')
+        self.find(loc.SELECT_SORTING).first.press_sequentially(f"{filter}")
         expect(self.page).to_have_url(re.compile(f"product_list_order={filter}"), timeout=5000)
 
     def check_products_sorted_by_price(self):

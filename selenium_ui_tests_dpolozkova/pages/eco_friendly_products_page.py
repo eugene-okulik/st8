@@ -26,7 +26,6 @@ class EcoPage(BasePage):
     def apply_list_view_option(self):
         self.find(loc.LIST_VIEW).click()
 
-
     def check_grid_is_switched_to_list(self):
         assert len(self.find_all(loc.PRODUCTS_LIST)) == 10
 
