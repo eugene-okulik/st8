@@ -44,3 +44,8 @@ urllib3==2.2.3
 Werkzeug==3.0.4
 zope.event==5.0
 zope.interface==7.0.3
+pathlib~=1.0.1
+mysql~=5.7.24
+mysql-connector-python~=9.0.0
+playwright~=1.48.0
+gmpy2~=2.1.2
