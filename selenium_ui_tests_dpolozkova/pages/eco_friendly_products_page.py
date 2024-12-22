@@ -24,8 +24,7 @@ class EcoPage(BasePage):
         assert self.find(loc.FOUND_ITEM).get_attribute('alt') == text
 
     def apply_list_view_option(self):
-        list_view = self.find(loc.LIST_VIEW)
-        list_view.click()
+        self.find(loc.LIST_VIEW).click()
 
     def check_grid_is_switched_to_list(self):
         assert len(self.find_all(loc.PRODUCTS_LIST)) == 10

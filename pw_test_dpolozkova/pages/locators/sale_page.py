@@ -1,0 +1,5 @@
+WOMEN_SALE = 'span[class="more button"]'
+DROP_DOWN_ITEMS = '//span[@class="ui-menu-icon ui-icon ui-icon-carat-1-e"]'
+PROMOS = 'strong.title'
+BREADCRUMBS = '.breadcrumbs'
+HOME = '//a[@title="Go to Home Page"]'
