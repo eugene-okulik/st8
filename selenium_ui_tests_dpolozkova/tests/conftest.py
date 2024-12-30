@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import pytest
 
 from selenium_ui_tests_dpolozkova.pages.create_account_page import AccountPage
@@ -8,7 +9,11 @@ from selenium_ui_tests_dpolozkova.pages.eco_friendly_products_page import EcoPag
 
 @pytest.fixture()
 def driver():
-    driver = webdriver.Firefox()
+    options = Options()
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     yield driver
     driver.quit()
