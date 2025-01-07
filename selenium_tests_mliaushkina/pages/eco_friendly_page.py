@@ -92,8 +92,3 @@ class EcoFriendlyPage(BasePage):
 
         sorted(sort_price_list, reverse=True)
         assert product_price_list == sort_price_list, "Lists are not equal"
-
-
-
-
-

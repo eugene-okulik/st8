@@ -50,4 +50,3 @@ class CustomerCreatePage(BasePage):
     def check_if_confirm_password_error_visible(self):
         ui_element = self.find(locator.CONFIRM_PASSWORD_ERROR)
         assert ui_element.is_displayed() is True, "Confirm password error message is not visible"
-

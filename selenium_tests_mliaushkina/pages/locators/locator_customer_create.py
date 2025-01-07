@@ -9,5 +9,3 @@ CREATE_ACCOUNT_BUTTON = (By.XPATH, '//*[@id="form-validate"]/div/div[1]/button')
 SUCCESS_MESSAGE = (By.XPATH, '//*[text()="Thank you for registering with Main Website Store."]')
 EMAIL_ERROR = (By.CSS_SELECTOR, '#email_address-error')
 CONFIRM_PASSWORD_ERROR = (By.CSS_SELECTOR, '#password-confirmation-error')
-
-
