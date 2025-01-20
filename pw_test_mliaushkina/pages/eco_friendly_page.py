@@ -30,11 +30,11 @@ class EcoFriendlyPage(BasePage):
 
     def check_is_grid_view(self):
         div_grid = self.find(loc_const.DIV_GRID_ITEM)
-        expect (div_grid).not_to_be_empty()
+        expect(div_grid).not_to_be_empty()
 
     def check_is_list_view(self):
         div_list = self.find(loc_const.DIV_LIST_ITEM)
-        expect (div_list).not_to_be_empty()
+        expect(div_list).not_to_be_empty()
 
     def change_to_list_view(self):
         switch_a = self.find(loc_const.SWITCH_A_ITEM).first

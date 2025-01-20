@@ -41,7 +41,7 @@ class CustomerCreatePage(BasePage):
 
     def check_if_success_message_visible(self):
         ui_element = self.find(locator.SUCCESS_MESSAGE)
-        expect (ui_element).to_be_visible()
+        expect(ui_element).to_be_visible()
 
     def check_if_email_error_visible(self):
         ui_element = self.find(locator.EMAIL_ERROR)
