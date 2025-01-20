@@ -1,3 +1,5 @@
+from playwright.sync_api import expect
+
 from pw_test_mliaushkina.pages.base_page import BasePage
 from pw_test_mliaushkina.pages.locators import locator_customer_create as locator
 
@@ -39,12 +41,12 @@ class CustomerCreatePage(BasePage):
 
     def check_if_success_message_visible(self):
         ui_element = self.find(locator.SUCCESS_MESSAGE)
-        assert ui_element.is_visible() is True, "Success message is not visible"
+        expect (ui_element).to_be_visible()
 
     def check_if_email_error_visible(self):
         ui_element = self.find(locator.EMAIL_ERROR)
-        assert ui_element.is_visible() is True, "Email error message is not visible"
+        expect(ui_element).to_be_visible()
 
     def check_if_confirm_password_error_visible(self):
         ui_element = self.find(locator.CONFIRM_PASSWORD_ERROR)
-        assert ui_element.is_visible() is True, "Confirm password error message is not visible"
+        expect(ui_element).to_be_visible()

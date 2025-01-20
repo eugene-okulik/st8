@@ -1,5 +1,4 @@
 import re
-import time
 
 from pw_test_mliaushkina.pages.base_page import BasePage
 from pw_test_mliaushkina.pages.locators import locator_eco_friendly as loc_const
@@ -27,15 +26,15 @@ class EcoFriendlyPage(BasePage):
                 is_found_product = True
                 break
 
-        assert is_found_product is True, "Product not found"
+        assert is_found_product, "Product not found"
 
     def check_is_grid_view(self):
         div_grid = self.find(loc_const.DIV_GRID_ITEM)
-        assert div_grid is not None, "Invalid grid view item"
+        expect (div_grid).not_to_be_empty()
 
     def check_is_list_view(self):
         div_list = self.find(loc_const.DIV_LIST_ITEM)
-        assert div_list is not None, "Invalid list view item"
+        expect (div_list).not_to_be_empty()
 
     def change_to_list_view(self):
         switch_a = self.find(loc_const.SWITCH_A_ITEM).first
