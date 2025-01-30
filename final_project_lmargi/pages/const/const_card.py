@@ -1,0 +1,7 @@
+AUTO_BG_OBIAVA = "https://www.auto.bg/obiava/"
+RANDOM_OBIYAVA = "56772749/mercedes-benz-vito"
+COLOR_CAR = "Цвят"
+LOAD_CAR = "Товароносимост[кг]"
+BRAND_CAR = "Модел"
+PRICE_CAR = "Цена"
+YEAR_CAR = "Произведено"
