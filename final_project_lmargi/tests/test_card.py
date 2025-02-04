@@ -1,11 +1,12 @@
-import  time
+import allure
 from final_project_lmargi.pages.const import const_card as const
 from final_project_lmargi.tests.conftest import login_page
-from final_project_lmargi.tests.conftest import notebook_page
 from final_project_lmargi.tests.conftest import adlist_page
 
 
-# 26 Test ok
+@allure.feature('Сard_page')
+@allure.story('Message display on ignore checkbox interaction')
+@allure.title('Проверка сообщения об ошибке при игнорировании чекбокса в форме')
 def email_form_message_ignor_agree(card_page, adlist_page):
     adlist_page.open_page_bus()
     adlist_page.cookie_accept()
@@ -13,19 +14,10 @@ def email_form_message_ignor_agree(card_page, adlist_page):
     card_page.press_dealer_button()
     assert card_page.get_ignore_checkbox_error() == True, f"Message is not visible"
 
-#решить проблемы итерации
-# def test_send_requst_invalid(card_page):
-#     card_page.open_card('56772749/mercedes-benz-vito')
-#     card_page.cookie_accept()
-#     card_page.press_dealer_button()
-#     time.sleep(2)
-#     card_page.fill_send_request_field_message("test message")
-#     time.sleep(2)
-#     card_page.fill_send_request_field_name("margi")
-#     card_page.press_send_request()
-#     card_page.check_invalid_send_request_message()
 
-# 27 ok
+@allure.feature('Сard_page')
+@allure.story('Show phone number')
+@allure.title('Проверка отображения скрытого телефонного номера')
 def show_phone_number(card_page, adlist_page):
     adlist_page.open_page_bus()
     adlist_page.cookie_accept()
@@ -34,38 +26,42 @@ def show_phone_number(card_page, adlist_page):
     updated_phone_number = card_page.check_phone_number_visible(initial_text)
     assert updated_phone_number != initial_text, "Phone number did not become visible"
 
-# 28 ok
+
+@allure.feature('Сard_page')
+@allure.story('Title write in a notebook')
+@allure.title('Проверка заголовка перед сохранием в блокнот')
 def check_text_before_save_notebook(card_page, login_page, adlist_page):
     login_page.make_login()
     adlist_page.open_page_bus()
     adlist_page.open_one_card(0)
 
     text_before_click = card_page.check_title_notebook()
-    assert  text_before_click == "Запиши в бележника", "Text not as expected"
+    assert  text_before_click == const.TITLE_SAVE_NOTEBOOK, "Text not as expected"
     card_page.remove_car_from_notebook()
 
 
-# 29 ok
+@allure.feature('Сard_page')
+@allure.story('Title delete from notepad')
+@allure.title('Проверка заголовка после сохрания в блокнот')
 def check_text_after_save_notebook(card_page, login_page, adlist_page):
     login_page.make_login()
     adlist_page.open_page_bus()
     adlist_page.open_one_card(0)
 
     text_after_click = card_page.check_title_notebook()
-    assert text_after_click == "Изтрий от бележника", "Text not as expected"
+    assert text_after_click == const.TITLE_DELETE_NOTEBOOK, "Text not as expected"
     card_page.remove_car_from_notebook()
 
 
-#не всегда в добавляется в бележник машина
-# def test_check_list_save_notebook(card_page, notebook_page):
-
-
-def test_ignore_privacy_policy_warning(card_page, adlist_page ):
+@allure.feature('Сard_page')
+@allure.story("Click next page then return to prev ")
+@allure.title('Проверка перехода на следующую страницу ')
+def check_next_page(card_page, adlist_page, driver):
     adlist_page.open_page_bus()
-    card_page.cookie_accept()
-    adlist_page.open_one_card(0)
-    card_page.press_dealer_button()
-    card_page.fill_send_request_field_message("ffggg")
-    card_page.fill_send_request_field_name("VBBBGg")
-    card_page.press_send_request()
-    card_page.status_message_ignor_privacy_policy()
+    adlist_page.cookie_accept()
+    first_car_link = adlist_page.open_first_card()
+    card_page.click_next_page()
+    card_page.click_prev_page()
+    current_link = card_page.get_current_pure_url()
+
+    assert first_car_link == current_link, f"links don't match : {current_link}"

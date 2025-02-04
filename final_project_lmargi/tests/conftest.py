@@ -5,8 +5,8 @@ from  final_project_lmargi.pages.search_page import SearchPage
 from  final_project_lmargi.pages.card_page import CardPage
 from  final_project_lmargi.pages.notebook_page import NotebookPage
 from  final_project_lmargi.pages.adlist_page import AdlistPage
-from  final_project_lmargi.pages.my_save_filter import MysaveFilterPage
-from  final_project_lmargi.pages.my_announcement import MyAnnouncementPage
+from  final_project_lmargi.pages.add_announc_page import Add_AnnouncementPage
+from  final_project_lmargi.pages.my_offers_page import MyOfferPage
 
 
 @pytest.fixture()
@@ -39,13 +39,9 @@ def adlist_page(driver):
 
 
 @pytest.fixture()
-def my_save_filter(driver):
-    return MysaveFilterPage(driver)
+def add_announcement_page(driver):
+    return Add_AnnouncementPage(driver)
 
 @pytest.fixture()
-def my_announcement(driver):
-    return MyAnnouncementPage(driver)
-
-
-
-
+def my_offers_page(driver):
+    return MyOfferPage(driver)

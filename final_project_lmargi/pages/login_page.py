@@ -6,7 +6,7 @@ from final_project_lmargi.pages.const import const_login as const
 class LoginPage(BasePage):
 
     def open_page(self):
-        self.open_by_url('login')
+        self.open_by_url(const.LOGIN_URL)
 
     def click_on_phone_button(self):
         input_radiobutton = self.find(locator.BUTTON_WITH_PHONE)

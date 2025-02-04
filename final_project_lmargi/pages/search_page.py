@@ -1,14 +1,8 @@
-import re
-
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 
-from final_project_lmargi.pages.adlist_page import AdlistPage
 from final_project_lmargi.pages.base_page import BasePage
 from final_project_lmargi.pages.locators import  locator_search as locator
-from selenium.webdriver.support import expected_conditions as ec
 
 
 class SearchPage(BasePage):
@@ -100,7 +94,7 @@ class SearchPage(BasePage):
         used_input.get_attribute("value")
 
 
-    def search_result(self, value: str):
+    def search_result(self):
         text_div = self.find(locator.TEXT_FILTER)
         text_content = text_div.text
         return text_content.split(":")[-1].strip()
@@ -130,7 +124,5 @@ class SearchPage(BasePage):
 
 
 
-    # def check_change_url(self, part_url):
-    #     WebDriverWait(self.driver, 10).until(ec.url_contains(part_url))
 
 

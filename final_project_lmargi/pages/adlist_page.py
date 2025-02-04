@@ -1,5 +1,4 @@
 import re
-
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
@@ -11,7 +10,7 @@ from final_project_lmargi.pages.const import const_adlist as const
 class AdlistPage(BasePage):
 
     def open_page(self):
-        self.open_by_url('obiavi')
+        self.open_by_url(const.OBIAVA_URL)
 
     def open_page_bus(self):
         self.open_by_url('obiavi/busove')
@@ -28,6 +27,16 @@ class AdlistPage(BasePage):
             index = index + 1
 
         return False
+
+    def open_first_card(self):
+        all_product_elements = self.find_all_elements(locator.PRODUCT_ITEM_FILTER)
+        for product in all_product_elements:
+            product_url = product.find_element(By.TAG_NAME, "a")
+            product_href = product_url.get_attribute("href")
+            product_url.click()
+            return product_href
+
+        return ""
 
     def select_option(self, value, select_locator):
         select_ui_element = Select(self.find(select_locator))

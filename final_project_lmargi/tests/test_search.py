@@ -1,121 +1,141 @@
-import time
+import  allure
+from final_project_lmargi.pages.const import const_search as const
 
-# 11 test case, ok
+
+@allure.feature('Car search functionality')
+@allure.story('Price filter range')
+@allure.title('Поиск авто по диапазону цен')
 def check_car_price(search_page, adlist_page):
-    checked_price_min = 2000
-    checked_price_max = 4000
     search_page.open_page()
     search_page.cookie_accept()
-    search_page.field_price_from(checked_price_min)
-    search_page.field_price_to(checked_price_max)
+    search_page.field_price_from(const.CHEKCED_PRICE_MIN)
+    search_page.field_price_to(const.CHEKCED_PRICE_MAX)
     search_page.press_button_search()
 
     car_list = adlist_page.get_filtered_cars()
     for one_car in car_list:
-        assert checked_price_min <= one_car['price'] <=  checked_price_max, "Invalid price range"
+        assert const.CHEKCED_PRICE_MIN <= one_car['price'] <=  const. CHEKCED_PRICE_MAX, "Invalid price range"
 
-# 12 test case, ok
+
+@allure.feature('Car search functionality')
+@allure.story('Year filter range')
+@allure.title('Поиск авто по диапазону года выпуска')
 def check_car_year(search_page, adlist_page):
-    checked_year_min = 2005
-    checked_year_max = 2010
     search_page.open_page()
     search_page.cookie_accept()
-    search_page.field_year_from(checked_year_min)
-    search_page.field_year_to(checked_year_max)
+    search_page.field_year_from(const.CHEKCED_YEAR_MIN)
+    search_page.field_year_to(const.CHEKCED_PRICE_MAX)
     search_page.press_button_search()
 
     car_list = adlist_page.get_filtered_cars()
     for one_car in car_list:
-        assert checked_year_min <= one_car['year'] <= checked_year_max, "Invalid year range"
+        assert const.CHEKCED_YEAR_MIN <= one_car['year'] <= const.CHEKCED_YEAR_MAX, "Invalid year range"
 
-# 13 test case, ok
+
+@allure.feature('Car search functionality')
+@allure.story('Power filter range')
+@allure.title('Поиск авто по диапазону мощности')
 def check_car_power(search_page, adlist_page):
-    checked_power_min = 130
-    checked_power_max = 150
     search_page.open_page()
     search_page.cookie_accept()
-    search_page.field_power_from(checked_power_min)
-    search_page.field_power_to(checked_power_max)
+    search_page.field_power_from(const.CHEKCED_POWER_MIN)
+    search_page.field_power_to(const.CHEKCED_POWER_MAX)
     search_page.press_button_search()
 
     car_list = adlist_page.get_filtered_cars()
     for one_car in car_list:
-        assert checked_power_min <= one_car['power'] <= checked_power_max, "Invalid power range"
+        assert const.CHEKCED_POWER_MIN <= one_car['power'] <= const.CHEKCED_POWER_MAX, "Invalid power range"
 
-# 14 test case, ok
+
+@allure.feature('Car search functionality')
+@allure.story('Gearbox filter')
+@allure.title('Фильтр поиска  авто по коробке передач')
 def check_car_gearbox(search_page, adlist_page):
-    checked_gearbox = "Автоматична"
     search_page.open_page()
     search_page.cookie_accept()
-    search_page.field_gearbox(checked_gearbox)
+    search_page.field_gearbox(const.CHECKED_GEARBOX)
     search_page.press_button_search()
 
     car_list = adlist_page.get_filtered_cars()
     for one_car in car_list:
-        assert one_car['gearbox'] == checked_gearbox, "Invalid car gearbox"
+        assert one_car['gearbox'] == const.CHECKED_GEARBOX, "Invalid car gearbox"
 
-# 15 test case, ok
+
+@allure.feature('Car search functionality')
+@allure.story('Brand filter')
+@allure.title('Фильтр поиска  авто по марке')
 def check_car_brand(search_page, adlist_page):
-    checked_brand = "Chevrolet"
     search_page.open_page()
     search_page.cookie_accept()
-    search_page.field_brand(checked_brand)
+    search_page.field_brand(const.CHECKED_BRAND)
     search_page.press_button_search()
 
     car_list = adlist_page.get_filtered_cars()
     for one_car in car_list:
         for one_car in car_list:
-            assert checked_brand in one_car[
-                'title'], f"Brand '{checked_brand}' not found in car title: {one_car['title']}"
+            assert const.CHECKED_BRAND in one_car[
+                'title'], f"Brand '{const.CHECKED_BRAND}' not found in car title: {one_car['title']}"
 
-# 16 test case, ok
+
+@allure.feature('Car search functionality')
+@allure.story('Region filter')
+@allure.title('Фильтр поиска  авто по региону')
 def check_region(search_page, adlist_page):
-    checked_region = "Разград"
     search_page.open_page()
     search_page.cookie_accept()
-    search_page.field_region(checked_region)
+    search_page.field_region(const.CHECKED_REGION)
     search_page.press_button_search()
     car_list = adlist_page.get_filtered_cars()
 
     for one_car in car_list:
-        assert one_car['region'] == checked_region, "Invalid car region"
+        assert one_car['region'] == const.CHECKED_REGION, "Invalid car region"
 
-# 17 test case, ok
+
+@allure.feature('Car search functionality')
+@allure.story('Section transport filter')
+@allure.title('Фильтр поиска по  виду транспорта')
 def select_transport(search_page):
     search_page.open_page()
     search_page.cookie_accept()
-    search_page.field_section("3")
-    time.sleep(3)
-    search_page.title_h1("Търсене на Бусове")
-    assert search_page.title_h1("Търсене на Бусове"), "Title H1 not displayed"
+    search_page.field_section(const.FIELD_SECTION)
+    search_page.title_h1(const.TITLE_H_1)
+    assert search_page.title_h1(const.TITLE_H_1), "Title H1 not displayed"
 
-# 18 test case, ok
+
+@allure.feature('Car search functionality')
+@allure.story('Condition transport filter')
+@allure.title('Фильтр поиска по состоянию машины: Б/у')
 def condithion_car_used(search_page):
     search_page.open_page()
     search_page.cookie_accept()
     search_page.reset_checkboxes_on_page()
-    search_page.check_condithion_input_used("03")
+    search_page.check_condithion_input_used(const.INPUT_USED)
     search_page.press_button_search()
-    result = search_page.search_result("Употребяван")
-    assert "Употребяван" in result, f"Not found: Употребяван"
+    result = search_page.search_result(const.TITLE_USED_CAR)
+    assert const.TITLE_USED_CAR in result, f"Not found: {const.TITLE_USED_CAR} in search results"
 
 
-# 19 test case, ok
-def condithion_car_new(search_page):
+@allure.feature('Car search functionality')
+@allure.story('Condition transport filter')
+@allure.title('Фильтр поиска по состоянию машины: новая')
+def test_condithion_car_new(search_page):
     search_page.open_page()
     search_page.cookie_accept()
     search_page.reset_checkboxes_on_page()
-    search_page.check_condithion_input_new("13")
+    search_page.check_condithion_input_new(const.INPUT_NEW)
     search_page.press_button_search()
-    result = search_page.search_result("Нов")
-    assert "Нов" in result, f"Not found: Нов"
+    result = search_page.search_result()
+    assert const.TITLE_NEW_CAR in result, f"Not found: {const.TITLE_NEW_CAR} in search results"
 
-# 20 test case, ok
-def condithion_car_all(search_page):
+
+@allure.feature('Car search functionality')
+@allure.story('Condition transport filter')
+@allure.title('Фильтр поиска по состоянию машины: новая, б/у, на запчасти')
+def test_condithion_car_all(search_page):
     search_page.open_page()
     search_page.cookie_accept()
     search_page.reset_checkboxes_on_page()
-    search_page.select_all_checkboxes_on_page("0123")
+    search_page.select_all_checkboxes_on_page(const.UNPUT_ALL_CHECKBOX)
     search_page.press_button_search()
-    result = search_page.search_result("Употребяван, Нов, За части")
-    assert "Употребяван, Нов, За части" in result, f"Not found: Употребяван, Нов, За части"
+    result = search_page.search_result()
+    assert const.ALL_TITLE_CHECKBOX in result, f"Not found: {const.ALL_TITLE_CHECKBOX} in search results"

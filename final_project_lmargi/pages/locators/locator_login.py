@@ -12,3 +12,4 @@ LOGIN_ERROR_MESSAGE = (By.CLASS_NAME, 'regMessage ')
 ACCOUNT_NAME = (By.CSS_SELECTOR,  'span.clever-link[data-link="/myadverts"]')
 LOGIN_BUTTON = (By.CSS_SELECTOR,  'span.clever-link[data-link="/login"]')
 LOGOUT_BUTTON = (By.CSS_SELECTOR,  'span.clever-link[data-link="/login?act=3"]')
+
