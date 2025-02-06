@@ -1,5 +1,4 @@
 from selenium.webdriver.support.wait import WebDriverWait
-
 from final_project_lmargi.pages.base_page import BasePage
 from final_project_lmargi.pages.locators import locator_card as locator
 from selenium.webdriver.support import expected_conditions as ec
@@ -14,7 +13,6 @@ class CardPage(BasePage):
 
     def open_card(self, card_url):
         self.open_by_url(f'obiava/{card_url}')
-
 
     def get_current_url(self):
         return self.driver.current_url
@@ -67,24 +65,8 @@ class CardPage(BasePage):
 
         return None
 
-
     def get_color(self):
         return self.get_card_info_attr(const.COLOR_CAR)
-
-    # def get_load(self):
-    #     return self.get_card_info_attr(const.LOAD_CAR)
-    #
-    # def get_brand(self):
-    #     return self.get_card_info_attr(const.BRAND_CAR)
-    #
-    # def get_price(self):
-    #     return self.get_card_info_attr(const.PRICE_CAR)
-    #
-    # def get_year(self):
-    #     year_text = self.get_card_info_attr(const.YEAR_CAR)
-    #     year_stripped = year_text.strip().split()
-    #     year = int(year_stripped[1])
-    #     return year
 
     def press_dealer_button(self):
         button_element = self.find(locator.BUTTON_SEND_EMAIL_MESSAGE)

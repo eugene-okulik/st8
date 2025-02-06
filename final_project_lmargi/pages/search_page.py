@@ -1,14 +1,14 @@
 from selenium.webdriver.support.select import Select
 from selenium.webdriver import ActionChains
-
 from final_project_lmargi.pages.base_page import BasePage
 from final_project_lmargi.pages.locators import  locator_search as locator
+from final_project_lmargi.pages.const import const_search as const
 
 
 class SearchPage(BasePage):
 
     def open_page(self):
-        self.open_by_url('search')
+        self.open_by_url(const.SEARCH_URL)
 
     def select_option(self, value, select_locator):
         select_ui_element = Select(self.find(select_locator))
@@ -23,8 +23,10 @@ class SearchPage(BasePage):
     def field_year_from(self, value:int):
         self.select_option(str(value), locator.DROPDOWN_YEAR_1)
 
+
     def field_year_to(self, value:int):
         self.select_option(str(value), locator.DROPDOWN_YEAR_2)
+
 
     def field_power_from(self, value):
          power_field_1 = self.find(locator.POWER_FROM)
@@ -121,8 +123,3 @@ class SearchPage(BasePage):
             checkbox = self.find(checkbox_locator)
             if not checkbox.is_selected():
                 checkbox.click()
-
-
-
-
-

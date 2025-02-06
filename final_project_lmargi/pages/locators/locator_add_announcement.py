@@ -12,7 +12,6 @@ DROPDOWN_REGION = (By.NAME, "locat")
 DROPDOWN_PLACE = (By.NAME, "locatc")
 DROPDOWN_ENGINE_TYPE = (By.NAME, "engine_type")
 DROPDOWN_GEARBOX = (By.NAME, "transmission")
-
 INPUT_MILEAGE = (By.XPATH, "//input[@name='km']")
 INPUT_PRICE = (By.NAME, "price")
 INPUT_USED_CHECKBOX = (By.NAME, "nup")

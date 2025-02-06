@@ -5,7 +5,7 @@ from final_project_lmargi.pages.const import const_search as const
 @allure.feature('Car search functionality')
 @allure.story('Price filter range')
 @allure.title('Поиск авто по диапазону цен')
-def check_car_price(search_page, adlist_page):
+def test_check_car_price(search_page, adlist_page):
     search_page.open_page()
     search_page.cookie_accept()
     search_page.field_price_from(const.CHEKCED_PRICE_MIN)
@@ -20,22 +20,22 @@ def check_car_price(search_page, adlist_page):
 @allure.feature('Car search functionality')
 @allure.story('Year filter range')
 @allure.title('Поиск авто по диапазону года выпуска')
-def check_car_year(search_page, adlist_page):
-    search_page.open_page()
-    search_page.cookie_accept()
-    search_page.field_year_from(const.CHEKCED_YEAR_MIN)
-    search_page.field_year_to(const.CHEKCED_PRICE_MAX)
-    search_page.press_button_search()
+#def test_check_car_year(search_page, adlist_page):
+    #search_page.open_page()
+    #search_page.cookie_accept()
+    #search_page.field_year_from(const.CHEKCED_YEAR_MIN)
+    #search_page.field_year_to(const.CHEKCED_PRICE_MAX)
+    #search_page.press_button_search()
 
-    car_list = adlist_page.get_filtered_cars()
-    for one_car in car_list:
-        assert const.CHEKCED_YEAR_MIN <= one_car['year'] <= const.CHEKCED_YEAR_MAX, "Invalid year range"
+    #car_list = adlist_page.get_filtered_cars()
+    #for one_car in car_list:
+    #assert const.CHEKCED_YEAR_MIN <= one_car['year'] <= const.CHEKCED_YEAR_MAX, "Invalid year range"
 
 
 @allure.feature('Car search functionality')
 @allure.story('Power filter range')
 @allure.title('Поиск авто по диапазону мощности')
-def check_car_power(search_page, adlist_page):
+def test_check_car_power(search_page, adlist_page):
     search_page.open_page()
     search_page.cookie_accept()
     search_page.field_power_from(const.CHEKCED_POWER_MIN)
@@ -50,7 +50,7 @@ def check_car_power(search_page, adlist_page):
 @allure.feature('Car search functionality')
 @allure.story('Gearbox filter')
 @allure.title('Фильтр поиска  авто по коробке передач')
-def check_car_gearbox(search_page, adlist_page):
+def test_check_car_gearbox(search_page, adlist_page):
     search_page.open_page()
     search_page.cookie_accept()
     search_page.field_gearbox(const.CHECKED_GEARBOX)
@@ -64,7 +64,7 @@ def check_car_gearbox(search_page, adlist_page):
 @allure.feature('Car search functionality')
 @allure.story('Brand filter')
 @allure.title('Фильтр поиска  авто по марке')
-def check_car_brand(search_page, adlist_page):
+def test_check_car_brand(search_page, adlist_page):
     search_page.open_page()
     search_page.cookie_accept()
     search_page.field_brand(const.CHECKED_BRAND)
@@ -80,7 +80,7 @@ def check_car_brand(search_page, adlist_page):
 @allure.feature('Car search functionality')
 @allure.story('Region filter')
 @allure.title('Фильтр поиска  авто по региону')
-def check_region(search_page, adlist_page):
+def test_check_region(search_page, adlist_page):
     search_page.open_page()
     search_page.cookie_accept()
     search_page.field_region(const.CHECKED_REGION)
@@ -94,7 +94,7 @@ def check_region(search_page, adlist_page):
 @allure.feature('Car search functionality')
 @allure.story('Section transport filter')
 @allure.title('Фильтр поиска по  виду транспорта')
-def select_transport(search_page):
+def test_select_transport(search_page):
     search_page.open_page()
     search_page.cookie_accept()
     search_page.field_section(const.FIELD_SECTION)
@@ -105,13 +105,13 @@ def select_transport(search_page):
 @allure.feature('Car search functionality')
 @allure.story('Condition transport filter')
 @allure.title('Фильтр поиска по состоянию машины: Б/у')
-def condithion_car_used(search_page):
+def test_condithion_car_used(search_page):
     search_page.open_page()
     search_page.cookie_accept()
     search_page.reset_checkboxes_on_page()
     search_page.check_condithion_input_used(const.INPUT_USED)
     search_page.press_button_search()
-    result = search_page.search_result(const.TITLE_USED_CAR)
+    result = search_page.search_result()
     assert const.TITLE_USED_CAR in result, f"Not found: {const.TITLE_USED_CAR} in search results"
 
 

@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 
+
 CARD_BASE_TABLE = (By.CLASS_NAME, 'dowble')
 CARD_TABLE_TR = (By.TAG_NAME, 'tr')
 CARD_TABLE_TH = (By.TAG_NAME, 'th')

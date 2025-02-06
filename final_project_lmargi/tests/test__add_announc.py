@@ -6,29 +6,31 @@ from final_project_lmargi.pages.const import const_my_offers as const_off
 @allure.feature('New offer page functionality')
 @allure.story('Checkbox  is not selected')
 @allure.title('Проверка что чекбокс не активен')
-def model_dropdown_disabled_without_brand(add_announcement_page, login_page):
+def test_model_dropdown_disabled_without_brand(add_announcement_page, login_page):
     login_page.make_login()
     add_announcement_page.open_page()
     add_announcement_page.field_section(const.SECTION)
     model_dropdown_count = add_announcement_page.get_field_model_option_count()
     assert model_dropdown_count == 0, "Model dropdown should be disabled without brand"
+    login_page.click_on_logout_button()
 
 
 @allure.feature('New offer page functionality')
 @allure.story('Select price by agreement')
 @allure.title('Проверка визуализации предупреждающего сообщения')
-def visible_allert_message(add_announcement_page, login_page):
+def test_visible_allert_message(add_announcement_page, login_page):
     login_page.make_login()
     add_announcement_page.open_page()
     add_announcement_page.check_checkbox_price()
     allert_message = add_announcement_page.wait_allert()
+    login_page.click_on_logout_button()
     assert  allert_message, "Alert message negotiation is not visible"
 
 
 @allure.feature('New offer page functionality')
 @allure.story('Required fields are not filled in')
 @allure.title('Проверка вывода сообщения об ошибке при незаполненных обязательных полях')
-def visible_message_error(add_announcement_page, login_page):
+def test_visible_message_error(add_announcement_page, login_page):
     login_page.make_login()
     add_announcement_page.open_page()
     add_announcement_page. field_section(const.SECTION)
@@ -47,35 +49,38 @@ def visible_message_error(add_announcement_page, login_page):
     add_announcement_page.press_button_create_ad()
     invalid_message = add_announcement_page.wait_message_invalid_check()
     expected_message = const.INVALID_MESSAGE_STATUS
+    login_page.click_on_logout_button()
     assert invalid_message == expected_message, "Invalid message negotiation  is not visible"
 
 
 @allure.feature('New offer page functionality')
 @allure.story('Check visible big title')
 @allure.title('Визуализация заголовка  публикации объявления')
-def check_the_presence_title(add_announcement_page, login_page):
+def test_check_the_presence_title(add_announcement_page, login_page):
     login_page.make_login()
     title_announcement = add_announcement_page.check_title_big(const.TITLE_BIG)
     expected_title = const.TITLE_BIG
+    login_page.click_on_logout_button()
     assert title_announcement == expected_title, "Title BIG not displayed"
 
 
 @allure.feature('New offer page functionality')
 @allure.story('Validation of additional info field')
 @allure.title('Визуализация сообщения об ошибке при заполнении поля доп.инфо')
-def check_add_information(add_announcement_page, login_page):
+def test_check_add_information(add_announcement_page, login_page):
     login_page.make_login()
     add_announcement_page.field_text_add_info(const.TEXT_ADD_INFO)
     add_announcement_page.press_button_create_ad()
     invalid_message = add_announcement_page.wait_message_invalid_check()
     expected_message = const.INVALID_MESSAGE_LETTER_FORMAT
+    login_page.click_on_logout_button()
     assert invalid_message == expected_message, "Invalid message negotiation  is not visible"
 
 
 @allure.feature('New offer page functionality')
 @allure.story('Add correct new offer')
 @allure.title('Успешное добавление нового объявления')
-def check_add_correct_info(add_announcement_page, login_page, my_offers_page):
+def test_check_add_correct_info(add_announcement_page, login_page, my_offers_page):
     login_page.make_login()
     add_announcement_page.open_page()
     add_announcement_page.field_section(const.SECTION)
@@ -106,3 +111,4 @@ def check_add_correct_info(add_announcement_page, login_page, my_offers_page):
         assert one_car['title'] == product_title, "Invalid car title"
     my_offers_page.delete_all_cars()
     my_offers_page.wait_allert_for_delete()
+    login_page.click_on_logout_button()

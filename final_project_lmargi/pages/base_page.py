@@ -3,10 +3,11 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from final_project_lmargi.pages.locators import locator_base as locator
+from final_project_lmargi.pages.const import const_base_page as const
 
 
 class BasePage:
-    base_url = 'https://www.auto.bg/'
+    base_url = const.BASE_URL
 
     def __init__(self, driver: WebDriver):
         self.driver = driver
@@ -43,5 +44,3 @@ class BasePage:
         WebDriverWait(self.driver, 20).until(ec.presence_of_all_elements_located(locator))
         elements = self.driver.find_elements(*locator)
         return elements
-
-

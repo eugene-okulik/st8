@@ -37,7 +37,6 @@ def test_check_car_year(adlist_page):
     adlist_page.cookie_accept()
     adlist_page.set_filter_by_years(const.CHEKCED_YEAR_MIN, const.CHEKCED_YEAR_MAX)
     adlist_page.press_button_refresh()
-
     car_list = adlist_page.get_filtered_cars()
     for one_car in car_list:
         assert const.CHEKCED_YEAR_MIN <= one_car['year'] <=  const.CHEKCED_YEAR_MAX, "Invalid year range"
@@ -51,7 +50,6 @@ def test_check_car_power(adlist_page):
     adlist_page.cookie_accept()
     adlist_page.set_filter_by_power(const.CHEKCED_POWER_MIN, const.CHEKCED_POWER_MAX)
     adlist_page.press_button_refresh()
-
     car_list = adlist_page.get_filtered_cars()
     for one_car in car_list:
         assert const.CHEKCED_POWER_MIN <= one_car['power'] <=  const.CHEKCED_POWER_MAX, "Invalid power range"
@@ -92,7 +90,7 @@ def test_sort_by_price_asc(adlist_page):
     adlist_page.open_page_bus()
     adlist_page.cookie_accept()
     adlist_page.change_sort_by_price_asc()
-
+    adlist_page.press_button_refresh()
     price_list = []
     sort_price_list = []
     car_list = adlist_page.get_filtered_cars()
@@ -113,11 +111,10 @@ def test_sort_by_price_desc(adlist_page):
     adlist_page.open_page_bus()
     adlist_page.cookie_accept()
     adlist_page.change_sort_by_price_desc()
-
+    adlist_page.press_button_refresh()
     price_list = []
     sort_price_list = []
     car_list = adlist_page.get_filtered_cars()
-
     for one_car in car_list:
         one_price = one_car['price']
         price_list.append(one_price)
@@ -131,11 +128,11 @@ def test_sort_by_price_desc(adlist_page):
 @allure.feature('Car obiavi functionality')
 @allure.story('Sort by year filter')
 @allure.title('Сортировка авто по году выпуска')
-def test_sort_by_year(adlist_page):
+def sort_by_year(adlist_page):
     adlist_page.open_page_bus()
     adlist_page.cookie_accept()
     adlist_page.change_sort_by_year()
-
+    adlist_page.press_button_refresh()
     year_list = []
     sort_year_list = []
     car_list = adlist_page.get_filtered_cars()

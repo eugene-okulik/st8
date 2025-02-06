@@ -1,6 +1,5 @@
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as ec
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
@@ -15,7 +14,6 @@ class Add_AnnouncementPage(BasePage):
     def open_page(self):
         self.open_by_url(const.LINK_PAGE)
 
-
     def select_option(self, value, select_locator):
         select_ui_element = Select(self.find(select_locator))
         select_ui_element.select_by_value(value)
@@ -25,7 +23,6 @@ class Add_AnnouncementPage(BasePage):
 
     def field_brand(self, value):
         self.select_option(str(value), locator.DROPDOWN_BRAND)
-
 
     def field_type(self, value):
         self.select_option(str(value), locator.DROPDOWN_TYPE)
@@ -83,7 +80,6 @@ class Add_AnnouncementPage(BasePage):
         placeholders = self.find_all_elements(placeholder_locator)
         for placeholder in placeholders:
             placeholder.click()
-
             file_input = placeholder.find_element(By.CSS_SELECTOR, "input[type='file']")
             file_input.send_keys(file_path)
             break
@@ -100,6 +96,7 @@ class Add_AnnouncementPage(BasePage):
         alert.accept()
         return alert_text
 
+
     def wait_message_invalid_check(self):
         element = self.find(locator.MESSAGE_ERROR)
         message_text = element.text.strip()
@@ -115,7 +112,6 @@ class Add_AnnouncementPage(BasePage):
         select_input = WebDriverWait(self.driver, 15).until(
             ec.element_to_be_clickable(locator.ADD_INFO)
         )
-
         ActionChains(self.driver).move_to_element(select_input).perform()
         select_input.click()
         select_input.send_keys(value)
@@ -133,12 +129,3 @@ class Add_AnnouncementPage(BasePage):
         actions = ActionChains(self.driver)
         actions.move_to_element(select_ui_element).perform()
         select_ui_element.click()
-
-
-
-
-
-
-
-
-

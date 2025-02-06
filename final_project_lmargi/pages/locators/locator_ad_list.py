@@ -16,8 +16,3 @@ YEAR_MIN = (By.NAME, 'year')
 YEAR_MAX = (By.NAME, 'year1')
 POWER_MIN = (By.NAME, 'engine_power')
 POWER_MAX = (By.NAME, 'engine_power1')
-
-
-
-
-

@@ -2,8 +2,8 @@ from final_project_lmargi.pages.base_page import BasePage
 from final_project_lmargi.pages.card_page import CardPage
 from final_project_lmargi.pages.locators import locator_notebook as locator
 from final_project_lmargi.pages.const import const_notebook as const
-
 from selenium.webdriver.common.by import By
+
 
 class NotebookPage(BasePage):
 
@@ -29,8 +29,6 @@ class NotebookPage(BasePage):
             this_card_page.open_card(one_car_link)
             this_card_page.remove_car_from_notebook()
 
-    def get_empty_message_text(self):
-        self.find(locator.MESSAGE_EMPTY_CAR)
-
-
-
+    def get_empty_message_text(self, value):
+        message_notebook = self.find(locator.MESSAGE_EMPTY_CAR)
+        return message_notebook.text
