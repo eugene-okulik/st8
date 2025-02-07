@@ -39,7 +39,7 @@ def test_check_car_year(adlist_page):
     adlist_page.press_button_refresh()
     car_list = adlist_page.get_filtered_cars()
     for one_car in car_list:
-        assert const.CHEKCED_YEAR_MIN <= one_car['year'] <=  const.CHEKCED_YEAR_MAX, "Invalid year range"
+        assert const.CHEKCED_YEAR_MIN <= one_car['year'] <= const.CHEKCED_YEAR_MAX, "Invalid year range"
 
 
 @allure.feature('Car obiavi functionality')
@@ -52,7 +52,7 @@ def test_check_car_power(adlist_page):
     adlist_page.press_button_refresh()
     car_list = adlist_page.get_filtered_cars()
     for one_car in car_list:
-        assert const.CHEKCED_POWER_MIN <= one_car['power'] <=  const.CHEKCED_POWER_MAX, "Invalid power range"
+        assert const.CHEKCED_POWER_MIN <= one_car['power'] <= const.CHEKCED_POWER_MAX, "Invalid power range"
 
 
 @allure.feature('Car obiavi functionality')

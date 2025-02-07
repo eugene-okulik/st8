@@ -81,7 +81,6 @@ class CardPage(BasePage):
         print(error_message.text)
         return error_message.is_displayed()
 
-
     def check_phone_number_hidden(self):
         phone_element = self.find(locator.SHOW_PHONE_NUMBER)
         initial_text = phone_element.text
@@ -110,11 +109,9 @@ class CardPage(BasePage):
         actions.move_to_element(link_element).click().perform()
         return text_before_click
 
-
     def remove_car_from_notebook(self):
         link_element = self.find(locator.WRITE_NOTEBOOK)
         link_element.click()
-
 
     def press_send_request(self):
         button_element = self.find(locator.SEND_BUTTON_LOCATOR)

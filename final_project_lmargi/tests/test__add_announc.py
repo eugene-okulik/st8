@@ -24,7 +24,7 @@ def test_visible_allert_message(add_announcement_page, login_page):
     add_announcement_page.check_checkbox_price()
     allert_message = add_announcement_page.wait_allert()
     login_page.click_on_logout_button()
-    assert  allert_message, "Alert message negotiation is not visible"
+    assert allert_message, "Alert message negotiation is not visible"
 
 
 @allure.feature('New offer page functionality')

@@ -1,4 +1,5 @@
 import allure
+import os
 from final_project_lmargi.pages.const import const_login as const
 
 
@@ -11,8 +12,8 @@ def test_login_ok(login_page):
     with allure.step('Accept cookies'):
         login_page.cookie_accept()
     login_page.click_on_phone_button()
-    login_page.set_phone(const.LOGIN_PHONE)
-    login_page.set_password(const.PASSWORD)
+    login_page.set_phone(os.getenv("LOGIN_PHONE"))
+    login_page.set_password(os.getenv("PASSWORD"))
     login_page.click_on_submit_button()
     login_page.check_account_name_visible()
     account_name = login_page.check_account_name_visible()
@@ -28,8 +29,8 @@ def test_login_error_radiobutton(login_page):
     login_page.cookie_accept()
     login_page.click_on_phone_button()
     login_page.click_on_email_button()
-    login_page.set_phone(const.LOGIN_PHONE)
-    login_page.set_password(const.PASSWORD)
+    login_page.set_phone(os.getenv("LOGIN_PHONE"))
+    login_page.set_password(os.getenv("PASSWORD"))
     login_page.click_on_submit_button()
     login_page.check_if_radiobutton_error_visible()
     error_message_metod = login_page.check_if_radiobutton_error_visible()
@@ -43,7 +44,7 @@ def test_login_invalid_password_message(login_page):
     login_page.open_page()
     login_page.cookie_accept()
     login_page.click_on_phone_button()
-    login_page.set_phone(const.LOGIN_PHONE)
+    login_page.set_phone(os.getenv("LOGIN_PHONE"))
     login_page.set_password(const.INVALID_PASSWORD)
     login_page.click_on_submit_button()
     login_page.check_login_failed_message()
@@ -59,7 +60,7 @@ def test_login_invalid_phone_message(login_page):
     login_page.cookie_accept()
     login_page.click_on_phone_button()
     login_page.set_phone(const.INVALID_PHONE)
-    login_page.set_password(const.PASSWORD)
+    login_page.set_password(os.getenv("PASSWORD"))
     login_page.click_on_submit_button()
     login_page.check_login_failed_message()
     error_message_phone = login_page.check_login_failed_message()
@@ -78,7 +79,7 @@ def test_login_empty_data(login_page):
     login_page.click_on_submit_button()
     login_page.check_invalid_phone_message()
     login_page.check_invalid_password_message()
-    error_message_phone  = login_page.check_invalid_phone_message()
+    error_message_phone = login_page.check_invalid_phone_message()
     error_message_passw = login_page.check_invalid_password_message()
 
     with allure.step('Check if invalid phone error message is displayed'):
@@ -86,7 +87,6 @@ def test_login_empty_data(login_page):
 
     with allure.step('Check that invalid phone error message text is correct'):
         assert error_message_phone.text == const.MESSAGE_INVALID_PHONE
-
 
     with allure.step('Check if invalid password error message is displayed'):
         assert error_message_passw.is_displayed(), "Message invalid password is not visible"
@@ -102,8 +102,8 @@ def test_logout(login_page):
     login_page.open_page()
     login_page.cookie_accept()
     login_page.click_on_phone_button()
-    login_page.set_phone(const.LOGIN_PHONE)
-    login_page.set_password(const.PASSWORD)
+    login_page.set_phone(os.getenv("LOGIN_PHONE"))
+    login_page.set_password(os.getenv("PASSWORD"))
     login_page.click_on_submit_button()
     login_page.click_on_logout_button()
     login_page.check_login_button_visible()

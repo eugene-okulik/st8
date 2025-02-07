@@ -1,6 +1,7 @@
 from final_project_lmargi.pages.base_page import BasePage
 from final_project_lmargi.pages.locators import locator_login as locator
 from final_project_lmargi.pages.const import const_login as const
+import os
 
 
 class LoginPage(BasePage):
@@ -37,7 +38,7 @@ class LoginPage(BasePage):
 
     def check_account_name_visible(self):
         account_name =  self.find(locator.ACCOUNT_NAME)
-        return  account_name
+        return account_name
 
     def check_login_button_visible(self):
         login_button = self.find(locator.LOGIN_BUTTON)
@@ -51,7 +52,6 @@ class LoginPage(BasePage):
         error_message_login = self.find(locator.LOGIN_ERROR_MESSAGE)
         return error_message_login
 
-
     def check_invalid_phone_message(self):
         error_message_phone = self.find(locator.ERROR_MESSAGE_INVALID_PHONE)
         return error_message_phone
@@ -64,6 +64,6 @@ class LoginPage(BasePage):
         self.open_page()
         self.cookie_accept()
         self.click_on_phone_button()
-        self.set_phone(const.LOGIN_PHONE)
-        self.set_password(const.PASSWORD)
+        self.set_phone(os.getenv("LOGIN_PHONE"))
+        self.set_password(os.getenv("PASSWORD"))
         self.click_on_submit_button()

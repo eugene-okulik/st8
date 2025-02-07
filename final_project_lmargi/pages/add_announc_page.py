@@ -5,7 +5,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
 from final_project_lmargi.pages.base_page import BasePage
-from final_project_lmargi.pages.locators import  locator_add_announcement as locator
+from final_project_lmargi.pages.locators import locator_add_announcement as locator
 from final_project_lmargi.pages.const import const_add_announc as const
 
 
@@ -59,12 +59,10 @@ class Add_AnnouncementPage(BasePage):
     def field_gearbox(self, value):
         self.select_option(str(value), locator.DROPDOWN_GEARBOX)
 
-
     def field_mileage(self, value: int):
         mileage_field = self.find(locator.INPUT_MILEAGE)
         mileage_field.click()
         mileage_field.send_keys(value)
-
 
     def field_price(self, value: int):
         price_element = self.find(locator.INPUT_PRICE)
@@ -74,7 +72,6 @@ class Add_AnnouncementPage(BasePage):
     def press_button_create_ad(self):
         button_pub = self.find(locator.BUTTON_PUBLICATION)
         button_pub.click()
-
 
     def upload_photo_to_placeholder(self, file_path, placeholder_locator):
         placeholders = self.find_all_elements(placeholder_locator)
@@ -88,7 +85,6 @@ class Add_AnnouncementPage(BasePage):
         checkbox_price = self.find(locator.INPUT_CHECKBOX_PRICE)
         checkbox_price.click()
 
-
     def wait_allert(self):
         WebDriverWait(self.driver, 5).until(ec.alert_is_present())
         alert = self.driver.switch_to.alert
@@ -96,12 +92,10 @@ class Add_AnnouncementPage(BasePage):
         alert.accept()
         return alert_text
 
-
     def wait_message_invalid_check(self):
         element = self.find(locator.MESSAGE_ERROR)
         message_text = element.text.strip()
         return message_text.strip()
-
 
     def check_title_big(self, value):
         title_announcement = self.find(locator.TITLE_BIG)
@@ -118,7 +112,6 @@ class Add_AnnouncementPage(BasePage):
 
     def check_change_url(self, part_url):
         WebDriverWait(self.driver, 10).until(ec.url_contains(part_url))
-
 
     def press_button_create_ad_2(self):
         button_pub = self.find(locator.BUTTON_PUBLICATION_2)

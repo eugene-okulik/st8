@@ -14,22 +14,7 @@ def test_check_car_price(search_page, adlist_page):
 
     car_list = adlist_page.get_filtered_cars()
     for one_car in car_list:
-        assert const.CHEKCED_PRICE_MIN <= one_car['price'] <=  const. CHEKCED_PRICE_MAX, "Invalid price range"
-
-
-@allure.feature('Car search functionality')
-@allure.story('Year filter range')
-@allure.title('Поиск авто по диапазону года выпуска')
-#def test_check_car_year(search_page, adlist_page):
-    #search_page.open_page()
-    #search_page.cookie_accept()
-    #search_page.field_year_from(const.CHEKCED_YEAR_MIN)
-    #search_page.field_year_to(const.CHEKCED_PRICE_MAX)
-    #search_page.press_button_search()
-
-    #car_list = adlist_page.get_filtered_cars()
-    #for one_car in car_list:
-    #assert const.CHEKCED_YEAR_MIN <= one_car['year'] <= const.CHEKCED_YEAR_MAX, "Invalid year range"
+        assert const.CHEKCED_PRICE_MIN <= one_car['price'] <= const. CHEKCED_PRICE_MAX, "Invalid price range"
 
 
 @allure.feature('Car search functionality')

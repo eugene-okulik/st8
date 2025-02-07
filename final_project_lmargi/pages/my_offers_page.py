@@ -2,8 +2,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from final_project_lmargi.pages.base_page import BasePage
-from final_project_lmargi.pages.locators import  locator_my_offers as locator
+from final_project_lmargi.pages.locators import locator_my_offers as locator
 from final_project_lmargi.pages.const import const_my_offers as const
+
 
 class MyOfferPage(BasePage):
 

@@ -3,7 +3,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 from final_project_lmargi.pages.base_page import BasePage
-from final_project_lmargi.pages.locators import  locator_ad_list as locator
+from final_project_lmargi.pages.locators import locator_ad_list as locator
 from final_project_lmargi.pages.const import const_adlist as const
 
 
@@ -51,26 +51,21 @@ class AdlistPage(BasePage):
     def change_sort_by_year(self):
         self.select_option(const.SORT_BY_PRICE_YEAR_VALUE, locator.SELECT_SORT_BY)
 
-
     def set_filter_by_color(self, color_value):
         self.select_option(color_value, locator.SELECT_COLOR)
 
-
-    def set_filter_by_gearbox(self,gearbox_value ):
+    def set_filter_by_gearbox(self, gearbox_value):
         self.select_option(gearbox_value, locator.SELECT_GEARBOX)
 
-
-    def set_filter_by_prices(self, price_min:int, price_max:int):
+    def set_filter_by_prices(self, price_min: int, price_max: int):
         self.select_option(str(price_min), locator.PRICE_MIN)
         self.select_option(str(price_max), locator.PRICE_MAX)
 
-
-    def set_filter_by_years(self, year_min:int, year_max:int):
+    def set_filter_by_years(self, year_min: int, year_max: int):
         self.select_option(str(year_min), locator.YEAR_MIN)
         self.select_option(str(year_max), locator.YEAR_MAX)
 
-
-    def set_filter_by_power(self, power_min:int, power_max:int):
+    def set_filter_by_power(self, power_min: int, power_max: int):
         power_min_ui = self.find(locator.POWER_MIN)
         power_max_ui = self.find(locator.POWER_MAX)
         power_min_ui.click()
@@ -78,8 +73,7 @@ class AdlistPage(BasePage):
         power_max_ui.click()
         power_max_ui.send_keys(str(power_max))
 
-
-    def set_filter_by_region(self,region_value ):
+    def set_filter_by_region(self, region_value):
         self.select_option(region_value, locator.SELECT_REGION)
 
     def press_button_refresh(self):
@@ -101,7 +95,7 @@ class AdlistPage(BasePage):
                 'year': 0,
                 'gearbox': "",
                 'power': 0,
-                'region':""
+                'region': ""
             }
 
             # link
@@ -127,7 +121,6 @@ class AdlistPage(BasePage):
             region_element = product.find_element(*locator.REGION_PRODUCT)
             region_text = region_element.text.strip()
             one_car_info['region'] = region_text.split()[-1]
-
 
             info_element = product.find_element(*locator.INFO_PRODUCT)
             info_text_splitted = info_element.text.strip().split()
