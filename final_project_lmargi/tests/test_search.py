@@ -1,4 +1,4 @@
-import  allure
+import allure
 from final_project_lmargi.pages.const import const_search as const
 
 

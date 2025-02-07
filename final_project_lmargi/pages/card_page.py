@@ -99,7 +99,7 @@ class CardPage(BasePage):
 
         actions = ActionChains(self.driver)
         actions.move_to_element(link_element).perform()
-        return  text_before_click
+        return text_before_click
 
     def check_save_car_from_notebook(self):
         link_element = self.find(locator.WRITE_NOTEBOOK)

@@ -1,7 +1,5 @@
-import  allure
+import allure
 from final_project_lmargi.pages.const import const_card as const
-from final_project_lmargi.tests.conftest import login_page
-from final_project_lmargi.tests.conftest import adlist_page
 
 
 @allure.feature('Сard_page')
@@ -12,7 +10,7 @@ def test_email_form_message_ignor_agree(card_page, adlist_page):
     adlist_page.cookie_accept()
     adlist_page.open_one_card(0)
     card_page.press_dealer_button()
-    assert card_page.get_ignore_checkbox_error(), f"Message is not visible"
+    assert card_page.get_ignore_checkbox_error(), "Message is not visible"
 
 
 @allure.feature('Сard_page')

@@ -1,5 +1,4 @@
-import  allure
-from final_project_lmargi.tests.conftest import card_page
+import allure
 from final_project_lmargi.pages.const import const_notebook as const
 
 
@@ -33,5 +32,5 @@ def test_car_remove_notebook(login_page, adlist_page, notebook_page, card_page):
     notebook_page.open_page()
     expected_message = notebook_page.get_empty_message_text(const.MESSAGE_DELETE_NOTEBOOK)
     actual_message = const.MESSAGE_DELETE_NOTEBOOK
-    assert  expected_message == actual_message, "Message not displayed"
+    assert expected_message == actual_message, "Message not displayed"
     assert checked_car_url in notebook_links, f"Error: {checked_car_url} not removed from notebook"

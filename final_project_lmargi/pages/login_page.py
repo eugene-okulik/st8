@@ -35,9 +35,8 @@ class LoginPage(BasePage):
         button_element = self.find(locator.LOGOUT_BUTTON)
         button_element.click()
 
-
     def check_account_name_visible(self):
-        account_name =  self.find(locator.ACCOUNT_NAME)
+        account_name = self.find(locator.ACCOUNT_NAME)
         return account_name
 
     def check_login_button_visible(self):
